@@ -1,0 +1,255 @@
+* {
+    margin: 0;
+    font-family: "Poppins",sans-serif;
+}
+
+/* =================navbar============= */
+.Product2-fullnav{
+    /* height: 70px; */
+    display: flex;
+    align-items: center;
+    padding:20px 7% 8px;
+    gap: 160px;
+box-shadow: 0 3px 5px #dddddd;
+    background-color: white;
+
+}
+
+.home-fullnav1{
+    width: 100%;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    padding: 0 7%;
+    gap: 40px;
+    background-color: white;
+}
+
+#nav-heading {
+    font-size: 25px;
+    color: #103f4d;
+    margin-right: 30px;
+}
+
+.home-nav ul{
+    display: flex;
+    gap: 40px;
+    list-style: none;
+}
+.home-nav a {
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+}
+
+.home-navsearch {
+    width: 300px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    border: 1px solid #dddddd;
+    border-radius: 20px;
+    padding:0 10px;
+}
+.home-navsearch input{
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 15px;
+}
+.home-navsearch svg{
+    width: 18px;
+    height: 18px;
+    
+}
+
+.home-navicons{
+    display: flex;
+    gap: 10px;
+}
+.home-navicons svg {
+    border: 1px solid #dddddd;
+    border-radius: 50%;
+    padding: 10px;
+    font-size: 20px;
+}
+
+
+/* =========links=============== */
+.product2-links{
+    display: flex;
+    align-items: center;
+    width: 93%;
+    margin: 20px auto;
+}
+.product2-links a{
+    text-decoration: none;
+    color: #000000CC;
+}
+
+
+/* ===================================== */
+.product2-fulldetails{
+    display: flex;
+    gap: 80px;
+    width: 93%;
+    margin: auto;
+}
+.product2-fullimages{
+    height: 600px;
+    width: 500px;
+    /* border: 1px solid; */
+}
+#product2-images1,
+#product2-images2,
+#product2-images3{
+    width: 110px;
+    height: 110px;
+    border: 1px solid;
+    display: block;
+    margin-bottom: 10px;
+}
+.product2-images{
+    display: flex;
+    position: relative;
+}
+.product2-imagesicons{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.product2-imagesicons button{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    box-shadow: 0 2px 5px 2px #dddddd;
+    background-color: white;
+}
+.product2-imagesicons svg{
+    height: 20px;
+    width: 20px;
+}
+#product2-images4{
+    width: 400px;
+    height: 400px;
+    margin-top: 60px;
+}
+#product2-purchasebutton{
+    width: 500px;
+    height: 50px;
+    background-color: #103f4d;
+    color: white;
+    font-size: large;
+    border: 1px solid #103f4d;
+    border-radius: 6px;
+    margin-bottom: 10px;
+}
+#product2-addbutton{
+    width: 500px;
+    height: 50px;
+    background-color: white;
+    font-size: large;
+    border: 3px solid #103f4d;
+    border-radius: 6px;
+}
+
+
+
+/* ==============details============== */
+#product2-detailsheading{
+    font-weight: bold;
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+#product2-detailsautograph{
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+.product2-detailsrating{
+    display: flex;
+    gap: 5px;
+    margin-bottom: 10px;
+    align-items: center;
+}
+.product2-detailsrating h4{
+    font-size: 25px;
+    font-weight: bold;
+}
+.product2-detailsrating svg{
+    height: 20px;
+    width: 20px;
+    color: green;
+    margin-right: 20px;
+}
+.product2-detailsrating p{
+    font-size: 20px;
+    color: gray;
+}
+#product2-detailshurry{
+    font-size: 20px;
+    color: red;
+    margin-bottom: 20px;
+}
+.product2-detailsprice{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.product2-detailsprice strong{
+    font-weight: bold;
+    font-size: 32px;
+}
+.product2-detailsprice del{
+    font-size: 20px;
+    color: gray;
+}
+.product2-detailsprice p{
+    color: green;
+    font-size: 20px;
+    font-weight: bold;
+}
+.product2-detailsbutton{
+    display: flex;
+    gap: 30px;
+    width: 130px;
+    height: 50px;
+    border: 2px solid;
+    border-radius: 6px;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+.product2-detailsbutton button{
+    border: transparent;
+    background-color: white;
+    font-size: 1.5rem;
+    padding: 0 6px 0 6px;
+}
+.product2-detailsbutton h3{
+    font-size: 1.6rem;
+    font-weight: bold;
+}
+.product2-details-subheading{
+    margin-bottom: 10px;
+    font-size: 21px;
+}
+#product2-detailsparagraph{
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+.product2-details-offers{
+    align-items: center;
+}
+.product2-details-offers p{
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+.product2-details-offers svg{
+    color: green;
+    margin-right: 10px;
+}

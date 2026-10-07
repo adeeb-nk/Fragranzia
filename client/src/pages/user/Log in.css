@@ -1,0 +1,112 @@
+.login-container{
+    display: flex;
+    gap: 80px;
+    font-family: 'Poppins',sans-serif;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.logo-img{
+    background:linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)) ,url(../../assets/login.png);
+    width: 440px;
+    height: 440px;
+    background-size: cover;
+    background-position: cover;
+    background-repeat: no-repeat;
+    border-top-left-radius: 200px;
+    border-bottom-right-radius: 200px;
+}
+
+.logo-img h1{
+    color: white;
+    text-align: center;
+    margin-top: 150px;
+    font-weight: bolder;
+}
+
+.logo-img p{
+    color: white;
+    text-align: center;
+}
+
+
+.googlefacebook-btn{
+    display: flex;
+    gap: 17px;
+}
+.googlefacebook-btn button{
+    height: 35px;
+    width: 152px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 5px;
+}
+.googlefacebook-btn svg{
+    width: 18px;
+    height: 18px;
+}
+
+.cut{
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+.cut span{
+    height: 1px;
+    background-color: black;
+    flex: 1;
+}
+.cut label{
+    font-size: smaller;
+}
+
+.input-container{
+    width: 300px;
+    height: 40px;
+    background-color: lightgray;
+    padding: 0 12px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.input-container input{
+    background: transparent;
+    border: none;
+    outline: none;
+    margin-left: 10px;
+    flex: 1;
+}
+.input-container svg{
+    width: 18px;
+    height: 18px;
+}
+
+.forgot-password a{
+    float: right;
+    font-size: smaller;
+}
+
+#login-btn{
+    height: 40px;
+    width: 322px;
+    border: none;
+    border-radius: 8px;
+    background-color: rgb(20, 20, 65);
+    color: white;
+}
+
+.signup p{
+    font-size: smaller;
+    text-align: center;
+}
+
+.loginerr{
+    font-size: x-small;
+    color: red;
+}

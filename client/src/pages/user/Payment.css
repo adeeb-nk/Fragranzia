@@ -1,0 +1,378 @@
+* {
+    margin: 0;
+    font-family: "Poppins",sans-serif;
+}
+
+
+/* =============payment-container-top========== */
+.payment-container-top{
+    width: 93%;
+    /* max-width: 1400px; */
+    margin: 25px auto;
+
+    display: grid;
+    grid-template-columns: 1.35fr 1fr;
+    gap: 50px;
+
+    align-items: start;
+}
+
+/* =============payment-products============= */
+.payment-products{
+    display: flex;
+    gap: 25px;
+    box-shadow: 0 2px 5px 2px #dddddd;
+    width: 800px;
+    align-items: center;
+    border-radius: 9px;
+}
+.payment-productimage{
+    width: 240px;
+    height: 240px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.payment-productimage img{
+    width: 215px;
+    height: 215px;
+}
+.payment-productdetails{
+    width: 500px;
+    height: 210px;
+    padding: 30px 0 30px 0;
+}
+.payment-productdetails h3{
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+.payment-details-autograph{
+    display: flex;
+    gap: 10px;
+    margin-bottom: 9px;
+}
+.payment-details-autograph p{
+    font-size: 17px;
+}
+.payment-details-button{
+    display: flex;
+    gap: 30px;
+    width: 110px;
+    height: 40px;
+    border: 2px solid;
+    border-radius: 6px;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+.payment-details-button h3{
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin: 0;
+}
+.payment-details-button button{
+    border: transparent;
+    background-color: white;
+    font-size: 1.4rem;
+    padding: 0 5px 0 3.5px;
+}
+.payment-details-price{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 9px;
+}
+.payment-details-price strong{
+    font-weight: bold;
+    font-size: 28px;
+}
+.payment-details-price del{
+    font-size: 18px;
+    color: gray;
+}
+.payment-details-price p{
+    color: green;
+    font-size: 18px;
+    font-weight: bold;
+}
+#payment-details-delivery{
+    font-size: 17px;
+    margin-bottom: 8px;
+}
+#payment-details-return{
+    font-size: 17px;
+    color: green;
+}
+
+
+/* ===================price details============= */
+.payment-pricebox {
+    width: 100%;
+    /* border: 1px solid #e5e5e5; */
+    box-shadow: 0 2px 5px 2px #dddddd;
+    border-radius: 6px;
+    background: #fff;
+    box-sizing: border-box;
+    padding: 30px;
+}
+
+.payment-priceheading {
+    font-size: 19px;
+    font-weight: 600;
+    margin: 0 0 14px;
+    color: #111;
+}
+
+.payment-pricerow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.payment-pricerow p {
+    margin: 0;
+    font-size: 17px;
+    color: #111;
+}
+
+.payment-pricerow strong {
+    font-size: 17px;
+    font-weight: 500;
+}
+
+.payment-pricevalue {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.payment-pricevalue del {
+    font-size: 14px;
+    color: #888;
+}
+
+.payment-pricerow .payment-free {
+    color: #248b37;
+    font-weight: 600;
+}
+
+.payment-price-divider {
+    border: none;
+    border-top: 1px solid #ddd;
+    margin: 12px 0;
+}
+
+.payment-totalrow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+}
+
+
+
+
+/* ==================personal details============= */
+/* Personal Details Container */
+
+.payment-personal-container {
+    width: 800px;
+    margin-top: 20px;
+    margin: auto;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    box-shadow: 0 2px 5px 2px #dddddd;
+    padding: 40px;
+    border-radius: 7px;
+}
+
+/* Personal Details Heading */
+
+.payment-personal-heading {
+    font-size: 19px;
+    font-weight: 600;
+    margin: 0 0 10px;
+    color: #111;
+}
+
+/* Address Tabs */
+
+.payment-personal-tabs {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+}
+
+.payment-personal-tabs button {
+    height: 38px;
+    min-width: 100px;
+    padding: 0 12px;
+    border: none;
+    border-radius: 3px;
+    background: #eaeaea;
+    color: #333;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+/* Add Address Button */
+
+.payment-personal-tabs .payment-personal-addbtn {
+    min-width: 78px;
+    background: #eaeaea;
+    color: #222;
+}
+
+/* Active Home Tab */
+
+.payment-personal-tabs .payment-personal-active {
+    background: #003b50;
+    color: #fff;
+}
+
+/* Address Heading */
+
+.payment-personal-address-heading {
+    font-size: 19px;
+    font-weight: 500;
+    margin: 0 0 8px;
+    color: #111;
+}
+
+/* Address Cards */
+
+.payment-personal-address-card {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 8px;
+    border: 2px solid #003b50;
+    border-radius: 5px;
+    background: #fff;
+    box-sizing: border-box;
+}
+
+/* First Address Selected */
+
+/* .payment-personal-address-card:first-of-type {
+    border-color: #003b50;
+} */
+
+/* Name */
+
+.payment-personal-address-card h3 {
+    font-size: 19px;
+    font-weight: 600;
+    margin: 0 0 10px;
+    color: #111;
+}
+
+/* Address and Phone */
+
+.payment-personal-address-card p {
+    font-size: 17px;
+    line-height: 1.6;
+    margin: 0 0 8px;
+    color: #333;
+}
+
+.payment-personal-address-card-full{
+    overflow-y: scroll;
+    height: 200px;
+}
+
+
+
+/* =============Payment Methods Container================ */
+
+.payment-method-container {
+    width: 100%;
+    height: 300px;
+    padding: 30px;
+    box-shadow: 0 2px 5px 2px #dddddd;
+    border-radius: 6px;
+    background: #fff;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Heading */
+
+.payment-method-heading {
+    font-size: 19px;
+    font-weight: 600;
+    margin: 0 0 16px;
+    color: #111;
+}
+
+/* Payment Options */
+
+.payment-method-options {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+/* Individual Payment Row */
+
+.payment-method-row {
+    width: 100%;
+    min-height: 27px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    cursor: pointer;
+}
+
+/* Payment Method Text */
+
+.payment-method-row span {
+    font-size: 17px;
+    color: #111;
+}
+
+/* Radio Buttons */
+
+.payment-method-row input[type="radio"] {
+    width: 15px;
+    height: 15px;
+    /* margin: 0; */
+    accent-color: #003b50;
+    cursor: pointer;
+    /* flex-shrink: 0; */
+}
+
+/* Pay Now Button */
+
+.payment-method-paybtn {
+    width: 100%;
+    height: 40px;
+    margin-top: 12px;
+    border: none;
+    border-radius: 3px;
+    background: #003b50;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+/* Hover Effect */
+
+.payment-method-paybtn:hover {
+    background: #00516b;
+}
+
+
+/* =========== */
+.payment-bottom{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    width: 93%;
+    margin: auto;
+}

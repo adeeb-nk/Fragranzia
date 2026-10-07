@@ -1,0 +1,62 @@
+import { useState } from 'react'
+import heroImg from './assets/hero.png'
+import reactLogo from './assets/react.svg'
+import viteLogo from './assets/vite.svg'
+import './App.css'
+import { Route,Routes } from 'react-router-dom'
+import { SignUp } from './pages/user/Sign up.jsx'
+import {Login} from './pages/user/Log in.jsx'
+import {Home} from './pages/user/Home.jsx'
+import {Product1} from './pages/user/Product1.jsx'
+import { Product2 } from './pages/user/Product2.jsx'
+import { Payment } from './pages/user/Payment.jsx'
+import {Paymentsuccess} from './pages/user/Paymentsuccess.jsx'
+import { Category } from './pages/admin/Category.jsx'
+import { Productadmin1 } from './pages/admin/Productadmin1.jsx'
+import { Productadd } from './pages/admin/Product add.jsx'
+import { About } from './pages/user/About.jsx'
+import { Cart } from './pages/user/Cart.jsx'
+import { User } from './pages/admin/User.jsx'
+
+function App() {
+
+  return (
+    <>
+
+
+    <Routes>
+      <Route path='/SignUp' element={<SignUp/>}/>
+      <Route path='/Login' element={<Login/>}/>
+
+      <Route path='/' element={<Home/>}/>
+      <Route path='/Product1' element={<Product1/>}/>
+      <Route path='/Product2' element={<Product2/>}/>
+      <Route path='/Payment' element={<Payment/>}/>
+      <Route path='/Paymentsuccess' element={<Paymentsuccess/>}/>
+      <Route path='/About' element={<About/>}/>
+      <Route path='/Cart' element={<Cart/>}/>
+
+
+      <Route path='/Category' element={<Category/>}/>
+      <Route path='/Productadmin1' element={<Productadmin1/>}/>
+      <Route path='/Productadd' element={<Productadd/>}/>
+      <Route path='/User' element={<User/>}/>
+
+    </Routes>
+      {/* <SignUp/> */}
+      {/* <Login/> */}
+      {/* <Home/> */}
+      {/* <Product1/> */}
+      {/* <Product2/> */}
+      {/* <Payment/> */}
+      
+      
+      
+      {/* <Category/> */}
+      {/* <Productadmin1/> */}
+      {/* <Productadd/> */}
+    </>
+  )
+}
+
+export default App

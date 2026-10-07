@@ -1,0 +1,389 @@
+* {
+    margin: 0;
+    font-family: "Poppins",sans-serif;
+}
+
+.category-full{
+    display: flex;
+    /* gap: 40px; */
+}
+
+/* =========category-nav========== */
+.category-fullnav{
+    width: 220px;
+    height: 100vh;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    padding: 35px 25px 25px 25px;
+    position: relative;
+    box-shadow: 0 10px 5px #dddddd;
+}
+.category-fullnav h2{
+    color: green;
+}
+.category-nav li {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-size: 17px;
+  cursor: pointer;
+  list-style: none;
+}
+.category-nav a{
+    text-decoration: none;
+    color: black;
+}
+.category-nav li svg {
+  font-size: 22px;
+}
+.category-nav ul{
+    list-style: none;
+     padding: 0;
+     margin: 0;
+}
+.category-nav ul{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+#category-logout{
+    background-color: green;
+    color: white;
+    font-size: medium;
+    border-radius: 8px;
+    border: none;
+    height: 40px;
+    width: 85%;
+    position: absolute;
+    bottom: 40px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.category-logout svg {
+  font-size: 22px;
+}
+
+
+
+/* ================second divvvvvvvv================== */
+
+.category-details{
+    padding: 50px;
+    width: auto;
+    flex: 1;
+    box-sizing: border-box;
+}
+/* ============export-import-add buttons=========== */
+
+.category-eiabutn{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+.category-expoimpo{
+    display: flex;
+    gap: 30px;
+}
+.category-expoimpo button{
+    height: 35px;
+    width: 100px;
+    border: none;
+    box-shadow: 0 2px 5px 2px #dddddd;
+    font-size: 17px;
+    border-radius: 5px;
+}
+#categoty-addbtn{
+    height: 35px;
+    width: 200px;
+    background-color: rgb(216, 244, 216);
+    border: none;
+    border-radius: 6px;
+    color: green;
+    font-size: 17px;
+    box-shadow: 0 2px 5px 2px #dddddd;
+}
+
+
+/* =======================table====================== */
+.category-table-container{
+    padding: 25px 25px 40px 25px;
+    box-shadow: 0 2px 5px 2px #dddddd;
+    border-radius: 6px;
+}
+
+.category-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+.category-table thead tr{
+    background-color: #e5e7eb;
+}
+.category-table th{
+    padding: 11px 15px;
+    font-size: 15px;
+    text-align: center;
+    color: #222;
+}
+.category-table td {
+  padding: 10px 15px;
+  font-size: 14px;
+  color: #444;
+  text-align: center;
+  border-bottom: 2px solid #eeeeee;
+}
+#categorytable-editbtn{
+    height: 26px;
+    width: 80px;
+    font-size: 15px;
+
+    background-color: #eef7ff;
+    color: #2563eb;
+
+    border: 1px solid #dbeafe;
+    border-radius: 7px;
+}
+#categorytable-blockbtn{
+    height: 26px;
+    width: 100px;
+    background-color: #effcf3;
+    color: #35905a;
+
+    border: 1px solid #d9f2df;
+    border-radius: 8px;
+
+    font-size: 15px;
+}
+#categorytable-unblockbtn{
+    height: 26px;
+    width: 100px;
+    background-color: #fff5f5;
+    color: #d9534f;
+
+    border: 1px solid #f3d5d5;
+    border-radius: 8px;
+
+    font-size: 15px;
+}
+
+/* ===================previous next buttton============= */
+.category-prevnextbtn{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.category-prevnextbtn button{
+    height: 40px;
+    width: 100px;
+    box-shadow: 0 2px 2px 2px #dddddd;
+    border: none;
+    border-radius: 5px;
+    font-size: 15px;
+}
+
+
+
+
+/* ==========================category overlay==================== */
+/* Background overlay */
+.category-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+
+    background: rgba(0, 0, 0, 0.35);
+
+    z-index: 1000;
+}
+
+
+/* Add Category side panel */
+.category-addpanel {
+    position: fixed;
+    top: 0;
+    right: 0;
+
+    width: 400px;
+    height: 100vh;
+
+    background-color: #fff;
+
+    padding: 30px 25px;
+    box-sizing: border-box;
+
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.15);
+
+    animation: slideIn 0.3s ease-out;
+}
+
+
+/* Slide from right */
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+
+/* Header */
+.category-addheader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 30px;
+}
+
+.category-addheader h2 {
+    font-size: 22px;
+    font-weight: 600;
+
+    margin: 0;
+    color: #333;
+}
+
+
+/* Close button */
+.category-closebtn {
+    background: transparent;
+    border: none;
+
+    font-size: 30px;
+    color: #777;
+
+    cursor: pointer;
+}
+
+
+/* Form layout */
+.category-form {
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* Labels */
+.category-form label {
+    font-size: 14px;
+    font-weight: 500;
+
+    color: #555;
+
+    margin-bottom: 8px;
+}
+
+
+/* Input field */
+.category-form input {
+    width: 100%;
+    height: 42px;
+
+    padding: 10px;
+
+    border: 1px solid #ddd;
+    border-radius: 5px;
+
+    font-size: 14px;
+
+    margin-bottom: 20px;
+
+    box-sizing: border-box;
+    outline: none;
+}
+
+.category-form input:focus {
+    border-color: #80bdff;
+}
+
+
+/* Description textarea */
+.category-form textarea {
+    width: 100%;
+    height: 100px;
+
+    padding: 10px;
+
+    border: 1px solid #ddd;
+    border-radius: 5px;
+
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+
+    margin-bottom: 25px;
+
+    box-sizing: border-box;
+    resize: vertical;
+
+    outline: none;
+}
+
+.category-form textarea:focus {
+    border-color: #80bdff;
+}
+
+
+/* Form buttons */
+.category-form-buttons {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    gap: 10px;
+}
+
+
+/* Cancel button */
+.category-cancelbtn {
+    background-color: #dc5555;
+    color: white;
+
+    border: none;
+    border-radius: 5px;
+
+    padding: 10px 20px;
+
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.category-cancelbtn:hover {
+    background-color: #c94444;
+}
+
+
+/* Add Category button */
+.category-savebtn {
+    background-color: #5cb85c;
+    color: white;
+
+    border: none;
+    border-radius: 5px;
+
+    padding: 10px 20px;
+
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.category-savebtn:hover {
+    background-color: #449d44;
+}
+
+
+/* Responsive for smaller screens */
+@media (max-width: 500px) {
+    .add-category-panel {
+        width: 100%;
+        padding: 25px 20px;
+    }
+}

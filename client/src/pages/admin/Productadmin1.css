@@ -1,0 +1,703 @@
+* {
+    margin: 0;
+    font-family: "Poppins",sans-serif;
+}
+
+.productadmin1-full{
+    display: flex;
+    /* gap: 40px; */
+}
+
+/* ==========================second divvvvvvvvvvvvv====================== */
+.productadmin1-details{
+    padding: 50px;
+    width: auto;
+    flex: 1;
+    box-sizing: border-box;
+}
+
+
+/* ============export-import-add buttons=========== */
+
+.productadmin1-eiabutn{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+.productadmin1-expoimpo{
+    display: flex;
+    gap: 30px;
+}
+.productadmin1-expoimpo button{
+    height: 35px;
+    width: 100px;
+    border: none;
+    box-shadow: 0 2px 5px 2px #dddddd;
+    font-size: 17px;
+    border-radius: 5px;
+}
+#productadmin1-addbtn{
+    height: 35px;
+    width: 200px;
+    background-color: rgb(216, 244, 216);
+    border: none;
+    border-radius: 6px;
+    color: green;
+    font-size: 17px;
+    box-shadow: 0 2px 5px 2px #dddddd;
+}
+
+/* ====================productadmin1-table-container=============== */
+.productadmin1-table-container{
+    padding: 25px 25px 40px 25px;
+    box-shadow: 0 2px 5px 2px #dddddd;
+    border-radius: 6px;
+    height: 500px;
+    /* overflow-x: auto; */
+  overflow-y: auto;
+
+}
+.productadmin1-table{
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+.productadmin1-table thead tr{
+    background-color: #e5e7eb;
+}
+.productadmin1-table th{
+    padding: 11px 15px;
+    font-size: 15px;
+    text-align: center;
+    color: #222;
+}
+.productadmin1-table td {
+  padding: 10px 15px;
+  font-size: 14px;
+  color: #444;
+  text-align: center;
+  border-bottom: 2px solid #eeeeee;
+}
+.productadmin1-showedit-btn{
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+#productadmin1-showbtn{
+    height: 32px;
+    width: 80px;
+    font-size: 15px;
+
+    background-color: #effcf3;
+    color: #35905a;
+
+    border: 1px solid #dbeafe;
+    border-radius: 7px;
+}
+#productadmin1-editbtn{
+    height: 32px;
+    width: 90px;
+    font-size: 15px;
+
+    background-color: #eef7ff;
+    color: #2563eb;
+
+    border: 1px solid #dbeafe;
+    border-radius: 7px;
+}
+#productadmin1-unblockbtn{
+    height: 32px;
+    width: 100px;
+    background-color: #fff5f5;
+    color: #d9534f;
+
+    border: 1px solid #f3d5d5;
+    border-radius: 8px;
+
+    font-size: 15px;
+}
+#productadmin1-blockbtn{
+    height: 32px;
+    width: 100px;
+    background-color: #effcf3;
+    color: #35905a;
+
+    border: 1px solid #d9f2df;
+    border-radius: 8px;
+
+    font-size: 15px;
+}
+
+
+
+
+/* =============================update box===================== */
+
+
+/* Dark background covering the entire screen */
+.productadmin1-editbox {
+    position: fixed;
+    inset: 0;
+
+    width: 100%;
+    height: 100vh;
+
+    background: rgba(40, 45, 50, 0.5);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+    box-sizing: border-box;
+
+    z-index: 1000;
+}
+
+
+/* White Update Product popup */
+.productadmin1-edit-content {
+    width: 570px;
+    max-width: 100%;
+
+    max-height: 85vh;
+    overflow-y: auto;
+
+    background: #fff;
+
+    border-radius: 8px;
+
+    padding: 20px;
+
+    box-sizing: border-box;
+
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+}
+
+.productadmin1-edit-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 22px;
+}
+
+.productadmin1-edit-header h2 {
+    font-size: 18px;
+    font-weight: 600;
+
+    color: #292929;
+
+    margin: 0;
+}
+
+.productadmin1-edit-header button {
+    background: transparent;
+    border: none;
+
+    color: #888;
+    font-size: 22px;
+
+    cursor: pointer;
+
+    padding: 0 5px;
+}
+
+.productadmin1-edit-form {
+    display: flex;
+    flex-direction: column;
+
+    gap: 14px;
+
+    width: 100%;
+}
+
+
+/* Name, Price, Sale Price, Stock */
+.productadmin1-edit-inputs {
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+    gap: 8px;
+}
+
+
+/* Description */
+.productadmin1-edit-textarea {
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+    gap: 8px;
+}
+
+
+/* Category */
+.productadmin1-edit-options {
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+    gap: 8px;
+}
+
+
+/* Product images */
+.productadmin1-edit-images {
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+    gap: 8px;
+}
+
+
+/* All labels */
+.productadmin1-edit-form label {
+    font-size: 14px;
+    font-weight: 500;
+
+    color: #444;
+}
+
+
+/* Inputs, textarea and select */
+.productadmin1-edit-form input:not([type="file"]),
+.productadmin1-edit-form textarea,
+.productadmin1-edit-form select {
+    width: 100%;
+
+    box-sizing: border-box;
+
+    padding: 14px;
+
+    border: 1px solid #ddd;
+    border-radius: 5px;
+
+    background: #fff;
+
+    font-size: 14px;
+    color: #555;
+
+    outline: none;
+}
+
+
+/* Description height */
+.productadmin1-edit-form textarea {
+    height: 100px;
+
+    resize: vertical;
+}
+
+
+/* Focus effect */
+.productadmin1-edit-form input:focus,
+.productadmin1-edit-form textarea:focus,
+.productadmin1-edit-form select:focus {
+    border-color: #80aaff;
+}
+
+
+/* File upload */
+.productadmin1-edit-images input[type="file"] {
+    width: 100%;
+
+    box-sizing: border-box;
+
+    padding: 12px;
+
+    border: 1px solid #ddd;
+    border-radius: 5px;
+
+    background: #fafafa;
+
+    font-size: 13px;
+}
+.productadmin1-edit-image-preview {
+    width: 150px;
+    height: 150px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.productadmin1-edit-image-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.productadmin1-edit-footer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    gap: 12px;
+
+    margin-top: 25px;
+}
+
+
+/* Cancel */
+.productadmin1-edit-cancelbtn {
+    padding: 12px 20px;
+
+    background: #fff;
+    color: #555;
+
+    border: 1px solid #ddd;
+    border-radius: 5px;
+
+    font-size: 14px;
+
+    cursor: pointer;
+}
+
+
+/* Update Product */
+.productadmin1-edit-updatebtn {
+    padding: 12px 20px;
+
+    background: #4c8bf5;
+    color: #fff;
+
+    border: none;
+    border-radius: 5px;
+
+    font-size: 14px;
+
+    cursor: pointer;
+}
+
+.productadmin1-edit-updatebtn:hover {
+    background: #3575df;
+}
+
+
+
+/* ============================show boxxxxxx============== */
+.productadmin1-showbox{
+    position: fixed;
+    inset: 0;
+
+    width: 100%;
+    height: 100vh;
+
+    background: rgba(40, 45, 50, 0.5);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+    box-sizing: border-box;
+
+    z-index: 1000;
+}
+
+.productadmin1-showcontent{
+    width: 560px;
+    height: 500px;
+
+    overflow-y: auto;
+
+    background: #fff;
+
+    border-radius: 8px;
+
+    padding: 20px;
+
+    box-sizing: border-box;
+
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+}
+
+.productadmin1-show-header{
+    display: flex;
+    justify-content: space-between;
+}
+.productadmin1-show-header button{
+    background: transparent;
+    border: none;
+}
+
+.productadmin1-show-fulldetails{
+    display: flex;
+    gap: 20px;
+}
+.productadmin1-showimage{
+    width: 45%;
+    box-sizing: border-box;
+}
+.productadmin1-showimage label{
+    display: block;
+    margin-bottom: 12px;
+    font-size: 11px;
+    text-transform: uppercase;
+}
+.productadmin1-showimage img{
+    border: 1px solid;
+    border-radius: 5px;
+    width: 180px;
+    height: 190px;
+}
+
+
+.productadmin1-show-details {
+    width: 55%;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+/* =========================================
+   PRODUCT NAME
+   ========================================= */
+.productadmin1-show-name {
+    margin-bottom: 18px;
+}
+
+.productadmin1-show-name label,
+.productadmin1-show-category label,
+.productadmin1-show-regularprice label,
+.productadmin1-show-saleprice label,
+.productadmin1-show-stockstatus label,
+.productadmin1-show-productstatus label,
+.productadmin1-show-description label {
+    display: block;
+
+    font-size: 10px;
+
+    font-weight: 500;
+
+    text-transform: uppercase;
+
+    color: #999;
+
+    margin-bottom: 7px;
+}
+
+.productadmin1-show-name p {
+    margin: 0;
+
+    font-size: 17px;
+
+    font-weight: 600;
+
+    color: #444;
+}
+
+/* =========================================
+   CATEGORY
+   ========================================= */
+
+.productadmin1-show-category {
+    margin-bottom: 25px;
+}
+
+.productadmin1-show-category p {
+    display: inline-block;
+
+    margin: 0;
+
+    padding: 4px 10px;
+
+    border-radius: 12px;
+
+    background: #f1edff;
+
+    color: #7467b7;
+
+    font-size: 12px;
+}
+
+/* =========================================
+   PRICE AREA
+   ========================================= */
+
+.productadmin1-show-price {
+    display: flex;
+
+    gap: 65px;
+
+    padding-bottom: 25px;
+
+    border-bottom: 1px solid #eeeeee;
+}
+
+
+/* Regular price */
+
+.productadmin1-show-regularprice {
+    min-width: 100px;
+}
+
+.productadmin1-show-regularprice del {
+    font-size: 17px;
+
+    font-weight: 500;
+
+    color: #777;
+}
+
+
+/* Sale price */
+
+.productadmin1-show-saleprice {
+    min-width: 100px;
+}
+
+.productadmin1-show-saleprice strong {
+    font-size: 18px;
+
+    font-weight: 600;
+
+    color: #55a56a;
+}
+
+/* =========================================
+   STOCK + STATUS
+   ========================================= */
+
+.productadmin1-show-status {
+    display: flex;
+
+    gap: 65px;
+
+    padding-top: 25px;
+}
+
+.productadmin1-show-stockstatus {
+    min-width: 100px;
+}
+
+.productadmin1-show-stockstatus p {
+    display: inline-block;
+
+    margin: 0;
+
+    padding: 5px 10px;
+
+    border-radius: 12px;
+
+    background: #edf9f0;
+
+    color: #55a56a;
+
+    font-size: 12px;
+}
+
+
+/* Status */
+
+.productadmin1-show-productstatus {
+    min-width: 100px;
+}
+
+.productadmin1-show-productstatus p {
+    display: inline-block;
+
+    margin: 0;
+
+    padding: 5px 10px;
+
+    border-radius: 12px;
+
+    background: #fff0ef;
+
+    color: #d47770;
+
+    font-size: 12px;
+}
+
+/* =========================================
+   DESCRIPTION
+   ========================================= */
+
+.productadmin1-show-description {
+    padding: 0 25px 25px;
+
+    box-sizing: border-box;
+}
+
+.productadmin1-show-description label {
+    margin-bottom: 10px;
+}
+
+.productadmin1-show-description p {
+    margin: 0;
+
+    min-height: 70px;
+
+    padding: 15px;
+
+    box-sizing: border-box;
+
+    border: 1px solid #eeeeee;
+
+    border-radius: 5px;
+
+    background: #fafafa;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+
+    color: #555;
+}
+
+/* ===============buttons============ */
+.productadmin1-show-close-editbtn{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 15px 25px;
+
+    border-top: 1px solid #eeeeee;
+
+    box-sizing: border-box;
+}
+
+/* Close button */
+
+#productadmin1-show-closebtn {
+    padding: 10px 22px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 5px;
+
+    background: white;
+
+    color: #555;
+
+    font-size: 14px;
+
+    cursor: pointer;
+}
+
+
+/* Edit Product button */
+
+#productadmin1-show-editproductbtn {
+    padding: 10px 22px;
+
+    border: none;
+
+    border-radius: 5px;
+
+    background: #4d8df5;
+
+    color: white;
+
+    font-size: 14px;
+
+    cursor: pointer;
+}

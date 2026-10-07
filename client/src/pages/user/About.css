@@ -1,0 +1,41 @@
+* {
+    margin: 0;
+    font-family: "Poppins",sans-serif;
+}
+
+/* ===========about fragranzia div========== */
+.about-fullcontent{
+    display: flex;
+    width: 93%;
+    margin: 40px auto;
+    gap: 50px;
+}
+.about-content h1{
+    margin-bottom: 20px;
+}
+.about-heading-bottomlinks{
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.about-heading-bottomlinks a{
+    text-decoration: none;
+    color: #000000CC;
+}
+.about-content p{
+    font-size: 18px;
+    line-height: 30px;
+}
+
+#about-image1{
+    width: 350px;
+    height: 350px;
+    border-top-left-radius: 150px;
+    border-bottom-right-radius: 150px;
+}
+#about-image2{
+    width: 350px;
+    height: 350px;
+    border-top-right-radius: 150px;
+    border-bottom-left-radius: 150px;
+}

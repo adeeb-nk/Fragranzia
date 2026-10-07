@@ -1,0 +1,123 @@
+.Signup-container{
+    display: flex;
+    gap: 80px;
+    font-family: 'Poppins',sans-serif;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.logo{
+    background-image:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url(../../assets/signup.png);
+    width: 440px;
+    height: 440px;
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    border-top-right-radius: 200px;
+    border-bottom-left-radius: 200px;
+}
+.logo h1{
+    color: white;
+    text-align: center;
+    margin-top: 150px;
+    font-weight: bolder;
+}
+.logo p{
+    color: white;
+    text-align: center;
+}
+
+.top-btn{
+    display: flex;
+    gap: 17px;
+}
+.top-btn button{
+    height: 35px;
+    width: 152px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border: 2px solid black;
+    background-color: white;
+    border-radius: 5px;
+}
+.top-btn button svg{
+    width: 18px;
+    height: 18px;
+}
+
+.line{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.line span{
+    height: 1px;
+    background-color: black;
+    flex: 1;
+}
+.line label{
+    font-size: smaller;
+}
+
+.input-box{
+    display: flex;
+    align-items: center;
+    width: 300px;
+    height: 40px;
+    background-color: lightgray;
+    border-radius: 5px;
+    padding: 0 12px;
+}
+.input-box svg{
+    width: 18px;
+    height: 18px;
+}
+.input-box input{
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    margin-left: 10px;
+}
+
+/* .input-box input{
+    height: 40px;
+    width: 300px;
+    background-color: lightgray;
+    border: none;
+    margin-bottom: 10px;
+    border-radius: 5px;
+} */
+
+.input-checkbox{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.input-checkbox label{
+    font-size: smaller;
+}
+
+#signup-btn{
+    height: 40px;
+    width: 322px;
+    border: none;
+    border-radius: 8px;
+    background-color: rgb(20, 20, 65);
+    color: white;
+}
+
+.login{
+    text-align: center;
+}
+.login label{
+    font-size: smaller;
+}
+
+.signuperr {
+    color: red;
+    font-size: x-small;
+}

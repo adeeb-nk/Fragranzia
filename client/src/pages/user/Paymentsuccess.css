@@ -1,0 +1,529 @@
+* {
+    margin: 0;
+    font-family: "Poppins",sans-serif;
+}
+
+
+/* =============payment-container-top========== */
+.paymentsuccess-container-top{
+    width: 93%;
+    /* max-width: 1400px; */
+    margin: 25px auto;
+
+    display: grid;
+    grid-template-columns: 1.35fr 1fr;
+    gap: 50px;
+
+    align-items: start;
+}
+
+/* =============payment-products============= */
+.paymentsuccess-products{
+    display: flex;
+    gap: 25px;
+    box-shadow: 0 2px 5px 2px #dddddd;
+    width: 800px;
+    align-items: center;
+    border-radius: 9px;
+}
+.paymentsuccess-productimage{
+    width: 240px;
+    height: 240px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.paymentsuccess-productimage img{
+    width: 215px;
+    height: 215px;
+}
+.paymentsuccess-productdetails{
+    width: 500px;
+    height: 210px;
+    padding: 30px 0 30px 0;
+}
+.paymentsuccess-productdetails h3{
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+.paymentsuccess-details-autograph{
+    display: flex;
+    gap: 10px;
+    margin-bottom: 9px;
+}
+.paymentsuccess-details-autograph p{
+    font-size: 17px;
+}
+.paymentsuccess-details-button{
+    display: flex;
+    gap: 30px;
+    width: 110px;
+    height: 40px;
+    border: 2px solid;
+    border-radius: 6px;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+.paymentsuccess-details-button h3{
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin: 0;
+}
+.paymentsuccess-details-button button{
+    border: transparent;
+    background-color: white;
+    font-size: 1.4rem;
+    padding: 0 5px 0 3.5px;
+}
+.paymentsuccess-details-price{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 9px;
+}
+.paymentsuccess-details-price strong{
+    font-weight: bold;
+    font-size: 28px;
+}
+.paymentsuccess-details-price del{
+    font-size: 18px;
+    color: gray;
+}
+.paymentsuccess-details-price p{
+    color: green;
+    font-size: 18px;
+    font-weight: bold;
+}
+#paymentsuccess-details-delivery{
+    font-size: 17px;
+    margin-bottom: 8px;
+}
+#paymentsuccess-details-return{
+    font-size: 17px;
+    color: green;
+}
+
+
+/* ===================price details============= */
+.paymentsuccess-pricebox {
+    width: 100%;
+    /* border: 1px solid #e5e5e5; */
+    box-shadow: 0 2px 5px 2px #dddddd;
+    border-radius: 6px;
+    background: #fff;
+    box-sizing: border-box;
+    padding: 30px;
+}
+
+.paymentsuccess-priceheading {
+    font-size: 19px;
+    font-weight: 600;
+    margin: 0 0 14px;
+    color: #111;
+}
+
+.paymentsuccess-pricerow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.paymentsuccess-pricerow p {
+    margin: 0;
+    font-size: 17px;
+    color: #111;
+}
+
+.paymentsuccess-pricerow strong {
+    font-size: 17px;
+    font-weight: 500;
+}
+
+.paymentsuccess-pricevalue {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.paymentsuccess-pricevalue del {
+    font-size: 14px;
+    color: #888;
+}
+
+.paymentsuccess-pricerow .payment-free {
+    color: #248b37;
+    font-weight: 600;
+}
+
+.paymentsuccess-price-divider {
+    border: none;
+    border-top: 1px solid #ddd;
+    margin: 12px 0;
+}
+
+.paymentsuccess-totalrow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+}
+
+
+
+
+/* ==================personal details============= */
+/* Personal Details Container */
+
+.paymentsuccess-personal-container {
+    width: 800px;
+    margin-top: 20px;
+    margin: auto;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    box-shadow: 0 2px 5px 2px #dddddd;
+    padding: 40px;
+    border-radius: 7px;
+}
+
+/* Personal Details Heading */
+
+.paymentsuccess-personal-heading {
+    font-size: 19px;
+    font-weight: 600;
+    margin: 0 0 10px;
+    color: #111;
+}
+
+/* Address Tabs */
+
+.paymentsuccess-personal-tabs {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+}
+
+.paymentsuccess-personal-tabs button {
+    height: 38px;
+    min-width: 100px;
+    padding: 0 12px;
+    border: none;
+    border-radius: 3px;
+    background: #eaeaea;
+    color: #333;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+/* Add Address Button */
+
+.paymentsuccess-personal-tabs .payment-personal-addbtn {
+    min-width: 78px;
+    background: #eaeaea;
+    color: #222;
+}
+
+/* Active Home Tab */
+
+.paymentsuccess-personal-tabs .payment-personal-active {
+    background: #003b50;
+    color: #fff;
+}
+
+/* Address Heading */
+
+.paymentsuccess-personal-address-heading {
+    font-size: 19px;
+    font-weight: 500;
+    margin: 0 0 8px;
+    color: #111;
+}
+
+/* Address Cards */
+
+.paymentsuccess-personal-address-card {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 8px;
+    border: 2px solid #003b50;
+    border-radius: 5px;
+    background: #fff;
+    box-sizing: border-box;
+}
+
+/* First Address Selected */
+
+/* .payment-personal-address-card:first-of-type {
+    border-color: #003b50;
+} */
+
+/* Name */
+
+.paymentsuccess-personal-address-card h3 {
+    font-size: 19px;
+    font-weight: 600;
+    margin: 0 0 10px;
+    color: #111;
+}
+
+/* Address and Phone */
+
+.paymentsuccess-personal-address-card p {
+    font-size: 17px;
+    line-height: 1.6;
+    margin: 0 0 8px;
+    color: #333;
+}
+
+.paymentsuccess-personal-address-card-full{
+    overflow-y: scroll;
+    height: 200px;
+}
+
+
+
+/* =============Payment Methods Container================ */
+
+.paymentsuccess-method-container {
+    width: 100%;
+    height: 300px;
+    padding: 30px;
+    box-shadow: 0 2px 5px 2px #dddddd;
+    border-radius: 6px;
+    background: #fff;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Heading */
+
+.paymentsuccess-method-heading {
+    font-size: 19px;
+    font-weight: 600;
+    margin: 0 0 16px;
+    color: #111;
+}
+
+/* Payment Options */
+
+.paymentsuccess-method-options {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+/* Individual Payment Row */
+
+.paymentsuccess-method-row {
+    width: 100%;
+    min-height: 27px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    cursor: pointer;
+}
+
+/* Payment Method Text */
+
+.paymentsuccess-method-row span {
+    font-size: 17px;
+    color: #111;
+}
+
+/* Radio Buttons */
+
+.paymentsuccess-method-row input[type="radio"] {
+    width: 15px;
+    height: 15px;
+    /* margin: 0; */
+    accent-color: #003b50;
+    cursor: pointer;
+    /* flex-shrink: 0; */
+}
+
+/* Pay Now Button */
+
+.paymentsuccess-method-paybtn {
+    width: 100%;
+    height: 40px;
+    margin-top: 12px;
+    border: none;
+    border-radius: 3px;
+    background: #003b50;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+/* Hover Effect */
+
+.paymentsuccess-method-paybtn:hover {
+    background: #00516b;
+}
+
+
+/* =========== */
+.paymentsuccess-bottom{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    width: 93%;
+    margin: auto;
+}
+
+
+/* =====================successs========================== */
+/* Main page */
+.paymentsuccess-page {
+  position: relative;
+  width: 100%;
+}
+
+
+/* Your normal payment page */
+.paymentsuccess-content {
+  width: 100%;
+}
+
+
+/* Dark/blur overlay */
+.paymentsuccess-overlay {
+  position: absolute;
+
+  top: 100px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  width: 100%;
+  height: 100vh;
+
+  background: rgba(255, 255, 255, 0.35);
+
+  backdrop-filter: blur(7px);
+  /* -webkit-backdrop-filter: blur(7px); */
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 9999;
+}
+
+
+/* Popup */
+.paymentsuccess-box {
+  width: 430px;
+  min-height: 380px;
+
+  background: #ffffff;
+
+  padding: 35px 40px;
+
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+
+  border-radius: 2px;
+
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+
+  z-index: 10000;
+}
+
+
+/* Green check circle */
+.paymentsuccess-box > svg {
+  width: 145px;
+  height: 145px;
+
+  padding: 30px;
+
+  box-sizing: border-box;
+
+  background: #35c83d;
+
+  color: white;
+
+  border-radius: 50%;
+
+  margin-bottom: 25px;
+}
+
+
+/* Heading */
+.paymentsuccess-box h2 {
+  margin: 0 0 12px;
+
+  font-size: 24px;
+  font-weight: 700;
+
+  color: #111;
+}
+
+
+/* Description */
+.paymentsuccess-box p {
+  width: 300px;
+
+  margin: 0;
+
+  font-size: 14px;
+  line-height: 1.5;
+
+  color: #333;
+}
+
+
+/* Buttons */
+.paymentsuccess-boxbtn {
+  display: flex;
+
+  gap: 10px;
+
+  margin-top: 28px;
+}
+
+
+/* Buttons common */
+.paymentsuccess-boxbtn button {
+  width: 158px;
+  height: 40px;
+
+  font-size: 13px;
+
+  cursor: pointer;
+
+  border-radius: 2px;
+}
+
+
+/* Back to Home */
+.paymentsuccess-boxbtn button:first-child {
+  background: white;
+
+  border: 1px solid #003b50;
+
+  color: #003b50;
+}
+
+
+/* Track Order */
+.paymentsuccess-boxbtn button:last-child {
+  background: #003b50;
+
+  border: 1px solid #003b50;
+
+  color: white;
+}

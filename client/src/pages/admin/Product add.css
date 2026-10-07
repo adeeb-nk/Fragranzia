@@ -1,0 +1,221 @@
+* {
+    margin: 0;
+    font-family: "Poppins",sans-serif;
+}
+
+/* ================================== */
+.productadd-full{
+    display: flex;
+}
+
+
+
+/* ====================================== */
+.productadd-fullform {
+    width: 100%;
+    padding: 35px 45px;
+    box-sizing: border-box;
+}
+
+.productadd-fullform form {
+    width: 100%;
+}
+
+.productadd-fullform h2 {
+    margin: 0 0 5px;
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.productadd-fullform p {
+    margin: 0 0 30px;
+    color: #777;
+    font-size: 14px;
+}
+
+
+/* -----------------------------
+   COMMON LABEL
+----------------------------- */
+
+.productadd-fullform label {
+    display: block;
+    margin-bottom: 18px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+}
+
+
+/* -----------------------------
+   INPUTS
+----------------------------- */
+
+.productadd-fullform input[type="text"],
+.productadd-fullform input[type="number"],
+.productadd-fullform select,
+.productadd-fullform textarea {
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 12px 14px;
+    font-size: 14px;
+    outline: none;
+    background: white;
+}
+
+/* .productadd-fullform input:focus,
+.productadd-fullform select:focus,
+.productadd-fullform textarea:focus {
+    border-color: #999;
+} */
+
+
+/* -----------------------------
+   TITLE + PRODUCT PRICE
+----------------------------- */
+
+.productadd-name {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 35px;
+    margin-bottom: 25px;
+}
+
+
+/* -----------------------------
+   SALE PRICE + QUANTITY + CATEGORY
+----------------------------- */
+
+.productadd-price {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 35px;
+    margin-bottom: 25px;
+}
+
+
+/* -----------------------------
+   DESCRIPTION
+----------------------------- */
+
+.productadd-description {
+    width: 100%;
+    margin-bottom: 25px;
+}
+
+.productadd-description textarea {
+    height: 110px;
+    /* resize: vertical; */
+}
+
+
+/* -----------------------------
+   IMAGE UPLOAD
+----------------------------- */
+
+.productadd-upload {
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.productadd-uploadbox {
+    width: 100%;
+    height: 100px;
+    border: 2px dashed #ddd;
+    border-radius: 8px;
+    background: #fafafa;
+    box-sizing: border-box;
+    margin-top: 10px;
+
+}
+
+/* Hide the browser's Choose Files button */
+.productadd-uploadbox input[type="file"] {
+    display: none;
+}
+
+.productadd-uploadcontent {
+    width: 100%;
+    height: 100%;
+
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+
+    text-align: center;
+    cursor: pointer;
+}
+
+.productadd-uploadcontent span {
+    font-size: 14px;
+    color: #555;
+    display: block;
+}
+
+.productadd-uploadcontent small {
+    margin-top: 8px;
+    color: #999;
+    font-size: 12px;
+    display: block;
+}
+
+/* -----------------------------
+   BUTTONS
+----------------------------- */
+
+.productadd-canceladd-btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+#productadd-cancelbtn,
+#productadd-addbtn {
+    border: none;
+    border-radius: 5px;
+    padding: 11px 24px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+#productadd-cancelbtn {
+    background: #e74c3c;
+    color: white;
+}
+
+#productadd-addbtn {
+    background: #4caf50;
+    color: white;
+}
+
+#productadd-cancelbtn:hover {
+    background: #d63b2c;
+}
+
+#productadd-addbtn:hover {
+    background: #3e963f;
+}
+
+
+/* -----------------------------
+   RESPONSIVE
+----------------------------- */
+
+@media (max-width: 900px) {
+
+    .productadd-name {
+        grid-template-columns: 1fr;
+    }
+
+    .productadd-price {
+        grid-template-columns: 1fr;
+    }
+
+    .productadd-fullform {
+        padding: 25px;
+    }
+}
