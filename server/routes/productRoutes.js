@@ -1,5 +1,5 @@
 const express= require("express");
-const {getproducts,addproducts,onchangeblock,updateproducts} = require("../controllers/productController");
+const {getproducts,addproducts,onchangeblock,updateproducts,fetchimage} = require("../controllers/productController");
 const upload = require("../middleware/upload");
 
 const router = express.Router();
@@ -13,6 +13,7 @@ router.put("/updatedstatus/:id",onchangeblock);
 router.put("/:id", upload.single("images"), updateproducts);
 
 
+router.get("/images/:id",fetchimage)
 
 
 

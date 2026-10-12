@@ -1,0 +1,82 @@
+* {
+    margin: 0;
+    font-family: "Poppins",sans-serif;
+}
+
+/* ==================whishlist==================== */
+.Wishlist-section-2{
+    width: 93%;
+    margin: 20px auto;
+}
+
+.Wishlist-products {
+    width: 93%;
+    margin: 30px auto 50px;
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.Wishlist-item{
+    display: flex;
+    gap: 20px;
+    box-shadow: 0 2px 5px 2px #dddddd;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    padding: 20px;
+}
+
+.Wishlist-image img{
+    height: 250px;
+    width: 250px;
+}
+
+.Wishlist-item-title{
+    font-weight: bold;
+    margin-bottom: 20px;
+    margin-top: 35px;
+}
+
+.Wishlist-price-main{
+    font-weight: 600;
+    font-size: 27px;
+    margin-right: 10px;
+}
+.Wishlist-price-old{
+    margin-right: 10px;
+}
+.Wishlist-price-offer{
+    color: green;
+}
+
+.Wishlist-price{
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.Wishlist-allbuttonss{
+    display: flex;
+    margin-top: 20px;
+}
+.Wishlist-button-1 button{
+    border: 2px solid red;
+    color: red;
+    height: 35px;
+    width: 150px;
+    background-color: white;
+    font-size: 20px;
+    border-radius: 6px;
+    margin-right: 10px;
+}
+.Wishlist-button-2 button{
+    border: 2px solid #00354B;
+    color: #00354B;
+    height: 35px;
+    width: 150px;
+    background-color: white;
+    font-size: 20px;
+    border-radius: 6px;
+    margin-right: 10px;
+}

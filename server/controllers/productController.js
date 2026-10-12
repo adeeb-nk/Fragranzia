@@ -83,10 +83,25 @@ const updateproducts = async (req, res) => {
 
 
 
+const fetchimage=async(req,res)=>{
+    const {id}=req.params
+
+    try{
+      let data=await Product.findById(id)
+      res.json(data)
+    }
+    catch(error){
+      res.json({message:error.message})
+    }
+}
+
+
+
 
 module.exports={
     getproducts,
     addproducts,
     onchangeblock,
-    updateproducts
+    updateproducts,
+    fetchimage
 }

@@ -1,0 +1,83 @@
+
+* {
+    margin: 0;
+    font-family: "Poppins",sans-serif;
+}
+
+/* ==================below nav================= */
+
+.Profile-belownav{
+    width: 93%;
+    margin: 20px auto;
+}
+
+/* ==============buttons===================== */
+.profile-buttons{
+    margin: 30px 0 50px 55px;
+}
+#profile-buttons1{
+    height: 40px;
+    width: 130px;
+    background-color: #00354B;
+    color: white;
+    font-size: 17px;
+    border: none;
+    border-radius: 7px;
+    margin-right: 20px;
+}
+#profile-buttons2{
+    height: 40px;
+    width: 130px;
+    background-color: white;
+    color: #00354B;
+    font-size: 17px;
+    border: 1px solid #00354B;
+    border-radius: 7px;
+    margin-right: 20px;
+}
+#profile-buttons3{
+    height: 40px;
+    width: 130px;
+    background-color: white;
+    color: #00354B;
+    font-size: 17px;
+    border: 1px solid #00354B;
+    border-radius: 7px;
+}
+
+/* =============form================== */
+.profile-fullform{
+    width: 93%;
+    margin: 20px auto;
+}
+
+.profile-sections{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.profile-inputs input{
+    height: 40px;
+    width: 400px;
+    background-color: #EAEAEA;
+    border-radius: 8px;
+    border: none;
+}
+
+/* ================edit btn=============== */
+.profile-editbtn{
+    width: 96%;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 30px;
+}
+.profile-editbtn button{
+    height: 40px;
+    width: 150px;
+    border: 1px solid #00354B;
+    color: #00354B;
+    background-color: white;
+    border-radius: 7px;
+    font-size: 18px;
+}

@@ -87,10 +87,15 @@ export const Product1 = () => {
 
             <div className="product1-grid">
                 {products.map((product)=>(
+
+                    
+                        
                     <div className="product1-fullcard">
+                        <Link to={`/Product2/${product._id}`}>
                         <div className="product1-card">
                             <img src={`http://localhost:5000/uploads/${product.images}`} alt={product.name} />
                         </div>
+                        </Link>
                         <div className="product1-imagedetails">
                             <p>{product.name}</p>
                             <div className="product1-price">

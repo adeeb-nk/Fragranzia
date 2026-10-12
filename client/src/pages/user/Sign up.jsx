@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom'
 import {User,Mail,Lock,Eye,EyeOff} from 'lucide-react'
 import {FcGoogle} from 'react-icons/fc';
 import {FaFacebookF} from 'react-icons/fa';
+import axios from "axios";
 import './Sign up.css'
 
 export const SignUp= ()=>{
@@ -33,7 +34,7 @@ export const SignUp= ()=>{
         }));
     }
 
-    function onHandleSubmit(e){
+    const onHandleSubmit= async (e)=>{
         e.preventDefault()
 
         let next=true
@@ -72,6 +73,10 @@ export const SignUp= ()=>{
         }
 
         setFormErr(err)
+
+        if(next){
+            await axios.post("http://localhost:5000/api/auth/register", formData);  //backend kk ayachu
+        }
     }
 
     return(

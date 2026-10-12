@@ -17,6 +17,8 @@ import { Productadd } from './pages/admin/Product add.jsx'
 import { About } from './pages/user/About.jsx'
 import { Cart } from './pages/user/Cart.jsx'
 import { User } from './pages/admin/User.jsx'
+import { Wishlist } from './pages/user/Wishlist.jsx'
+import { Profile } from './pages/user/Profile.jsx'
 
 function App() {
 
@@ -30,11 +32,13 @@ function App() {
 
       <Route path='/' element={<Home/>}/>
       <Route path='/Product1' element={<Product1/>}/>
-      <Route path='/Product2' element={<Product2/>}/>
+      <Route path='/Product2/:id' element={<Product2/>}/>
       <Route path='/Payment' element={<Payment/>}/>
       <Route path='/Paymentsuccess' element={<Paymentsuccess/>}/>
       <Route path='/About' element={<About/>}/>
       <Route path='/Cart' element={<Cart/>}/>
+      <Route path='/Wishlist' element={<Wishlist/>}/>
+      <Route path='/Profile' element={<Profile/>}/>
 
 
       <Route path='/Category' element={<Category/>}/>

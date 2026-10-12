@@ -79,7 +79,7 @@ export const Cart = () => {
                             </div>
 
                             <div className="cart-item-content">
-                                <h1 className="cart-item-title">{user.name}</h1>
+                                <h2 className="cart-item-title">{user.name}</h2>
 
                                 <div className="cart-buttons-row">
                                     <div className="cart-buttons">
@@ -88,12 +88,12 @@ export const Cart = () => {
                                 </div>
 
                                 <div className="cart-price">
-                                    <span className="price-main">{user.price}</span>
-                                    <span className="price-old">{user.oldprice}</span>
-                                    <span className="price-offer">{user.offer}</span>
+                                    <strong className="cart-price-main">{user.price}</strong>
+                                    <del className="cart-price-old">{user.oldprice}</del>
+                                    <span className="cart-price-offer">{user.offer}</span>
                                 </div>
 
-                                <div className="allbuttonss">
+                                <div className="cart-allbuttonss">
                                     <div className="cart-button-1">
                                         <button>Delete</button>
                                     </div>
@@ -110,8 +110,8 @@ export const Cart = () => {
                 </div>
 
                 {/* Right Side: Fixed Checkout Box */}
-                <div className="cart-checkout">
-                    <div className="checkout">
+                <div className="cart-checkout-full">
+                    <div className="cart-checkout">
                         <h2>Check Out</h2>
                         <div className="cart-checkout-row">
                             <span>Price (3 item)</span>

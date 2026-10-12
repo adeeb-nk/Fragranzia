@@ -1,58 +1,81 @@
-import React, { useState } from "react";
+import React, { useState , useEffect} from "react";
 import './Product2.css'
-import { Link } from "react-router-dom";
-import {FiShoppingCart,FiBell,FiUser,FiSearch,FiTruck,FiShield,FiHeadphones,FiMail,FiPhone,FiInstagram,FiFacebook,FiYoutube,FiLinkedin,FiChevronLeft,FiChevronRight,FiHeart,FiShare2,FiStar} from 'react-icons/fi'
-import {FaTag} from "react-icons/fa"
-import heroperfume from "../../assets/heroperfume.png"
-import homeperfume6 from "../../assets/homeperfume6.png"
-import productperfume from "../../assets/productperfume.jpg"
+import { Link, useParams } from "react-router-dom";
+import { FiShoppingCart, FiBell, FiUser, FiSearch, FiTruck, FiShield, FiHeadphones, FiMail, FiPhone, FiInstagram, FiFacebook, FiYoutube, FiLinkedin, FiChevronLeft, FiChevronRight, FiHeart, FiShare2, FiStar } from 'react-icons/fi'
+import { FaTag } from "react-icons/fa"
+import axios from 'axios'
 
-const products = [
-  {
-    image: heroperfume,
-    name: "Autograph Eau De Parfum 100ml For Men",
-    price: "650",
-    oldPrice: "1400",
-  },
-  {
-    image: heroperfume,
-    name: "Kyros Eau De Parfum 100ml For Men",
-    price: "899",
-    oldPrice: "2000",
-  },
-  {
-    image: heroperfume,
-    name: "Autograph Eau De Parfum 100ml For Men",
-    price: "999",
-    oldPrice: "2241",
-  },
-  {
-    image: heroperfume,
-    name: "Royal Eau De Parfum 100ml For Men",
-    price: "650",
-    oldPrice: "1400",
-  },
-  {
-    image: heroperfume,
-    name: "Royal Eau De Parfum 100ml For Men",
-    price: "650",
-    oldPrice: "1400",
-  },
-  {
-    image: heroperfume,
-    name: "Royal Eau De Parfum 100ml For Men",
-    price: "650",
-    oldPrice: "1400",
-  },
-  {
-    image: heroperfume,
-    name: "Royal Eau De Parfum 100ml For Men",
-    price: "650",
-    oldPrice: "1400",
-  },
-];
+// const products = [
+//     {
+//         image: heroperfume,
+//         name: "Autograph Eau De Parfum 100ml For Men",
+//         price: "650",
+//         oldPrice: "1400",
+//     },
+//     {
+//         image: heroperfume,
+//         name: "Kyros Eau De Parfum 100ml For Men",
+//         price: "899",
+//         oldPrice: "2000",
+//     },
+//     {
+//         image: heroperfume,
+//         name: "Autograph Eau De Parfum 100ml For Men",
+//         price: "999",
+//         oldPrice: "2241",
+//     },
+//     {
+//         image: heroperfume,
+//         name: "Royal Eau De Parfum 100ml For Men",
+//         price: "650",
+//         oldPrice: "1400",
+//     },
+//     {
+//         image: heroperfume,
+//         name: "Royal Eau De Parfum 100ml For Men",
+//         price: "650",
+//         oldPrice: "1400",
+//     },
+//     {
+//         image: heroperfume,
+//         name: "Royal Eau De Parfum 100ml For Men",
+//         price: "650",
+//         oldPrice: "1400",
+//     },
+//     {
+//         image: heroperfume,
+//         name: "Royal Eau De Parfum 100ml For Men",
+//         price: "650",
+//         oldPrice: "1400",
+//     },
+// ];
 
 export const Product2 = () => {
+
+    const [allData, setAllData] = useState([])
+
+    const [products, setProducts] = useState(null)
+    const { id } = useParams();
+
+    const fechData = async () => {
+        let res = await axios.get('http://localhost:5000/Product')
+        setAllData(res.data)
+    }
+
+
+    const fetchimage = async () => {
+        let res = await axios.get(`http://localhost:5000/Product/images/${id}`)  //to product   , ee idlee iteration venam  so it take from productcollection
+        setProducts(res.data)
+    }
+    useEffect(() => {
+        fetchimage()
+        fechData()
+    }, [])
+
+    if(!products){
+        return <h2>Loading...</h2>;
+    }
+
     return (
         <div>
             <div className="Product2-fullnav">
@@ -84,7 +107,7 @@ export const Product2 = () => {
             {/* link */}
 
             <div className="product2-links">
-                <Link>Home</Link><FiChevronRight/><Link>Products</Link><FiChevronRight/><Link>Kyros Eau De Parfum 100ml for Men</Link>
+                <Link>Home</Link><FiChevronRight /><Link>Products</Link><FiChevronRight /><Link>Kyros Eau De Parfum 100ml for Men</Link>
             </div>
 
             <br /><br />
@@ -95,15 +118,15 @@ export const Product2 = () => {
                 <div className="product2-fullimages">
                     <div className="product2-images">
                         <div>
-                            <img src={homeperfume6} alt="" id="product2-images1" />
-                            <img src={productperfume} alt="" id="product2-images2" />
-                            <img src={productperfume} alt="" id="product2-images3"/>
+                            <img src={`http://localhost:5000/uploads/${products.images}`} width="100px" height="100px"/>
+                            <img src={`http://localhost:5000/uploads/${products.images}`} width="100px" height="100px"/>
+                            <img src={`http://localhost:5000/uploads/${products.images}`} width="100px" height="100px"/>
                         </div>
                         <div className="product2-imagesicons">
-                            <button><FiHeart/></button>
-                            <button><FiShare2/></button>
+                            <button><FiHeart /></button>
+                            <button><FiShare2 /></button>
                         </div>
-                        <img src={homeperfume6} alt="" id="product2-images4"/>
+                        <img src={`http://localhost:5000/upload/${products.images}`} width="300px" height="300px"/>
                     </div>
                     <button id="product2-purchasebutton">Purchase Now</button>
                     <button id="product2-addbutton">Add to Cart</button>
@@ -112,7 +135,7 @@ export const Product2 = () => {
                     <h2 id="product2-detailsheading">Autograph eau de parfum 100ml for men</h2>
                     <p id="product2-detailsautograph">Autograph</p>
                     <div className="product2-detailsrating">
-                        <h4>4.5</h4><FiStar/>
+                        <h4>4.5</h4><FiStar />
                         <p>1,000 Ratings</p>
                     </div>
                     <p id="product2-detailshurry">Hurry only few stocks left!</p>
@@ -134,10 +157,10 @@ export const Product2 = () => {
                     <br />
                     <h3 className="product2-details-subheading">Available Offers</h3>
                     <div className="product2-details-offers">
-                        <p ><FaTag/>  Buy two of the same product and get a third one free.</p>
-                        <p ><FaTag/>  Enjoy free standard shipping on orders exceeding ₹1,399.</p>
-                        <p ><FaTag/>  Get 15% off your first order</p>
-                        <p ><FaTag/>  Receive a free tool case with the purchase of any perfume over ₹2,000</p>
+                        <p ><FaTag />  Buy two of the same product and get a third one free.</p>
+                        <p ><FaTag />  Enjoy free standard shipping on orders exceeding ₹1,399.</p>
+                        <p ><FaTag />  Get 15% off your first order</p>
+                        <p ><FaTag />  Receive a free tool case with the purchase of any perfume over ₹2,000</p>
                     </div>
                 </div>
             </div>
@@ -155,10 +178,10 @@ export const Product2 = () => {
                     </div>
                 </div>
                 <div className="home-offerzoneproducts">
-                    {products.map((product) => (
-                        <div className="home-offerzonecards">
+                    {allData.map((product) => (
+                        <div className="home-offerzonecards" key={product._id}>
                             <div className="home-offerzoneimages">
-                                <img src={product.image} alt="" />
+                                <img src={`http://localhost:5000/uploads/${products.images}`}/>
                             </div>
                             <div className="home-offerzonedetails">
                                 <p>{product.name}</p>

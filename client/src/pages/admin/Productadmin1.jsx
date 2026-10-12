@@ -12,7 +12,7 @@ import {
     MdLogout
 } from "react-icons/md";
 
-
+import AdminService from "../../services/admin-api-services/AdminService"; 
 
 const API_URL = "http://localhost:5000/product"
 
@@ -26,23 +26,27 @@ export const Productadmin1 = () => {
 
     const [newImage, setNewImage] = useState(null);
 
+
+    const {getProduct,statusProduct,EditProduct,getCategory}=AdminService();
+
     const fetchproducts = async () => {
-        let res = await axios.get(API_URL);
+        let res = await getProduct();
         console.log("products from backend", res.data);
 
-        setProducts(res.data)
+        setProducts(res)
     }
 
     const onblockchange = async (id, isActive) => {
-        await axios.put(`${API_URL}/updatedstatus/${id}`, { isActive });
+        //await axios.put(`${API_URL}/updatedstatus/${id}`, { isActive });
+        await statusProduct(id, { isActive })
         fetchproducts();
     }
 
     const [categorydata, setcategorydata] = useState([])
     const [selectedCategory, setSelectedCategory] = useState("");
     const handlecategories = async () => {
-        let res = await axios.get("http://localhost:5000/category")
-        setcategorydata(res.data)
+        let res = await getCategory();
+        setcategorydata(res)
         console.log(categorydata);
 
     }
@@ -64,9 +68,11 @@ export const Productadmin1 = () => {
                 formData.append("images", newImage);
             }
 
-            const res = await axios.put(
-                `${API_URL}/${selectedProduct._id}`, formData,
-            );
+            // const res = await axios.put(
+            //     `${API_URL}/${selectedProduct._id}`, formData,
+            // );
+
+            const res = await EditProduct(selectedProduct._id,formData);
 
             console.log("Updated product:", res.data);
 

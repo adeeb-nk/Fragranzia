@@ -12,6 +12,8 @@ import {
     MdLogout
 } from "react-icons/md";
 
+import AdminService from "../../services/admin-api-services/AdminService";        //admin service ne ivide import cheythu
+
 
 const API_URL="http://localhost:5000/category"
 
@@ -25,17 +27,21 @@ export const Category = () => {
     
     const [editId,setEditId] = useState(null)
 
+    const {AddCategory,getCategory,EditCategory,statusCategory}=AdminService();                 //adminservice nn destructure cheyth edthu
+
 
     const fetchcategories= async()=>{
-        let res=await axios.get(API_URL);
-        setCategories(res.data)
+        let res=await getCategory();
+        setCategories(res)
     }
 
     const addcategory= async()=>{
         if(editId){
-            await axios.put(`${API_URL}/updatedcategory/${editId}`,{name,description});
+            //await axios.put(`${API_URL}/updatedcategory/${editId}`,{name,description});
+            await EditCategory(editId,{name,description})
         }else{
-            await axios.post(API_URL, {name,description,isActive:false});
+            // await axios.post(API_URL, {name,description,isActive:false});
+            await AddCategory({name,description})                         //ividenn admin service --> then to admin service and then useaxiosprivate(interceptor)
         }
         fetchcategories();
         setName("")
@@ -45,7 +51,8 @@ export const Category = () => {
     }
 
     const onblockchange =async(id,isActive)=>{
-        await axios.put(`${API_URL}/updatedstatus/${id}`,{isActive});
+        // await axios.put(`${API_URL}/updatedstatus/${id}`,{isActive});
+        await statusCategory(id,{isActive});
         fetchcategories();
     }
 

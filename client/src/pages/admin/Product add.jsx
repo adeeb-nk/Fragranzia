@@ -14,6 +14,8 @@ import {
 
 const API_URL = "http://localhost:5000/product"
 
+import AdminService from "../../services/admin-api-services/AdminService"; 
+
 export const Productadd = () => {
 
     const [inputdata, setInputdata] = useState({
@@ -25,6 +27,8 @@ export const Productadd = () => {
         description: "",
         images: null,
     })
+
+    const {addToProduct,getCategory} = AdminService();
 
     //product add
     const addproduct = async (e) => {
@@ -45,7 +49,8 @@ export const Productadd = () => {
         try {
             console.log("datasent:",inputdata);
             
-            const res = await axios.post(API_URL, formdata);
+            //const res = await axios.post(API_URL, formdata);
+            await addToProduct(formdata)
             
 
         }catch(error){
@@ -57,11 +62,12 @@ export const Productadd = () => {
 
     const [categorydata,setcategorydata]= useState([])
     const handlecategories = async()=>{
-        let res=await axios.get("http://localhost:5000/category")
-        setcategorydata(res.data)
+        let res=await getCategory();
+        setcategorydata(res)
         console.log(categorydata);
         
     }
+
 
     const handlechange = (e) => {
 
