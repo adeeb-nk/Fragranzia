@@ -5,6 +5,10 @@ const connectDb = require("./config/db");
 const categoryRoutes= require("./routes/categoryRoutes");
 const productRoutes= require("./routes/productRoutes");
 const authRoutes= require("./routes/authroutes");
+const cartRoutes=require("./routes/cartRoutes");
+const whishlistRoutes=require("./routes/wishlistRoutes");
+const addressRoutes=require("./routes/addressRoutes");
+const orderRoutes=require("./routes/orderRoutes");
 
 const app=express();
 const PORT=process.env.PORT || 5000;
@@ -21,6 +25,13 @@ app.use("/product",productRoutes);
 
 
 app.use("/api/auth", authRoutes);                    //authentication in signup
+
+app.use("/cart", cartRoutes);
+app.use("/whishlist",whishlistRoutes)
+
+app.use("/address",addressRoutes)
+
+app.use("/order", orderRoutes);
 
 app.listen(PORT, ()=>{
     console.log(`Backend running on http://localhost:${PORT}`);

@@ -33,7 +33,7 @@
     background-color: white;
     margin-right: 10px;
 }
-.product1-filter-button{
+/* .product1-filter-button{
     height: 40px;
     width: 150px;
     border: 2px solid;
@@ -41,7 +41,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-}
+} */
 .product1-filter-button svg{
     height: 22px;
     width: 22px;
@@ -126,4 +126,179 @@
     border-radius: 5px;
     font-size: 18px;
     font-weight: bold;
+}
+
+/* =================================
+   RESPONSIVE PRODUCT GRID
+================================= */
+
+/* Desktop - 3 products per row */
+.product1-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 30px;
+    width: 93%;
+    max-width: 1400px;
+    margin: 30px auto;
+}
+
+.product1-fullcard {
+    width: 100%;
+    min-width: 0;
+}
+
+.product1-fullcard > a {
+    display: block;
+    width: 100%;
+}
+
+.product1-card {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.product1-card img {
+    width: 75%;
+    height: 75%;
+    object-fit: contain;
+}
+
+.product1-imagedetails {
+    width: 100%;
+}
+
+.product1-imagedetails p {
+    overflow-wrap: break-word;
+}
+
+.product1-price {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+}
+
+.product1-imagedetails button {
+    width: 100%;
+    max-width: 100%;
+}
+
+
+/* =================================
+   Tablet - 2 products per row
+================================= */
+
+@media screen and (max-width: 1024px) {
+
+    .product1-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        width: 92%;
+        gap: 25px;
+    }
+
+    .product1-card {
+        border-top-left-radius: 100px;
+        border-bottom-right-radius: 100px;
+    }
+
+}
+
+
+/* =================================
+   Mobile - 1 product per row
+================================= */
+
+@media screen and (max-width: 600px) {
+
+    .product1-grid {
+        grid-template-columns: 1fr;
+        width: 90%;
+        gap: 30px;
+    }
+
+    .product1-card {
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        border-top-left-radius: 90px;
+        border-bottom-right-radius: 90px;
+    }
+
+    .product1-card img {
+        width: 75%;
+        height: 75%;
+    }
+
+    .product1-imagedetails p {
+        font-size: 16px;
+    }
+
+    .product1-price strong {
+        font-size: 18px;
+    }
+
+    .product1-imagedetails button {
+        height: 45px;
+    }
+
+}
+
+.product1-filters {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    animation: sortFade 0.3s ease;
+}
+
+.product1-filters button {
+    border: none;
+    background: transparent;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 8px 5px;
+    transition: 0.2s ease;
+}
+
+.product1-filters button:hover {
+    color: #14505b;
+}
+
+.product1-filters button.active-sort {
+    color: #14505b;
+    font-weight: 700;
+}
+
+.product1-filter-button button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    border: 2px solid black;
+    border-radius: 30px;
+    background: white;
+    padding: 12px 22px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.product1-filter-button button:hover {
+    background: #e8f2f3;
+}
+
+@keyframes sortFade {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }

@@ -1,37 +1,121 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FiShoppingCart, FiBell, FiUser, FiSearch, FiMail, FiPhone, FiInstagram, FiFacebook, FiYoutube, FiLinkedin, FiChevronRight, FiSliders } from 'react-icons/fi'
 import { Link } from "react-router-dom";
 import heroperfume from "../../assets/heroperfume.png"
 import './Cart.css'
 
-const cartimg = [
-    {
-        id: 1,
-        image: heroperfume,
-        name: "Autograph eau de parfum 100ml for men",
-        price: "Rs 899",
-        oldprice: "Rs 2000",
-        offer: "61% off",
-    },
-    {
-        id: 2,
-        image: heroperfume,
-        name: "Autograph eau de parfum 100ml for men",
-        price: "Rs 899",
-        oldprice: "Rs 2000",
-        offer: "61% off",
-    },
-    {
-        id: 3,
-        image: heroperfume,
-        name: "Royal eau de parfum 100ml for men",
-        price: "Rs 899",
-        oldprice: "Rs 2000",
-        offer: "61% off",
-    },
-];
+import UserService from "../../services/user-api-services/UserService";
 
 export const Cart = () => {
+
+    const { getCarts, changequantity, deleteCart } = UserService();
+
+    const [carts, setCarts] = useState([])
+
+
+    const fetchcarts = async () => {
+        try {
+            const res = await getCarts();
+
+            console.log("Cart response:", res);
+
+            setCarts(Array.isArray(res.cart) ? res.cart : []);
+        } catch (error) {
+            console.error(
+                "Error fetching cart:",
+                error.response?.data || error.message
+            );
+            setCarts([]);
+        }
+    };
+
+
+    const handleQuantity = async (id, quantity) => {
+        if (quantity < 1) return;
+
+        try {
+            const response = await changequantity(id, quantity);
+
+            console.log("Quantity updated:", response);
+
+            await fetchcarts();
+        } catch (error) {
+            console.error(
+                "Quantity update failed:",
+                error.response?.data || error.message
+            );
+
+            alert(
+                error.response?.data?.message ||
+                "Failed to update quantity"
+            );
+        }
+    };
+
+    //==================delete=================
+
+
+    const cartdelete = async (id) => {
+        try {
+            await deleteCart(id);
+            await fetchcarts();
+        } catch (error) {
+            console.error(
+                "Delete cart error:",
+                error.response?.data || error.message
+            );
+
+            alert(
+                error.response?.data?.message ||
+                "Failed to remove product from cart"
+            );
+        }
+    };
+
+
+    // =========================total prize=====================
+
+    const totalItems = carts.reduce(
+        (total, item) => total + item.quantity,
+        0
+    );
+
+    const subtotal = carts.reduce(
+        (total, item) =>
+            total + Number(item.product?.product_price || 0) * item.quantity,
+        0
+    );
+
+    const totalDiscount = carts.reduce(
+        (total, item) => {
+            const originalPrice = Number(item.product?.product_price || 0);
+            const salePrice = Number(item.product?.sale_price || 0);
+
+            return total + Math.max(0, originalPrice - salePrice) * item.quantity;
+        },
+        0
+    );
+
+    const totalAmount = carts.reduce(
+        (total, item) =>
+            total + Number(item.product?.sale_price || 0) * item.quantity,
+        0
+    );
+
+    const deliveryCharge = totalAmount >= 999 || totalAmount === 0 ? 0 : 50;
+    const finalAmount = totalAmount + deliveryCharge;
+
+    const formatPrice = (price) =>
+        `Rs ${price.toLocaleString("en-IN", {
+            maximumFractionDigits: 2
+        })}`;
+
+
+
+
+    useEffect(() => {
+        fetchcarts();
+    }, []);
 
     return (
         <div>
@@ -41,10 +125,10 @@ export const Cart = () => {
                     <div className="home-nav">
                         <nav>
                             <ul>
-                                <li><a href="">Home</a></li>
-                                <li><a href="">Products</a></li>
-                                <li><a href="">Gifting</a></li>
-                                <li><a href="">About</a></li>
+                                <li><Link to='/'>Home</Link></li>
+                                <li><Link to='/Product1'>Products</Link></li>
+                                <li><Link to='/Wishlist'>Wishlist</Link></li>
+                                <li><Link to="/About">About</Link></li>
                             </ul>
                         </nav>
                     </div>
@@ -53,9 +137,9 @@ export const Cart = () => {
                         <input type="text" placeholder=" Search Here" />
                     </div>
                     <div className="home-navicons">
-                        <FiShoppingCart />
-                        <FiBell />
-                        <FiUser />
+                        <Link to="/Cart"><FiShoppingCart /></Link>
+                                                <FiBell />
+                                                <Link to="/Profile"><FiUser /></Link>
                     </div>
                 </div>
             </div>
@@ -71,72 +155,121 @@ export const Cart = () => {
             <div className="cart-page-layout">
 
                 {/* Left Side: All Cart Items Stacked Vertically */}
+
                 <div className="cart-products">
-                    {cartimg.map((user) => (
-                        <div className="cart-item" key={user.id}>
-                            <div className="cart-image">
-                                <img src={user.image} alt={user.name} />
+                    {carts.map((item) => {
+                        const product = item.product;
+
+                        if (!product) return null;
+
+                        return (
+                            <div
+                                className="cart-item"
+                                key={product._id}
+                            >
+                                <div className="cart-image">
+                                    <img
+                                        src={product.images}
+                                        alt={product.name}
+                                    />
+                                </div>
+
+                                <div className="cart-item-content">
+                                    <h2 className="cart-item-title">
+                                        {product.name}
+                                    </h2>
+
+                                    <div className="cart-buttons-row">
+                                        <div className="cart-buttons">
+                                            <button onClick={() => handleQuantity(item.product._id, item.quantity - 1)} disabled={item.quantity <= 1}>-</button>
+                                            <span>{item.quantity}</span>
+                                            <button onClick={() => handleQuantity(item.product._id, item.quantity + 1)}>+</button>
+                                        </div>
+                                    </div>
+
+                                    <div className="cart-price">
+                                        <strong className="cart-price-main">
+                                            Rs {product.sale_price}
+                                        </strong>
+
+                                        <del className="cart-price-old">
+                                            Rs {product.product_price}
+                                        </del>
+                                    </div>
+
+                                    <div className="cart-allbuttonss">
+                                        <div className="cart-button-1">
+                                            <button onClick={() => cartdelete(item.product._id)}>Delete</button>
+                                        </div>
+
+                                        <div className="cart-button-2">
+                                            <button>Share</button>
+                                        </div>
+
+                                        <div className="cart-button-3">
+                                            <button>Buy</button>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-
-                            <div className="cart-item-content">
-                                <h2 className="cart-item-title">{user.name}</h2>
-
-                                <div className="cart-buttons-row">
-                                    <div className="cart-buttons">
-                                        <button>-</button> <span>1</span> <button>+</button>
-                                    </div>
-                                </div>
-
-                                <div className="cart-price">
-                                    <strong className="cart-price-main">{user.price}</strong>
-                                    <del className="cart-price-old">{user.oldprice}</del>
-                                    <span className="cart-price-offer">{user.offer}</span>
-                                </div>
-
-                                <div className="cart-allbuttonss">
-                                    <div className="cart-button-1">
-                                        <button>Delete</button>
-                                    </div>
-                                    <div className="cart-button-2">
-                                        <button>Share</button>
-                                    </div>
-                                    <div className="cart-button-3">
-                                        <button>Buy</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    ))}
+                        );
+                    })}
                 </div>
 
+
                 {/* Right Side: Fixed Checkout Box */}
+
                 <div className="cart-checkout-full">
                     <div className="cart-checkout">
                         <h2>Check Out</h2>
+
                         <div className="cart-checkout-row">
-                            <span>Price (3 item)</span>
-                            <span className="cart-checkout-val-dark">Rs 3,097</span>
+                            <span>Price ({totalItems} items)</span>
+                            <span className="cart-checkout-val-dark">
+                                {formatPrice(subtotal)}
+                            </span>
                         </div>
+
                         <div className="cart-checkout-row">
                             <span>Discount</span>
-                            <span className="checkout-val-dark">Rs 4,404</span>
+                            <span className="checkout-val-dark">
+                                - {formatPrice(totalDiscount)}
+                            </span>
                         </div>
+
                         <div className="cart-checkout-row">
                             <span>Delivery Charge</span>
-                            <span className="checkout-val-free">Free</span>
+                            <span className="checkout-val-free">
+                                {deliveryCharge === 0
+                                    ? "Free"
+                                    : formatPrice(deliveryCharge)}
+                            </span>
                         </div>
+
                         <hr className="cart-checkout-divider" />
+
                         <div className="cart-checkout-total-row">
                             <span>Total Amount</span>
-                            <span className="cart-checkout-val-total">Rs 3,493</span>
+                            <span className="cart-checkout-val-total">
+                                {formatPrice(finalAmount)}
+                            </span>
                         </div>
                     </div>
-                    <button className="cart-proceed-btn">Proceed to Buy</button>
+
+                    <Link to="/Payment">
+                        <button className="cart-proceed-btn">
+                            Proceed to Buy
+                        </button>
+                    </Link>
 
                     <div className="cart-secure-payment-box">
-                        <p>Safe and Secure Payments. Easy returns. 100% Authentic products.</p>
+                        <p>
+                            Safe and Secure Payments. Easy returns.
+                            100% Authentic products.
+                        </p>
                     </div>
                 </div>
+
 
             </div>
 
@@ -147,11 +280,11 @@ export const Cart = () => {
                 <div className="home-footercolumn">
                     <h3>Pages</h3>
                     <ul>
-                        <li><Link to="">Home</Link></li>
-                        <li><Link to="">Products</Link></li>
-                        <li><Link to="">Gifting</Link></li>
-                        <li><Link>About</Link></li>
-                        <li><Link>Profile</Link></li>
+                        <li><Link to='/'>Home</Link></li>
+                                                <li><Link to='/Product1'>Products</Link></li>
+                                                <li><Link to='/Wishlist'>Wishlist</Link></li>
+                                                <li><Link to="/About">About</Link></li>
+                                                <li><Link to="/Profile">Profile</Link></li>
                     </ul>
                 </div>
                 <div className="home-footercolumn">

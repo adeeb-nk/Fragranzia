@@ -1,56 +1,17 @@
-import React, { useState , useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import './Product2.css'
 import { Link, useParams } from "react-router-dom";
 import { FiShoppingCart, FiBell, FiUser, FiSearch, FiTruck, FiShield, FiHeadphones, FiMail, FiPhone, FiInstagram, FiFacebook, FiYoutube, FiLinkedin, FiChevronLeft, FiChevronRight, FiHeart, FiShare2, FiStar } from 'react-icons/fi'
 import { FaTag } from "react-icons/fa"
 import axios from 'axios'
 
-// const products = [
-//     {
-//         image: heroperfume,
-//         name: "Autograph Eau De Parfum 100ml For Men",
-//         price: "650",
-//         oldPrice: "1400",
-//     },
-//     {
-//         image: heroperfume,
-//         name: "Kyros Eau De Parfum 100ml For Men",
-//         price: "899",
-//         oldPrice: "2000",
-//     },
-//     {
-//         image: heroperfume,
-//         name: "Autograph Eau De Parfum 100ml For Men",
-//         price: "999",
-//         oldPrice: "2241",
-//     },
-//     {
-//         image: heroperfume,
-//         name: "Royal Eau De Parfum 100ml For Men",
-//         price: "650",
-//         oldPrice: "1400",
-//     },
-//     {
-//         image: heroperfume,
-//         name: "Royal Eau De Parfum 100ml For Men",
-//         price: "650",
-//         oldPrice: "1400",
-//     },
-//     {
-//         image: heroperfume,
-//         name: "Royal Eau De Parfum 100ml For Men",
-//         price: "650",
-//         oldPrice: "1400",
-//     },
-//     {
-//         image: heroperfume,
-//         name: "Royal Eau De Parfum 100ml For Men",
-//         price: "650",
-//         oldPrice: "1400",
-//     },
-// ];
+
+
+import UserService from "../../services/user-api-services/UserService";
 
 export const Product2 = () => {
+
+    const { getProduct, addwhishlist, addCart } = UserService();
 
     const [allData, setAllData] = useState([])
 
@@ -58,21 +19,61 @@ export const Product2 = () => {
     const { id } = useParams();
 
     const fechData = async () => {
-        let res = await axios.get('http://localhost:5000/Product')
-        setAllData(res.data)
+        let res = await getProduct()
+        setAllData(res)
     }
 
+
+    const addtowhishlist = async (id) => {
+        try {
+            const response = await addwhishlist(id);
+
+            alert(response.message || "Product added to wishlist!");
+            console.log("Wishlist response:", response);
+        } catch (error) {
+            console.error(
+                "Wishlist error:",
+                error.response?.data || error.message
+            );
+
+            alert(
+                error.response?.data?.message ||
+                "Failed to add product to wishlist. Please log in."
+            );
+        }
+    };
+
+    const [productError, setProductError] = useState("");
 
     const fetchimage = async () => {
-        let res = await axios.get(`http://localhost:5000/Product/images/${id}`)  //to product   , ee idlee iteration venam  so it take from productcollection
-        setProducts(res.data)
+        try {
+            const res = await axios.get(
+                `http://localhost:5000/product/images/${id}`
+            );
+
+            setProducts(res.data);
+        } catch (error) {
+            setProductError(
+                error.response?.data?.message || "Product is unavailable"
+            );
+        }
+    };
+
+    const addtoCart = async (id) => {
+        let response = await addCart(id);
+
     }
+
     useEffect(() => {
         fetchimage()
         fechData()
     }, [])
 
-    if(!products){
+    if (productError) {
+        return <h2>{productError}</h2>;
+    }
+
+    if (!products) {
         return <h2>Loading...</h2>;
     }
 
@@ -84,10 +85,10 @@ export const Product2 = () => {
                     <div className="home-nav">
                         <nav>
                             <ul>
-                                <li><a href="">Home</a></li>
-                                <li><a href="">Products</a></li>
-                                <li><a href="">Gifting</a></li>
-                                <li><a href="">About</a></li>
+                                <li><Link to='/'>Home</Link></li>
+                                <li><Link to='/Product1'>Products</Link></li>
+                                <li><Link to='/Wishlist'>Wishlist</Link></li>
+                                <li><Link to="/About">About</Link></li>
                             </ul>
                         </nav>
                     </div>
@@ -96,9 +97,9 @@ export const Product2 = () => {
                         <input type="text" placeholder=" Search Here" />
                     </div>
                     <div className="home-navicons">
-                        <FiShoppingCart />
+                        <Link to="/Cart"><FiShoppingCart /></Link>
                         <FiBell />
-                        <FiUser />
+                        <Link to="/Profile"><FiUser /></Link>
                     </div>
                 </div>
             </div>
@@ -107,7 +108,7 @@ export const Product2 = () => {
             {/* link */}
 
             <div className="product2-links">
-                <Link>Home</Link><FiChevronRight /><Link>Products</Link><FiChevronRight /><Link>Kyros Eau De Parfum 100ml for Men</Link>
+                <Link>Home</Link><FiChevronRight /><Link>Products</Link><FiChevronRight /><Link>{products.name}</Link>
             </div>
 
             <br /><br />
@@ -117,22 +118,22 @@ export const Product2 = () => {
             <div className="product2-fulldetails">
                 <div className="product2-fullimages">
                     <div className="product2-images">
-                        <div>
-                            <img src={`http://localhost:5000/uploads/${products.images}`} width="100px" height="100px"/>
-                            <img src={`http://localhost:5000/uploads/${products.images}`} width="100px" height="100px"/>
-                            <img src={`http://localhost:5000/uploads/${products.images}`} width="100px" height="100px"/>
+                        <div className="product2-images3">
+                            <img src={products.images} width="100px" height="100px" />
+                            <img src={products.images} width="100px" height="100px" />
+                            <img src={products.images} width="100px" height="100px" />
                         </div>
                         <div className="product2-imagesicons">
-                            <button><FiHeart /></button>
+                            <button onClick={() => addtowhishlist(products._id)}><FiHeart /></button>
                             <button><FiShare2 /></button>
                         </div>
-                        <img src={`http://localhost:5000/upload/${products.images}`} width="300px" height="300px"/>
+                        <img src={products.images}  id="product2-single-img" />
                     </div>
                     <button id="product2-purchasebutton">Purchase Now</button>
-                    <button id="product2-addbutton">Add to Cart</button>
+                    <button id="product2-addbutton" onClick={() => { addtoCart(products._id) }}>Add to Cart</button>
                 </div>
                 <div className="product2-details">
-                    <h2 id="product2-detailsheading">Autograph eau de parfum 100ml for men</h2>
+                    <h2 id="product2-detailsheading">{products.name}</h2>
                     <p id="product2-detailsautograph">Autograph</p>
                     <div className="product2-detailsrating">
                         <h4>4.5</h4><FiStar />
@@ -140,20 +141,20 @@ export const Product2 = () => {
                     </div>
                     <p id="product2-detailshurry">Hurry only few stocks left!</p>
                     <div className="product2-detailsprice">
-                        <strong>Rs 899</strong>
-                        <del>Rs 2000</del>
+                        <strong>Rs {products.sale_price}</strong>
+                        <del>Rs {products.product_price}</del>
                         <p>61% off</p>
                     </div>
-                    <div className="product2-detailsbutton">
+                    {/* <div className="product2-detailsbutton">
                         <button>-</button>
                         <h3>1</h3>
                         <button>+</button>
-                    </div>
+                    </div> */}
                     <h3 className="product2-details-subheading">Delivery</h3>
                     <p id="product2-detailsparagraph">Delivery by 28 Aug, Wednesday | Free</p>
                     <br />
                     <h3 className="product2-details-subheading">Description</h3>
-                    <p id="product2-detailsparagraph">This fragrance exudes a confident and enigmatic personality. Its composition features a top note of lemon and mandarin with a twist of apple that enhances the freshness. The heart reveals a warm blend of high-grade lavender and a hint of cinnamon, beautifully wrapped in patchouli, musk, and vanilla to ensure a powerful and flowing scent.</p>
+                    <p id="product2-detailsparagraph">{products.description}</p>
                     <br />
                     <h3 className="product2-details-subheading">Available Offers</h3>
                     <div className="product2-details-offers">
@@ -181,13 +182,13 @@ export const Product2 = () => {
                     {allData.map((product) => (
                         <div className="home-offerzonecards" key={product._id}>
                             <div className="home-offerzoneimages">
-                                <img src={`http://localhost:5000/uploads/${products.images}`}/>
+                                <img src={product.images} />
                             </div>
                             <div className="home-offerzonedetails">
                                 <p>{product.name}</p>
                                 <div className="home-offerzoneprice">
-                                    <strong>RS {product.price}</strong>
-                                    <del>RS {product.oldPrice}</del>
+                                    <strong>RS {product.sale_price}</strong>
+                                    <del>RS {product.product_price}</del>
                                 </div>
                                 <button className="home-offerzonecartbtn">Add to Cart</button>
                             </div>
@@ -207,11 +208,11 @@ export const Product2 = () => {
                 <div className="home-footercolumn">
                     <h3>Pages</h3>
                     <ul>
-                        <li><Link to="">Home</Link></li>
-                        <li><Link to="">Products</Link></li>
-                        <li><Link to="">Gifting</Link></li>
-                        <li><Link>About</Link></li>
-                        <li><Link>Profile</Link></li>
+                        <li><Link to='/'>Home</Link></li>
+                                                <li><Link to='/Product1'>Products</Link></li>
+                                                <li><Link to='/Wishlist'>Wishlist</Link></li>
+                                                <li><Link to="/About">About</Link></li>
+                                                <li><Link to="/Profile">Profile</Link></li>
                     </ul>
                 </div>
                 <div className="home-footercolumn">

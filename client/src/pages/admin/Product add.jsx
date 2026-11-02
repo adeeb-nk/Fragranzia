@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import './Product add.css'
 import { Link } from "react-router-dom";
 import axios from 'axios'
@@ -32,42 +32,59 @@ export const Productadd = () => {
 
     //product add
     const addproduct = async (e) => {
-        e.preventDefault();
+    e.preventDefault();
 
+    try {
         const formdata = new FormData();
-        formdata.append("name",inputdata.name);
-        formdata.append("product_price",inputdata.product_price);
-        formdata.append("sale_price",inputdata.sale_price);
-        formdata.append("stock",inputdata.stock);
-        formdata.append("category",inputdata.category);
-        formdata.append("description",inputdata.description);
 
-        if(inputdata.images){
-            formdata.append("images",inputdata.images);
-        }
-        
-        try {
-            console.log("datasent:",inputdata);
-            
-            //const res = await axios.post(API_URL, formdata);
-            await addToProduct(formdata)
-            
+        formdata.append("name", inputdata.name);
+        formdata.append("product_price", inputdata.product_price);
+        formdata.append("sale_price", inputdata.sale_price);
+        formdata.append("stock", inputdata.stock);
+        formdata.append("category", inputdata.category);
+        formdata.append("description", inputdata.description);
 
-        }catch(error){
-            console.log("error",error.response?.data);
-            
+        if (inputdata.images) {
+            formdata.append("images", inputdata.images);
         }
-        
+
+        const response = await addToProduct(formdata);
+
+        alert("Product added successfully!");
+
+        console.log("Saved product:", response);
+    } catch (error) {
+        console.error(
+            "Failed to add product:",
+            error.response?.data || error.message
+        );
+
+        alert(
+            error.response?.data?.message ||
+            "Failed to add product"
+        );
     }
+};
 
     const [categorydata,setcategorydata]= useState([])
-    const handlecategories = async()=>{
-        let res=await getCategory();
-        setcategorydata(res)
-        console.log(categorydata);
-        
-    }
+    const handlecategories = async () => {
+    try {
+        const res = await getCategory();
 
+        setcategorydata(
+            res.filter(category => category.isActive === true)
+        );
+    } catch (error) {
+        console.log(
+            "Error fetching categories:",
+            error.response?.data || error.message
+        );
+    }
+};
+
+useEffect(() => {
+    handlecategories();
+}, []);
 
     const handlechange = (e) => {
 
@@ -93,12 +110,12 @@ export const Productadd = () => {
                 <div className="category-nav">
                     <nav>
                         <ul>
-                            <li><MdDashboard />Dashboard</li>
-                            <li><MdInventory2 />Products</li>
-                            <li><MdCategory />Categories</li>
-                            <li><MdLocalOffer />Offers</li>
-                            <li><MdPeople />Customers</li>
-                            <li><MdShoppingCart />Orders</li>
+                            <li><MdDashboard /><Link>Dashboard</Link></li>
+                                                        <li><MdInventory2 /><Link to="/Productadmin1">Products</Link></li>
+                                                        <li><MdCategory /><Link to="/Category">Categories</Link></li>
+                                                        <li><MdLocalOffer /><Link>Offers</Link></li>
+                                                        <li><MdPeople /><Link to="/User">Customers</Link></li>
+                                                        <li><MdShoppingCart /><Link to="/Order">Orders</Link></li>
                         </ul>
                     </nav>
                 </div>
@@ -132,12 +149,19 @@ export const Productadd = () => {
                         </div>
                         <div>
                             <label htmlFor="">Category</label>
-                            <select name="category" id="" onChange={handlechange} onClick={handlecategories}>
-                                <option value="">Select Category</option>
-                                {categorydata.map((category,index)=>(
-                                    <option key={category._id} value={category._id}>{category.name}</option>
-                                ))}
-                            </select>
+                            <select
+    name="category"
+    value={inputdata.category}
+    onChange={handlechange}
+>
+    <option value="">Select Category</option>
+
+    {categorydata.map(category => (
+        <option key={category._id} value={category._id}>
+            {category.name}
+        </option>
+    ))}
+</select>
                         </div>
                     </div>
 
@@ -154,13 +178,12 @@ export const Productadd = () => {
 
                         <div className="productadd-uploadbox">
                             <input
-                                type="file"
-                                id="productImages"
-                                multiple
-                                accept="image/jpeg,image/png,image/webp"
-                                onChange={handlefilechange}
-                                name="images"
-                            />
+    type="file"
+    id="productImages"
+    accept="image/jpeg,image/png,image/webp"
+    onChange={handlefilechange}
+    name="images"
+/>
 
                             <label htmlFor="productImages" className="productadd-uploadcontent">
                                 <span>Click to upload or drag & drop (Max 4 images)</span>

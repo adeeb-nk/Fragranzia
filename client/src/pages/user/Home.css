@@ -384,11 +384,11 @@
     margin: 20px auto;
 }
 .home-newarrival{
-    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),url(../../assets/homeperfume4.jpg);
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),url(../../assets/neww.jpg);
     width: 50%;
     height: 500px;
     background-size: cover;
-    background-position: center center,center -400px;
+    background-position: center center,center;
     background-repeat: no-repeat;
     border-radius: 10px;
     overflow: hidden;
@@ -446,16 +446,17 @@
 }
 .home-categoryimages{
     box-shadow: 0 2px 5px 2px #dddddd;
-    border-radius: 50%;
     width: 250px;
     height: 250px;
     display: flex;
     align-items: center;
     justify-content: center;
+    border-radius: 500px;
 }
 .home-categoryimages img{
     width: 220px;
     height: 220px;
+    border-radius: 500px;
 }
 .home-categorycards p{
     text-align: center;
@@ -658,3 +659,848 @@
 }
 
 
+
+/* =========================================
+   TABLET RESPONSIVE - 768px to 1024px
+========================================= */
+
+@media screen and (max-width: 1024px) {
+
+    /* Navbar */
+    .home-fullnav {
+        gap: 20px;
+        padding: 15px 3%;
+    }
+
+    .home-fullnav1 {
+        gap: 20px;
+        padding: 0 2%;
+    }
+
+    .home-nav ul {
+        gap: 20px;
+    }
+
+    .home-navsearch {
+        width: 200px;
+    }
+
+    /* Hero */
+    .home-hero {
+        height: auto;
+        min-height: 420px;
+        padding: 30px;
+    }
+
+    .home-hero1 {
+        margin: 0 15px;
+        flex: 1;
+    }
+
+    .home-hero1 h1 {
+        font-size: 30px;
+    }
+
+    #home-img1 {
+        width: 250px;
+        left: 40px;
+    }
+
+    #home-img2 {
+        width: 220px;
+        right: 20px;
+    }
+
+    /* Below Hero */
+    .home-belowhero {
+        gap: 15px;
+        height: auto;
+    }
+
+    .home-belowhero1,
+    .home-belowhero2,
+    .home-belowhero3 {
+        width: 33.33%;
+        height: 200px;
+    }
+
+    .home-belowhero h3 {
+        font-size: 18px;
+        margin: 20px 10px 10px;
+    }
+
+    .home-belowhero p {
+        font-size: 14px;
+        margin: 0 10px;
+    }
+
+    .home-belowhero1 img {
+        width: 100px;
+        height: 180px;
+        object-fit: contain;
+    }
+
+    .home-belowhero2 img {
+        width: 180px;
+        height: 140px;
+        object-fit: contain;
+    }
+
+    .home-belowhero3 img {
+        width: 180px;
+        height: 180px;
+    }
+
+    /* Characteristics */
+    .home-characteristics1,
+    .home-characteristics2,
+    .home-characteristics3 {
+        padding: 20px;
+        gap: 12px;
+    }
+
+    .home-characteristics h2 {
+        font-size: 17px;
+    }
+
+    .home-characteristics p {
+        font-size: 14px;
+    }
+
+    /* Featured Collections */
+    .home-featuredcollectionsproducts,
+    .home-offerzoneproducts {
+        gap: 20px;
+    }
+
+    .home-featuredcollectionsimages,
+    .home-offerzoneimages {
+        width: 280px;
+        height: 320px;
+    }
+
+    .home-featuredcollectionsimages img,
+    .home-offerzoneimages img {
+        width: 230px;
+        height: 230px;
+        left: 25px;
+    }
+
+    .home-featuredcollectionscartbtn,
+    .home-offerzonecartbtn {
+        width: 100%;
+    }
+
+    .home-featuredcollectionsdetails,
+    .home-offerzonedetails {
+        width: 280px;
+    }
+
+    /* Quote */
+    .home-quote p {
+        width: 85%;
+        font-size: 26px;
+    }
+
+    /* New Arrivals */
+    .home-newarrivals {
+        gap: 15px;
+    }
+
+    .home-newarrival,
+    .home-limitededition,
+    .home-sellers {
+        height: 380px;
+    }
+
+    /* Categories */
+    .home-category {
+        width: 100%;
+        gap: 15px;
+        overflow-x: auto;
+    }
+
+    .home-categoryimages {
+        width: 190px;
+        height: 190px;
+    }
+
+    .home-categoryimages img {
+        width: 165px;
+        height: 165px;
+    }
+
+    /* Elegance */
+    .home-elegance img {
+        width: 500px;
+        height: 450px;
+        right: -100px;
+    }
+
+    .home-elegance h1 {
+        font-size: 26px;
+    }
+
+    /* Footer */
+    .home-footer {
+        padding: 40px 30px;
+        gap: 20px;
+    }
+
+    .home-footerlogo h1 {
+        font-size: 28px;
+    }
+
+    .home-footercolumn a {
+        font-size: 14px;
+    }
+
+    .home-footerbelow {
+        padding: 15px 25px;
+        gap: 15px;
+    }
+
+}
+
+
+/* =========================================
+   MOBILE RESPONSIVE - MAX 767px
+========================================= */
+
+@media screen and (max-width: 767px) {
+
+    /* General */
+    * {
+        box-sizing: border-box;
+    }
+
+    /* Navbar */
+    .home-fullnav {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px;
+    }
+
+    #nav-heading {
+        font-size: 25px;
+        margin: 0;
+        text-align: center;
+    }
+
+    .home-fullnav1 {
+        width: 100%;
+        height: auto;
+        padding: 0;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .home-nav {
+        width: 100%;
+    }
+
+    .home-nav ul {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 18px;
+        padding: 0;
+    }
+
+    .home-nav a {
+        font-size: 14px;
+    }
+
+    .home-navsearch {
+        width: 75%;
+        height: 38px;
+    }
+
+    .home-navicons {
+        gap: 8px;
+    }
+
+    .home-navicons svg {
+        font-size: 17px;
+        padding: 8px;
+    }
+
+    /* Below Navbar */
+    .home-belownav {
+        height: auto;
+        min-height: 38px;
+        padding: 10px;
+        text-align: center;
+    }
+
+    .home-belownav p {
+        font-size: 11px;
+    }
+
+    /* Hero Section */
+    .home-hero {
+        width: 94%;
+        min-height: auto;
+        height: auto;
+        flex-direction: column;
+        padding: 35px 15px 20px;
+        margin: 15px auto;
+        background-position: center;
+    }
+
+    .home-hero1 {
+        width: 100%;
+        margin: 0;
+        text-align: center;
+    }
+
+    .home-hero1 h1 {
+        font-size: 27px;
+        margin-bottom: 15px;
+    }
+
+    .home-hero1 p {
+        font-size: 15px;
+        margin-bottom: 20px;
+    }
+
+    .home-hero1 button {
+        width: 120px;
+        height: 40px;
+        font-size: 15px;
+    }
+
+    .home-hero2 {
+        width: 100%;
+        height: 230px;
+        margin-top: 15px;
+    }
+
+    #home-img1 {
+        width: 180px;
+        left: 15px;
+    }
+
+    #home-img2 {
+        width: 150px;
+        right: 10px;
+        top: 20px;
+    }
+
+    /* Below Hero Cards */
+    .home-belowhero {
+        width: 94%;
+        height: auto;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .home-belowhero1,
+    .home-belowhero2,
+    .home-belowhero3 {
+        width: 100%;
+        height: 190px;
+    }
+
+    .home-belowhero h3 {
+        font-size: 20px;
+        margin: 25px 15px 10px;
+    }
+
+    .home-belowhero p {
+        font-size: 14px;
+        margin: 0 15px;
+    }
+
+    .home-belowhero1 img {
+        width: 140px;
+        height: 190px;
+        object-fit: contain;
+    }
+
+    .home-belowhero2 img {
+        width: 200px;
+        height: 130px;
+        object-fit: contain;
+    }
+
+    .home-belowhero3 img {
+        width: 190px;
+        height: 190px;
+        right: 0;
+        bottom: -50px;
+    }
+
+    .home-belowhero3 span {
+        padding: 15px;
+        font-size: 13px;
+        bottom: 20px;
+        margin: 0 20px;
+    }
+
+    /* Characteristics */
+    .home-characteristics {
+        width: 94%;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px;
+        gap: 10px;
+    }
+
+    .home-characteristics1,
+    .home-characteristics2,
+    .home-characteristics3 {
+        width: 100%;
+        padding: 15px;
+        gap: 15px;
+    }
+
+    .home-characteristics1 svg,
+    .home-characteristics2 svg,
+    .home-characteristics3 svg {
+        width: 30px;
+        height: 30px;
+        flex-shrink: 0;
+    }
+
+    .home-characteristics h2 {
+        font-size: 16px;
+    }
+
+    .home-characteristics p {
+        font-size: 13px;
+        margin-top: 5px;
+    }
+
+    /* Featured Collections */
+    .home-featuredcollections {
+        width: 94%;
+        margin: 30px auto;
+    }
+
+    .home-featuredcollectionsheading,
+    .home-offerzoneheading {
+        margin-bottom: 25px;
+    }
+
+    .home-featuredcollectionsheading h1,
+    .home-offerzoneheading h1 {
+        font-size: 23px;
+    }
+
+    .home-featuredcollectionsproducts,
+    .home-offerzoneproducts {
+        gap: 15px;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+    }
+
+    .home-featuredcollectionscards,
+    .home-offerzonecards {
+        flex: 0 0 260px;
+        scroll-snap-align: start;
+    }
+
+    .home-featuredcollectionsimages,
+    .home-offerzoneimages {
+        width: 100%;
+        height: 290px;
+        border-top-left-radius: 90px;
+        border-bottom-right-radius: 90px;
+    }
+
+    .home-featuredcollectionsimages img,
+    .home-offerzoneimages img {
+        width: 220px;
+        height: 220px;
+        top: 35px;
+        left: 20px;
+        object-fit: contain;
+    }
+
+    .home-featuredcollectionsimages span {
+        top: 40px;
+        left: 15px;
+        padding: 13px;
+        font-size: 13px;
+    }
+
+    .home-featuredcollectionsdetails,
+    .home-offerzonedetails {
+        width: 100%;
+    }
+
+    .home-featuredcollectionsdetails p,
+    .home-offerzonedetails p {
+        font-size: 16px;
+    }
+
+    .home-featuredcollectionsprice strong,
+    .home-offerzoneprice strong {
+        font-size: 17px;
+    }
+
+    .home-featuredcollectionscartbtn,
+    .home-offerzonecartbtn {
+        width: 100%;
+        height: 38px;
+    }
+
+    /* Quote */
+    .home-quote {
+        padding: 20px;
+    }
+
+    .home-quote p {
+        width: 100%;
+        font-size: 21px;
+        line-height: 1.6;
+    }
+
+    /* New Arrivals */
+    .home-newarrivals {
+        width: 94%;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .home-newarrival,
+    .home-limitededition,
+    .home-sellers {
+        width: 100%;
+        height: 300px;
+        background-position: center;
+    }
+
+    .home-newarrivals h1 {
+        font-size: 22px;
+        left: 20px;
+        bottom: 20px;
+    }
+
+    /* Explore Categories */
+    .home-categories {
+        width: 94%;
+        margin: 30px auto;
+    }
+
+    .home-categoryheading {
+        margin-bottom: 20px;
+    }
+
+    .home-categoryheading h1 {
+        font-size: 23px;
+    }
+
+    .home-category {
+        width: 100%;
+        gap: 15px;
+        overflow-x: auto;
+        padding: 5px 5px 15px;
+    }
+
+    .home-categorycards {
+        flex: 0 0 145px;
+    }
+
+    .home-categoryimages {
+        width: 140px;
+        height: 140px;
+    }
+
+    .home-categoryimages img {
+        width: 120px;
+        height: 120px;
+        object-fit: cover;
+    }
+
+    .home-categorycards p {
+        font-size: 14px;
+        margin-top: 12px;
+    }
+
+    /* Offers Zone */
+    .home-offerzone {
+        width: 94%;
+        margin: 30px auto;
+    }
+
+    /* Elegance */
+    .home-elegance {
+        width: 94%;
+        height: 350px;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        padding: 30px 20px;
+    }
+
+    .home-elegance h1 {
+        font-size: 23px;
+        margin-left: 0;
+    }
+
+    .home-elegance p {
+        font-size: 14px;
+        margin-left: 0;
+        margin-top: 10px;
+        max-width: 230px;
+    }
+
+    .home-elegance button {
+        margin-left: 0;
+        margin-top: 15px;
+        width: 110px;
+        height: 40px;
+        font-size: 15px;
+    }
+
+    .home-elegance img {
+        width: 300px;
+        height: 250px;
+        right: -60px;
+        top: 140px;
+    }
+
+    /* Footer */
+    .home-footer {
+        height: auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px 15px;
+        padding: 30px 20px;
+    }
+
+    .home-footerlogo {
+        grid-column: 1 / -1;
+        margin-top: 0;
+    }
+
+    .home-footerlogo h1 {
+        font-size: 28px;
+    }
+
+    .home-footercolumn {
+        margin-top: 0;
+    }
+
+    .home-footercolumn h3 {
+        font-size: 16px;
+        margin-bottom: 15px;
+    }
+
+    .home-footercolumn ul {
+        margin-bottom: 15px;
+    }
+
+    .home-footercolumn li {
+        margin-bottom: 10px;
+        flex-wrap: wrap;
+    }
+
+    .home-footercolumn a {
+        font-size: 12px;
+        overflow-wrap: anywhere;
+    }
+
+    .home-footercolumn svg {
+        font-size: 18px;
+        margin-right: 5px;
+    }
+
+    /* Footer Bottom */
+    .home-footerbelow {
+        height: auto;
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+        padding: 20px 15px;
+    }
+
+    .home-footerbelow p {
+        font-size: 11px;
+        line-height: 1.6;
+    }
+
+}
+
+
+
+/* Responsive Navbar */
+@media screen and (max-width: 1200px) {
+
+    /* Main navbar */
+    .home-fullnav {
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        padding: 20px 4%;
+    }
+
+    /* Logo */
+    #nav-heading {
+        margin: 0;
+        text-align: center;
+        font-size: 25px;
+    }
+
+    /* Navbar contents */
+    .home-fullnav1 {
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        padding: 0;
+    }
+
+    /* Navigation links stay horizontal */
+    .home-nav {
+        width: 100%;
+    }
+
+    .home-nav nav {
+        width: 100%;
+    }
+
+    .home-nav ul {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 25px;
+        padding: 0;
+        margin: 0;
+    }
+
+    .home-nav ul li {
+        list-style: none;
+    }
+
+    /* Search bar */
+    .home-navsearch {
+        width: 80%;
+        max-width: 350px;
+        height: 40px;
+        margin: 0;
+    }
+
+    /* Icons stay horizontal */
+    .home-navicons {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+    }
+}
+
+/* Small mobile screens */
+@media screen and (max-width: 480px) {
+
+    .home-fullnav {
+        padding: 15px 3%;
+        gap: 15px;
+    }
+
+    #nav-heading {
+        font-size: 22px;
+    }
+
+    .home-nav ul {
+        gap: 12px 18px;
+    }
+
+    .home-nav a {
+        font-size: 14px;
+    }
+
+    .home-navsearch {
+        width: 90%;
+    }
+
+    .home-navicons {
+        gap: 18px;
+    }
+}
+
+/* Fix navbar stacking on smaller screens */
+@media screen and (max-width: 1200px) {
+
+    .home-fullnav {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 100%;
+        height: auto !important;
+        gap: 18px !important;
+        padding: 20px 15px !important;
+    }
+
+    #nav-heading {
+        width: 100%;
+        text-align: center;
+        margin: 0 !important;
+    }
+
+    .home-fullnav1 {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 100% !important;
+        height: auto !important;
+        gap: 18px !important;
+        padding: 0 !important;
+    }
+
+    /* First row: Home, Products, Wishlist, About */
+    .home-fullnav1 .home-nav {
+        order: 1;
+        display: block;
+        width: 100% !important;
+    }
+
+    .home-fullnav1 .home-nav ul {
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 20px;
+        padding: 0;
+        margin: 0;
+    }
+
+    /* Second row: Search bar */
+    .home-fullnav1 .home-navsearch {
+        order: 2;
+        display: flex;
+        width: 80% !important;
+        max-width: 350px;
+        margin: 0 auto !important;
+    }
+
+    /* Third row: Cart, notification, profile */
+    .home-fullnav1 .home-navicons {
+        order: 3;
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        gap: 20px;
+    }
+}
+
+.home-navicons svg{
+    height: 40px;
+    width: 40px;
+}

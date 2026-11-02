@@ -1,47 +1,59 @@
-import React,{useState , useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import './Home.css'
 import { Link } from "react-router-dom";
 import axios from 'axios'
-import {FiShoppingCart,FiBell,FiUser,FiSearch,FiTruck,FiShield,FiHeadphones,FiMail,FiPhone,FiInstagram,FiFacebook,FiYoutube,FiLinkedin,FiChevronLeft,FiChevronRight} from 'react-icons/fi'
+import { FiShoppingCart, FiBell, FiUser, FiSearch, FiTruck, FiShield, FiHeadphones, FiMail, FiPhone, FiInstagram, FiFacebook, FiYoutube, FiLinkedin, FiChevronLeft, FiChevronRight } from 'react-icons/fi'
 import heroperfume from "../../assets/heroperfume.png"
 import homeperfume1 from "../../assets/homeperfume1.jpg"
 import homeperfume2 from "../../assets/homeperfume2.png"
 import homeperfume3 from "../../assets/homeperfume3.png"
 import homeperfumenth from "../../assets/homeperfumenth.jpg"
-import homeperfume6 from "../../assets/homeperfume6.png"
+import perfumees from "../../assets/perfumees.webp"
+import perfumees1 from "../../assets/perfumees1.webp"
+import perfumees2 from "../../assets/perfumees2.jpg"
+import catetogory1 from "../../assets/catetogory1.jpg"
 import { Badge } from "lucide-react";
 
 
 
 
-const categories=[
-    {image:homeperfume3,name:"Eau De Parfum"},
-    {image:homeperfume3,name:"Concentrated"},
-    {image:homeperfume3,name:"Deodorants"},
-    {image:homeperfume3,name:"Body Mist"},
-    {image:homeperfume3,name:"Combo"},
+const categories = [
+    { image: homeperfume3, name: "Eau De Parfum" },
+    { image: catetogory1, name: "Concentrated" },
+    { image: perfumees, name: "Deodorants" },
+    { image: perfumees1, name: "Body Mist" },
+    { image: homeperfume2, name: "Combo" },
 ]
 
 const API_URL = "http://localhost:5000/product"
 
-export const Home= ()=>{
+import UserService from "../../services/user-api-services/UserService";
+
+export const Home = () => {
+
+    const { getProduct, addCart } = UserService();
+
+    const [products, setProducts] = useState([]);
+
+    const fetchproducts = async () => {
+        //let res = await axios.get(API_URL);
+        let res = await getProduct();
+        console.log("products from backend", res.data);
+
+        setProducts(res)
+    }
+
+    const addtoCart = async (id) => {
+        let response = await addCart(id);
+
+    }
+
+    useEffect(() => {
+        fetchproducts();
+    }, []);
 
 
-    const [products,setProducts]=useState([]);
-    
-        const fetchproducts = async () => {
-            let res = await axios.get(API_URL);
-            console.log("products from backend", res.data);
-    
-            setProducts(res.data)
-        }
-    
-        useEffect(()=>{
-            fetchproducts();
-        },[]);
-
-
-    return(
+    return (
         <div>
             <div className="home-fullnav">
                 <h2 id="nav-heading">Fragranzia</h2>
@@ -51,19 +63,19 @@ export const Home= ()=>{
                             <ul>
                                 <li><Link to='/'>Home</Link></li>
                                 <li><Link to='/Product1'>Products</Link></li>
-                                <li><a href="">Gifting</a></li>
-                                <li><a href="">About</a></li>
+                                <li><Link to='/Wishlist'>Wishlist</Link></li>
+                                <li><Link to="/About">About</Link></li>
                             </ul>
                         </nav>
                     </div>
                     <div className="home-navsearch">
-                        <FiSearch/>
-                        <input type="text" placeholder=" Search Here"/>
+                        <FiSearch />
+                        <input type="text" placeholder=" Search Here" />
                     </div>
                     <div className="home-navicons">
-                        <FiShoppingCart/>
-                        <FiBell/>
-                        <FiUser/>
+                        <Link to="/Cart"><FiShoppingCart /></Link>
+                        <FiBell />
+                        <Link to="/Profile"><FiUser /></Link>
                     </div>
                 </div>
             </div>
@@ -76,11 +88,11 @@ export const Home= ()=>{
                 <div className="home-hero1">
                     <h1>Discover perfumes that celebrate individuality</h1>
                     <p>Every moment with an unforgettable essence.</p>
-                    <button>Shop Now</button>
+                    <Link to='/Product1'><button>Shop Now</button></Link>
                 </div>
                 <div className="home-hero2">
                     <img src={heroperfume} id="home-img1" alt="" width="350px" />
-                    <img src={heroperfume} id="home-img2" width="300px"/>
+                    <img src={heroperfume} id="home-img2" width="300px" />
                 </div>
             </div>
 
@@ -106,21 +118,21 @@ export const Home= ()=>{
 
             <div className="home-characteristics">
                 <div className="home-characteristics1">
-                    <FiTruck/>
+                    <FiTruck />
                     <div>
                         <h2>Fast & Reliable Delivery</h2>
                         <p>Get your orders delivered on time, every time.</p>
                     </div>
                 </div>
                 <div className="home-characteristics2">
-                    <FiShield/>
+                    <FiShield />
                     <div>
                         <h2>Secure Payments</h2>
                         <p>Shop with confidence using our encrypted payment gateways.</p>
                     </div>
                 </div>
                 <div className="home-characteristics3">
-                    <FiHeadphones/>
+                    <FiHeadphones />
                     <div>
                         <h2>24/7 Customer Support</h2>
                         <p>We’re here to assist you anytime, anywhere.</p>
@@ -133,16 +145,16 @@ export const Home= ()=>{
                 <div className="home-featuredcollectionsheading">
                     <h1>Featured Collections</h1>
                     <div className="home-featuredcollectionsbtn">
-                        <button><FiChevronLeft/></button>
-                        <button><FiChevronRight/></button>
+                        <button><FiChevronLeft /></button>
+                        <button><FiChevronRight /></button>
                     </div>
                 </div>
                 <div className="home-featuredcollectionsproducts">
-                    {products.map((product)=>(
+                    {products.map((product) => (
                         <div className="home-featuredcollectionscards">
                             <div className="home-featuredcollectionsimages">
                                 <span>New</span>
-                                <img src={`http://localhost:5000/uploads/${product.images}`} alt={product.name} />
+                                <img src={product.images} alt={product.name} />
                             </div>
                             <div className="home-featuredcollectionsdetails">
                                 <p>{product.name}</p>
@@ -150,7 +162,7 @@ export const Home= ()=>{
                                     <strong>RS {product.sale_price}</strong>
                                     <del>RS {product.product_price}</del>
                                 </div>
-                                <button className="home-featuredcollectionscartbtn">Add to Cart</button>
+                                <button className="home-featuredcollectionscartbtn" onClick={() => { addtoCart(product._id) }}>Add to Cart</button>
                             </div>
                         </div>
                     ))}
@@ -158,7 +170,7 @@ export const Home= ()=>{
 
 
             </section>
-            
+
             <br /><br />
 
 
@@ -175,7 +187,7 @@ export const Home= ()=>{
                 <div className="home-limitededition"><h1>Limited Edition</h1></div>
                 <div className="home-sellers"><h1>Best Sellers</h1></div>
             </div>
-            
+
             <br /><br />
 
             {/* explore categories */}
@@ -186,7 +198,7 @@ export const Home= ()=>{
                     <Link>See all</Link>
                 </div>
                 <div className="home-category">
-                    {categories.map((category)=>(
+                    {categories.map((category) => (
                         <div className="home-categorycards">
                             <div className="home-categoryimages">
                                 <img src={category.image} alt="" />
@@ -205,15 +217,15 @@ export const Home= ()=>{
                 <div className="home-offerzoneheading">
                     <h1>Offers Zone</h1>
                     <div className="home-offerzonebtn">
-                        <button><FiChevronLeft/></button>
-                        <button><FiChevronRight/></button>
+                        <button><FiChevronLeft /></button>
+                        <button><FiChevronRight /></button>
                     </div>
                 </div>
                 <div className="home-offerzoneproducts">
-                    {products.map((product)=>(
+                    {products.map((product) => (
                         <div className="home-offerzonecards">
                             <div className="home-offerzoneimages">
-                                <img src={`http://localhost:5000/uploads/${product.images}`} alt={product.name} />
+                                <img src={product.images} alt={product.name} />
                             </div>
                             <div className="home-offerzonedetails">
                                 <p>{product.name}</p>
@@ -221,7 +233,7 @@ export const Home= ()=>{
                                     <strong>RS {product.sale_price}</strong>
                                     <del>RS {product.product_price}</del>
                                 </div>
-                                <button className="home-offerzonecartbtn">Add to Cart</button>
+                                <button className="home-offerzonecartbtn" onClick={() => { addtoCart(product._id) }}>Add to Cart</button>
                             </div>
                         </div>
                     ))}
@@ -236,7 +248,7 @@ export const Home= ()=>{
                 <div>
                     <h1>Elegance in Every Bottle</h1>
                     <p>Discover timeless fragrances crafted for every moment</p>
-                    <button>Shop Now</button>
+                    <Link to='/Product1'><button>Shop Now</button></Link>
                 </div>
                 <img src={homeperfumenth} alt="" />
             </div>
@@ -248,11 +260,11 @@ export const Home= ()=>{
                 <div className="home-footercolumn">
                     <h3>Pages</h3>
                     <ul>
-                        <li><Link to="">Home</Link></li>
-                        <li><Link to="">Products</Link></li>
-                        <li><Link to="">Gifting</Link></li>
-                        <li><Link>About</Link></li>
-                        <li><Link>Profile</Link></li>
+                        <li><Link to='/'>Home</Link></li>
+                        <li><Link to='/Product1'>Products</Link></li>
+                        <li><Link to='/Wishlist'>Wishlist</Link></li>
+                        <li><Link to="/About">About</Link></li>
+                        <li><Link to="/Profile">Profile</Link></li>
                     </ul>
                 </div>
                 <div className="home-footercolumn">
@@ -266,11 +278,11 @@ export const Home= ()=>{
                 </div>
                 <div className="home-footercolumn">
                     <ul>
-                        <li><FiMail/><Link>ftrafurniture@gmail.com</Link></li>
-                        <li><FiPhone/><Link>+91 9876543210</Link></li>
+                        <li><FiMail /><Link>ftrafurniture@gmail.com</Link></li>
+                        <li><FiPhone /><Link>+91 9876543210</Link></li>
                     </ul>
                     <h3>Social media</h3>
-                    <FiInstagram/><FiFacebook/><FiYoutube/><FiLinkedin/>
+                    <FiInstagram /><FiFacebook /><FiYoutube /><FiLinkedin />
                 </div>
             </div>
 

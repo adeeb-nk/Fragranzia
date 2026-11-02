@@ -16,10 +16,10 @@ export const About = () => {
                     <div className="home-nav">
                         <nav>
                             <ul>
-                                <li><a href="">Home</a></li>
-                                <li><a href="">Products</a></li>
-                                <li><a href="">Gifting</a></li>
-                                <li><a href="">About</a></li>
+                                <li><Link to='/'>Home</Link></li>
+                                <li><Link to='/Product1'>Products</Link></li>
+                                <li><Link to='/Wishlist'>Wishlist</Link></li>
+                                <li><Link to="/About">About</Link></li>
                             </ul>
                         </nav>
                     </div>
@@ -28,9 +28,9 @@ export const About = () => {
                         <input type="text" placeholder=" Search Here" />
                     </div>
                     <div className="home-navicons">
-                        <FiShoppingCart />
+                        <Link to="/Cart"><FiShoppingCart /></Link>
                         <FiBell />
-                        <FiUser />
+                        <Link to="/Profile"><FiUser /></Link>
                     </div>
                 </div>
             </div>
@@ -59,11 +59,11 @@ export const About = () => {
                 <div className="home-footercolumn">
                     <h3>Pages</h3>
                     <ul>
-                        <li><Link to="">Home</Link></li>
-                        <li><Link to="">Products</Link></li>
-                        <li><Link to="">Gifting</Link></li>
-                        <li><Link>About</Link></li>
-                        <li><Link>Profile</Link></li>
+                        <li><Link to='/'>Home</Link></li>
+                                                <li><Link to='/Product1'>Products</Link></li>
+                                                <li><Link to='/Wishlist'>Wishlist</Link></li>
+                                                <li><Link to="/About">About</Link></li>
+                                                <li><Link to="/Profile">Profile</Link></li>
                     </ul>
                 </div>
                 <div className="home-footercolumn">

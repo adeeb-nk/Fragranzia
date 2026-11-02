@@ -85,8 +85,8 @@ export const Category = () => {
                             <li><MdInventory2 /><Link to="/Productadmin1">Products</Link></li>
                             <li><MdCategory /><Link to="/Category">Categories</Link></li>
                             <li><MdLocalOffer /><Link>Offers</Link></li>
-                            <li><MdPeople /><Link>Customers</Link></li>
-                            <li><MdShoppingCart /><Link>Orders</Link></li>
+                            <li><MdPeople /><Link to="/User">Customers</Link></li>
+                            <li><MdShoppingCart /><Link to="/Order">Orders</Link></li>
                         </ul>
                     </nav>
                 </div>

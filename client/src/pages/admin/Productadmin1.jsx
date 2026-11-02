@@ -12,7 +12,7 @@ import {
     MdLogout
 } from "react-icons/md";
 
-import AdminService from "../../services/admin-api-services/AdminService"; 
+import AdminService from "../../services/admin-api-services/AdminService";
 
 const API_URL = "http://localhost:5000/product"
 
@@ -27,7 +27,7 @@ export const Productadmin1 = () => {
     const [newImage, setNewImage] = useState(null);
 
 
-    const {getProduct,statusProduct,EditProduct,getCategory}=AdminService();
+    const { getProduct, statusProduct, EditProduct, getCategory } = AdminService();
 
     const fetchproducts = async () => {
         let res = await getProduct();
@@ -36,11 +36,22 @@ export const Productadmin1 = () => {
         setProducts(res)
     }
 
-    const onblockchange = async (id, isActive) => {
-        //await axios.put(`${API_URL}/updatedstatus/${id}`, { isActive });
-        await statusProduct(id, { isActive })
-        fetchproducts();
-    }
+
+    const onblockchange = async (id) => {
+        try {
+            const response = await statusProduct(id, {});
+
+            console.log("Updated status:", response.product.isActive);
+
+            await fetchproducts();
+        } catch (error) {
+            console.error(
+                "Block/unblock failed:",
+                error.response?.data || error.message
+            );
+        }
+    };
+
 
     const [categorydata, setcategorydata] = useState([])
     const [selectedCategory, setSelectedCategory] = useState("");
@@ -72,7 +83,7 @@ export const Productadmin1 = () => {
             //     `${API_URL}/${selectedProduct._id}`, formData,
             // );
 
-            const res = await EditProduct(selectedProduct._id,formData);
+            const res = await EditProduct(selectedProduct._id, formData);
 
             console.log("Updated product:", res.data);
 
@@ -113,12 +124,12 @@ export const Productadmin1 = () => {
                 <div className="category-nav">
                     <nav>
                         <ul>
-                            <li><MdDashboard />Dashboard</li>
-                            <li><MdInventory2 />Products</li>
-                            <li><MdCategory />Categories</li>
-                            <li><MdLocalOffer />Offers</li>
-                            <li><MdPeople />Customers</li>
-                            <li><MdShoppingCart />Orders</li>
+                            <li><MdDashboard /><Link>Dashboard</Link></li>
+                            <li><MdInventory2 /><Link to="/Productadmin1">Products</Link></li>
+                            <li><MdCategory /><Link to="/Category">Categories</Link></li>
+                            <li><MdLocalOffer /><Link>Offers</Link></li>
+                            <li><MdPeople /><Link to="/User">Customers</Link></li>
+                            <li><MdShoppingCart /><Link to="/Order">Orders</Link></li>
                         </ul>
                     </nav>
                 </div>
@@ -179,7 +190,25 @@ export const Productadmin1 = () => {
 
                                         </div>
                                     </td>
-                                    <td>{product.isActive ? <button id="productadmin1-unblockbtn" onClick={() => { onblockchange(product._id, product.isActive) }}>Unblock</button> : <button id="productadmin1-blockbtn" onClick={() => { onblockchange(product._id, product.isActive) }}>Block</button>}</td>
+
+                                    <td>
+                                        {product.isActive ? (
+                                            <button
+                                                id="productadmin1-blockbtn"
+                                                onClick={() => onblockchange(product._id)}
+                                            >
+                                                Block
+                                            </button>
+                                        ) : (
+                                            <button
+                                                id="productadmin1-unblockbtn"
+                                                onClick={() => onblockchange(product._id)}
+                                            >
+                                                Unblock
+                                            </button>
+                                        )}
+                                    </td>
+
                                 </tr>
                             ))}
                         </tbody>
@@ -258,7 +287,7 @@ export const Productadmin1 = () => {
                                 {selectedProduct.images ? (
                                     <div className="productadmin1-edit-image-preview">
                                         <img
-                                            src={`http://localhost:5000/uploads/${selectedProduct.images}`}
+                                            src={selectedProduct.images}
                                             alt={selectedProduct.name}
                                         />
                                     </div>
@@ -297,7 +326,7 @@ export const Productadmin1 = () => {
                             <div className="productadmin1-showimage">
                                 <label>Product Images</label><br />
                                 {selectedProduct.images ? (
-                                    <img src={`http://localhost:5000/uploads/${selectedProduct.images}`}
+                                    <img src={`${selectedProduct.images}`}
                                         alt={selectedProduct.name} />
                                 ) : (
                                     <span>No image</span>
@@ -330,7 +359,7 @@ export const Productadmin1 = () => {
                                     </div>
                                     <div className="productadmin1-show-productstatus">
                                         <label htmlFor="">Status</label>
-                                        <p>{selectedProduct.isActive ? "Blocked" : "Active"}</p>
+                                        <p>{selectedProduct.isActive ? "Active" : "Blocked"}</p>
                                     </div>
                                 </div>
 

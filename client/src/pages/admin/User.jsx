@@ -14,49 +14,17 @@ import {
     MdClose
 } from "react-icons/md";
 
+import AdminService from "../../services/admin-api-services/AdminService";
+import { useEffect } from "react";
+
 export const User = () => {
+
+    const { fetchUser, statususer } = AdminService();
 
     const [showUserModal, setShowUserModal] = useState(false);
     const [selectedUser, setSelectedUser] = useState(null);
 
-    const [users] = useState([
-        {
-            id: 1,
-            name: "user 1",
-            phone: "1122334455",
-            email: "user1@gmail.com",
-            status: "Active",
-            role: "User",
-            joinedDate: "June 26, 2026 at 11:10 AM"
-        },
-        {
-            id: 2,
-            name: "user 2",
-            phone: "2211334455",
-            email: "user2@gmail.com",
-            status: "Active",
-            role: "User",
-            joinedDate: "June 27, 2026 at 10:30 AM"
-        },
-        {
-            id: 3,
-            name: "user 3",
-            phone: "3311224455",
-            email: "user3@gmail.com",
-            status: "Active",
-            role: "User",
-            joinedDate: "June 28, 2026 at 09:45 AM"
-        },
-        {
-            id: 4,
-            name: "user 4",
-            phone: "4411223355",
-            email: "user4@gmail.com",
-            status: "Active",
-            role: "User",
-            joinedDate: "June 29, 2026 at 12:20 PM"
-        }
-    ]);
+    const [users, setusers] = useState([])
 
     const handleShowUser = (user) => {
         setSelectedUser(user);
@@ -68,6 +36,35 @@ export const User = () => {
         setSelectedUser(null);
     };
 
+    const fetchedUser = async () => {
+        try {
+            const res = await fetchUser();
+            setusers(res);
+        } catch (error) {
+            console.error(
+                "Error fetching users:",
+                error.response?.data || error.message
+            );
+        }
+    };
+
+    const onblockchange = async (id, isActive) => {
+        try {
+            await statususer(id, { isActive: !isActive });
+            await fetchedUser();
+        } catch (error) {
+            console.error(
+                "Failed to update status:",
+                error.response?.data || error.message
+            );
+        }
+    };
+
+
+    useEffect(() => {
+        fetchedUser();
+    }, [])
+
     return (
         <div className="user-page">
 
@@ -78,11 +75,11 @@ export const User = () => {
                     <nav>
                         <ul>
                             <li><MdDashboard /><Link>Dashboard</Link></li>
-                            <li><MdInventory2 /><Link to="/Productadmin1">Products</Link></li>
-                            <li><MdCategory /><Link to="/Category">Categories</Link></li>
-                            <li><MdLocalOffer /><Link>Offers</Link></li>
-                            <li><MdPeople /><Link>Customers</Link></li>
-                            <li><MdShoppingCart /><Link>Orders</Link></li>
+                                                        <li><MdInventory2 /><Link to="/Productadmin1">Products</Link></li>
+                                                        <li><MdCategory /><Link to="/Category">Categories</Link></li>
+                                                        <li><MdLocalOffer /><Link>Offers</Link></li>
+                                                        <li><MdPeople /><Link to="/User">Customers</Link></li>
+                                                        <li><MdShoppingCart /><Link to="/Order">Orders</Link></li>
                         </ul>
                     </nav>
                 </div>
@@ -145,11 +142,12 @@ export const User = () => {
                                     </td>
 
                                     <td>
-
-                                        <button className="user-block-btn">
-                                            Block
+                                        <button
+                                            className="user-block-btn"
+                                            onClick={() => onblockchange(user._id, user.isActive)}
+                                        >
+                                            {user.isActive ? "Block" : "Unblock"}
                                         </button>
-
                                     </td>
 
                                 </tr>

@@ -81,3 +81,1406 @@
     border-radius: 7px;
     font-size: 18px;
 }
+
+/* =============form save modal================== */
+.profile-fullform1{
+    width: 93%;
+    margin: 20px auto;
+}
+
+.profile-sections1{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.profile-inputs1 input{
+    height: 40px;
+    width: 400px;
+    background-color: white;
+    border-radius: 8px;
+    border: 1px solid #00354B;
+}
+
+/* ================edit btn=============== */
+.profile-editbtn1{
+    width: 96%;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 30px;
+}
+.profile-editbtn1 button{
+    height: 40px;
+    width: 150px;
+    border: 1px solid;
+    color: white;
+    background-color: #00354B;
+    border-radius: 7px;
+    font-size: 18px;
+}
+
+/* ===========address modal=========== */
+
+/* Address card */
+.profile-addressmodal {
+  width: 420px;
+  max-width: 100%;
+  padding: 12px;
+  border: 1px solid #d6d6d6;
+  border-radius: 8px;
+  background-color: #fff;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+  margin-left: 55px;
+  margin-bottom: 10px;
+}
+
+/* Heading and buttons */
+.profile-address-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+
+#profile-addressh3 {
+  margin: 0;
+  margin-right: auto;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* Keep Office and Edit side by side */
+#profile-address-office,
+#profile-address-edit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 12px;
+  margin: 0;
+  border: none;
+  border-radius: 5px;
+  background-color: #425d6d;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+/* Button hover */
+#profile-address-office:hover,
+#profile-address-edit:hover {
+  background-color: #304957;
+}
+
+/* Name */
+#profile-address-name {
+  font-size: 17px;
+  font-weight: 600;
+  color: #333;
+  margin: 8px 0 5px;
+}
+
+/* Address details */
+.profile-address {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #555;
+  margin: 5px 0;
+  overflow-wrap: anywhere;
+}
+
+/* Phone number */
+.profile-address-phone {
+  font-size: 15px;
+  color: #555;
+  margin: 7px 0 0;
+}
+
+/* Responsive layout */
+@media (max-width: 480px) {
+  .profile-addressmodal {
+    width: 100%;
+  }
+
+  .profile-address-header {
+    gap: 6px;
+  }
+
+  #profile-address-office,
+  #profile-address-edit {
+    padding: 6px 9px;
+  }
+}
+
+#profile-addaddressbtn{
+    background-color: #0078AA;
+    color: white;
+    font-size: 16px;
+    padding: 10px;
+    border: none;
+    border-radius: 7px;
+    position: absolute;
+    right: 50px;
+    top: 200px;
+}
+
+
+/* ================adress modal form================ */
+
+/* Modal background */
+.address-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+  background: rgba(0, 0, 0, 0.12);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+/* Modal box */
+.address-modal {
+  width: 720px;
+  max-width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 22px;
+  box-sizing: border-box;
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.12);
+  font-family: Arial, sans-serif;
+}
+
+/* Address type */
+.address-type-section {
+  margin-bottom: 14px;
+}
+
+.address-type-section > label,
+.address-form-group label {
+  display: block;
+  margin-bottom: 7px;
+  color: #444;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.address-type-options {
+  display: flex;
+  gap: 10px;
+}
+
+.address-type-btn {
+  width: 88px;
+  height: 32px;
+  border: none;
+  border-radius: 4px;
+  background: #f0f0ed;
+  color: #444;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.address-type-btn.selected {
+  background: #425d6d;
+  color: #fff;
+}
+
+/* Input layout */
+.address-form-grid {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 13px;
+}
+
+.two-columns {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.three-columns {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.address-form-group {
+  min-width: 0;
+}
+
+.address-form-group input,
+.address-form-group textarea {
+  width: 100%;
+  height: 35px;
+  padding: 9px 10px;
+  box-sizing: border-box;
+  border: 1px solid #d0d0d0;
+  border-radius: 5px;
+  outline: none;
+  font-family: inherit;
+  font-size: 10px;
+}
+
+.address-form-group input:focus,
+.address-form-group textarea:focus {
+  border-color: #425d6d;
+}
+
+.address-form-group input::placeholder,
+.address-form-group textarea::placeholder {
+  color: #999;
+  font-size: 13px;
+}
+
+/* Full-width address field */
+.address-form-group.full-width {
+  margin-bottom: 13px;
+}
+
+.address-form-group textarea {
+  height: 64px;
+  resize: vertical;
+}
+
+/* Save button */
+.address-modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 12px;
+}
+
+.save-address-btn {
+  width: 95px;
+  height: 35px;
+  border: none;
+  border-radius: 4px;
+  background: #3985bd;
+  color: #fff;
+  font-size: 17px;
+  cursor: pointer;
+}
+
+.save-address-btn:hover {
+  background: #286d9f;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .address-modal {
+    padding: 16px;
+  }
+
+  .two-columns,
+  .three-columns {
+    grid-template-columns: 1fr;
+  }
+
+  .address-type-options {
+    flex-wrap: wrap;
+  }
+}
+
+
+
+/* ================adress modal edit(button click cheyumbol) form================ */
+
+/* Modal background */
+.address-modal-overlayedit {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+  background: rgba(0, 0, 0, 0.12);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+/* Modal box */
+.address-modaledit {
+  width: 720px;
+  max-width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 22px;
+  box-sizing: border-box;
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.12);
+  font-family: Arial, sans-serif;
+}
+
+/* Address type */
+.address-type-sectionedit {
+  margin-bottom: 14px;
+}
+
+.address-type-sectionedit > label,
+.address-form-groupedit label {
+  display: block;
+  margin-bottom: 7px;
+  color: #444;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.address-type-optionsedit {
+  display: flex;
+  gap: 10px;
+}
+
+.address-type-btnedit {
+  width: 88px;
+  height: 32px;
+  border: none;
+  border-radius: 4px;
+  background: #f0f0ed;
+  color: #444;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.address-type-btnedit.selected {
+  background: #425d6d;
+  color: #fff;
+}
+
+/* Input layout */
+.address-form-gridedit {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 13px;
+}
+
+.two-columnsedit {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.three-columnsedit {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.address-form-groupedit {
+  min-width: 0;
+}
+
+.address-form-groupedit input,
+.address-form-groupedit textarea {
+  width: 100%;
+  height: 35px;
+  padding: 9px 10px;
+  box-sizing: border-box;
+  border: 1px solid #d0d0d0;
+  border-radius: 5px;
+  outline: none;
+  font-family: inherit;
+  font-size: 10px;
+  background-color: #DADADA;
+}
+
+.address-form-groupedit input:focus,
+.address-form-groupedit textarea:focus {
+  border-color: #425d6d;
+}
+
+.address-form-groupedit input::placeholder,
+.address-form-groupedit textarea::placeholder {
+  color: #999;
+  font-size: 13px;
+}
+
+/* Full-width address field */
+.address-form-group.full-widthedit {
+  margin-bottom: 13px;
+}
+
+.address-form-groupedit textarea {
+  height: 64px;
+  resize: vertical;
+}
+
+/* Save button */
+.address-modal-footeredit {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 12px;
+}
+
+.save-address-btnedit {
+  width: 95px;
+  height: 35px;
+  border: none;
+  border-radius: 4px;
+  background: #3985bd;
+  color: #fff;
+  font-size: 17px;
+  cursor: pointer;
+}
+
+.save-address-btnedit:hover {
+  background: #286d9f;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .address-modaledit {
+    padding: 16px;
+  }
+
+  .two-columnsedit,
+  .three-columnsedit {
+    grid-template-columns: 1fr;
+  }
+
+  .address-type-optionsedit {
+    flex-wrap: wrap;
+  }
+}
+
+
+/* =================my order section =============== */
+
+
+/* =============== MY ORDERS SECTION =============== */
+
+.profile-orders-container {
+    width: 90%;
+    max-width: 1000px;
+    margin: 30px auto;
+    padding: 10px 0 30px;
+    box-sizing: border-box;
+    color: #292929;
+    font-family: inherit;
+}
+
+.profile-orders-container > h2 {
+    font-size: 25px;
+    font-weight: 700;
+    margin: 0 0 25px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #e8e8e8;
+    color: #222222;
+}
+
+/* Order card */
+.profile-order {
+    width: 100%;
+    margin: 0 0 24px;
+    padding: 22px 25px;
+    background: #ffffff;
+    border: 1px solid #e5e5e5;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.04);
+    box-sizing: border-box;
+    transition: box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.profile-order:hover {
+    border-color: #d4d4d4;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
+}
+
+/* Order ID and delivery status */
+.profile-orderidbtn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 18px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #eeeeee;
+}
+
+.profile-orderidbtn p {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 700;
+    color: #292929;
+    overflow-wrap: anywhere;
+}
+
+/* Status badge */
+.profile-orderidbtn button {
+    padding: 8px 15px;
+    background: #e7f5eb;
+    color: #287a43;
+    border: 1px solid #cce8d4;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: capitalize;
+    white-space: nowrap;
+    cursor: default;
+}
+.profile-order-id-buttons{
+  display: flex;
+  gap: 20px;
+}
+
+/* Order date and payment information */
+.profile-order > p {
+    margin: 10px 0;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #777777;
+}
+
+.profile-order > p:first-of-type {
+    margin-top: 0;
+}
+
+/* Individual product */
+.profile-order-item {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    margin: 20px 0;
+    padding: 18px;
+    background: #fafafa;
+    border: 1px solid #eeeeee;
+    border-radius: 9px;
+    box-sizing: border-box;
+}
+
+/* Product image */
+.profile-order-item img {
+    width: 105px;
+    height: 115px;
+    padding: 8px;
+    flex-shrink: 0;
+    object-fit: contain;
+    background: #ffffff;
+    border: 1px solid #eeeeee;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+/* Product details */
+.profile-order-item-property {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    min-width: 0;
+}
+
+.profile-order-item-property h3 {
+    margin: 0;
+    font-size: 17px;
+    line-height: 1.5;
+    font-weight: 600;
+    color: #292929;
+    overflow-wrap: anywhere;
+}
+
+.profile-order-item-property p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #777777;
+}
+
+.profile-order-item-property h2 {
+    margin: 0;
+    font-size: 21px;
+    font-weight: 700;
+    color: #292929;
+}
+
+/* Total amount */
+.profile-order-total {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 18px;
+    padding-top: 17px;
+    border-top: 1px solid #e8e8e8;
+}
+
+.profile-order-total h3 {
+    margin: 0;
+    font-size: 19px;
+    font-weight: 700;
+    color: #222222;
+}
+
+/* Separator between orders */
+.profile-order hr {
+    display: none;
+}
+
+/* Loading, error and empty messages */
+.profile-orders-container > p {
+    margin: 20px 0;
+    padding: 25px 18px;
+    background: #fafafa;
+    border: 1px solid #eeeeee;
+    border-radius: 10px;
+    color: #777777;
+    font-size: 15px;
+    text-align: center;
+}
+
+/* =============== RESPONSIVE DESIGN =============== */
+
+@media (max-width: 768px) {
+    .profile-orders-container {
+        width: 94%;
+        margin: 22px auto;
+    }
+
+    .profile-orders-container > h2 {
+        font-size: 22px;
+        margin-bottom: 20px;
+    }
+
+    .profile-order {
+        padding: 18px;
+        margin-bottom: 18px;
+    }
+
+    .profile-order-item {
+        gap: 15px;
+        padding: 13px;
+    }
+
+    .profile-order-item img {
+        width: 85px;
+        height: 100px;
+    }
+
+    .profile-order-item-property h3 {
+        font-size: 15px;
+    }
+
+    .profile-order-item-property h2 {
+        font-size: 19px;
+    }
+}
+
+@media (max-width: 480px) {
+    .profile-orders-container {
+        width: 96%;
+    }
+
+    .profile-orders-container > h2 {
+        font-size: 20px;
+    }
+
+    .profile-order {
+        padding: 14px;
+        border-radius: 9px;
+    }
+
+    .profile-orderidbtn {
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .profile-orderidbtn p {
+        font-size: 14px;
+    }
+
+    .profile-orderidbtn button {
+        padding: 7px 11px;
+        font-size: 11px;
+    }
+
+    .profile-order > p {
+        font-size: 13px;
+    }
+
+    .profile-order-item {
+        align-items: flex-start;
+        gap: 12px;
+        padding: 10px;
+    }
+
+    .profile-order-item img {
+        width: 72px;
+        height: 85px;
+        padding: 4px;
+    }
+
+    .profile-order-item-property {
+        gap: 6px;
+    }
+
+    .profile-order-item-property h3 {
+        font-size: 13px;
+    }
+
+    .profile-order-item-property p {
+        font-size: 12px;
+    }
+
+    .profile-order-item-property h2 {
+        font-size: 17px;
+    }
+
+    .profile-order-total h3 {
+        font-size: 17px;
+    }
+}
+
+
+/* Cancel confirmation modal */
+
+.cancel-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    padding: 20px;
+}
+
+.cancel-modal {
+    width: 100%;
+    max-width: 440px;
+    max-height: 85vh;
+    overflow-y: auto;
+    background: #fff;
+    border-radius: 16px;
+    padding: 28px;
+    box-sizing: border-box;
+    text-align: center;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+    animation: cancelModalAppear 0.2s ease-out;
+}
+
+.cancel-modal-icon {
+    width: 48px;
+    height: 48px;
+    margin: 0 auto 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background: #fff0f0;
+    color: #d93025;
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.cancel-modal h2 {
+    margin: 0 0 10px;
+    color: #222;
+    font-size: 23px;
+}
+
+.cancel-modal > p {
+    color: #666;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.cancel-product-list {
+    margin: 20px 0;
+    text-align: left;
+}
+
+.cancel-product-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px;
+    margin-bottom: 10px;
+    border: 1px solid #eee;
+    border-radius: 10px;
+}
+
+.cancel-product-item img {
+    width: 62px;
+    height: 62px;
+    object-fit: contain;
+    border-radius: 8px;
+    background: #f8f8f8;
+}
+
+.cancel-product-item h4 {
+    margin: 0 0 6px;
+    font-size: 14px;
+    color: #222;
+}
+
+.cancel-product-item p {
+    margin: 0;
+    font-size: 13px;
+    color: #777;
+}
+
+.cancel-modal .cancel-modal-warning {
+    color: #c0392b;
+    font-size: 12px;
+    margin: 14px 0 20px;
+}
+
+.cancel-modal-actions {
+    display: flex;
+    gap: 12px;
+}
+
+.cancel-modal-actions button {
+    flex: 1;
+    padding: 12px 10px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.cancel-modal-keep {
+    background: #f1f1f1;
+    color: #333;
+}
+
+.cancel-modal-confirm {
+    background: #c93636;
+    color: #fff;
+}
+
+.cancel-modal-actions button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+@keyframes cancelModalAppear {
+    from {
+        opacity: 0;
+        transform: translateY(10px) scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Return order modal */
+
+.return-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    z-index: 10000;
+}
+
+.return-modal {
+    width: 100%;
+    max-width: 450px;
+    max-height: 85vh;
+    overflow-y: auto;
+    box-sizing: border-box;
+    background: #fff;
+    padding: 28px;
+    border-radius: 16px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+    animation: returnModalAppear 0.2s ease-out;
+}
+
+.return-modal-icon {
+    width: 48px;
+    height: 48px;
+    margin: 0 auto 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #eef5ed;
+    color: #416b3e;
+    font-size: 27px;
+}
+
+.return-modal h2 {
+    text-align: center;
+    margin: 0 0 10px;
+    color: #222;
+    font-size: 23px;
+}
+
+.return-modal-description {
+    text-align: center;
+    color: #666;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.return-product-list {
+    margin: 20px 0;
+}
+
+.return-product-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px;
+    margin-bottom: 10px;
+    border: 1px solid #eee;
+    border-radius: 10px;
+}
+
+.return-product-item img {
+    width: 62px;
+    height: 62px;
+    object-fit: contain;
+    border-radius: 8px;
+    background: #f8f8f8;
+}
+
+.return-product-item h4 {
+    margin: 0 0 6px;
+    color: #222;
+    font-size: 14px;
+}
+
+.return-product-item p {
+    margin: 0;
+    color: #777;
+    font-size: 13px;
+}
+
+.return-reason-section {
+    margin-top: 20px;
+}
+
+.return-reason-section label {
+    display: block;
+    margin-bottom: 9px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+}
+
+.return-reason-section label span {
+    color: #d93025;
+}
+
+.return-reason-section select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #fff;
+    color: #333;
+    font-size: 14px;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.return-reason-section select:focus {
+    border-color: #416b3e;
+}
+
+.return-modal-warning {
+    margin: 14px 0 20px;
+    color: #777;
+    font-size: 12px;
+}
+
+.return-modal-actions {
+    display: flex;
+    gap: 12px;
+}
+
+.return-modal-actions button {
+    flex: 1;
+    padding: 12px 10px;
+    border: none;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.return-modal-back {
+    background: #f1f1f1;
+    color: #333;
+}
+
+.return-modal-submit {
+    background: #416b3e;
+    color: #fff;
+}
+
+.return-modal-actions button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+@keyframes returnModalAppear {
+    from {
+        opacity: 0;
+        transform: translateY(10px) scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+
+
+
+/* =========================================
+   PROFILE PAGE RESPONSIVENESS
+========================================= */
+
+/* Prevent horizontal overflow */
+* {
+    box-sizing: border-box;
+}
+
+.Profile-belownav {
+    width: 93%;
+    margin: 20px auto;
+}
+
+/* =========================================
+   PROFILE NAVIGATION BUTTONS
+========================================= */
+
+.profile-buttons {
+    width: 93%;
+    margin: 30px auto 50px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+#profile-buttons1,
+#profile-buttons2,
+#profile-buttons3 {
+    width: 130px;
+    height: 40px;
+    margin-right: 0;
+}
+
+/* =========================================
+   PROFILE AND EDIT FORMS
+========================================= */
+
+.profile-fullform,
+.profile-fullform1 {
+    width: 93%;
+    max-width: 1200px;
+    margin: 20px auto;
+}
+
+.profile-sections,
+.profile-sections1 {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.profile-inputs,
+.profile-inputs1 {
+    width: 100%;
+    min-width: 0;
+}
+
+.profile-inputs input,
+.profile-inputs1 input {
+    width: 100%;
+    height: 45px;
+    padding: 8px;
+    font-size: 15px;
+    box-sizing: border-box;
+}
+
+/* Edit and Save buttons */
+
+.profile-editbtn,
+.profile-editbtn1 {
+    width: 93%;
+    margin: 30px auto;
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* =========================================
+   ADDRESS CARD
+========================================= */
+
+.profile-addressmodal {
+    width: 420px;
+    max-width: 93%;
+    margin-left: 3.5%;
+    box-sizing: border-box;
+}
+
+/* Add address button */
+
+#profile-addaddressbtn {
+    right: 3.5%;
+    max-width: 200px;
+}
+
+/* =========================================
+   ADDRESS POPUP
+========================================= */
+
+.address-modal-overlay {
+    padding: 20px;
+}
+
+.address-modal {
+    width: 720px;
+    max-width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.address-form-grid {
+    width: 100%;
+}
+
+.address-form-group {
+    min-width: 0;
+}
+
+.address-form-group input,
+.address-form-group textarea {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* =========================================
+   TABLET RESPONSIVENESS
+   Below 900px
+========================================= */
+
+@media screen and (max-width: 900px) {
+
+    /* Profile form - 2 columns */
+
+    .profile-sections,
+    .profile-sections1 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 20px;
+    }
+
+    .profile-fullform,
+    .profile-fullform1 {
+        width: 90%;
+    }
+
+    /* Address card */
+
+    .profile-addressmodal {
+        width: 420px;
+        max-width: 90%;
+        margin-left: 5%;
+    }
+
+    #profile-addaddressbtn {
+        right: 5%;
+    }
+
+    /* Address form */
+
+    .three-columns {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* =========================================
+   MOBILE RESPONSIVENESS
+   Below 600px
+========================================= */
+
+@media screen and (max-width: 600px) {
+
+    /* Profile heading */
+
+    .Profile-belownav {
+        width: 90%;
+        margin: 20px auto;
+    }
+
+    .Profile-belownav h1 {
+        font-size: 27px;
+    }
+
+    /* Profile navigation buttons */
+
+    .profile-buttons {
+        width: 90%;
+        margin: 25px auto 30px;
+        gap: 8px;
+    }
+
+    #profile-buttons1,
+    #profile-buttons2,
+    #profile-buttons3 {
+        flex: 1;
+        min-width: 0;
+        width: auto;
+        height: 40px;
+        font-size: 14px;
+    }
+
+    /* Profile form - 1 column */
+
+    .profile-fullform,
+    .profile-fullform1 {
+        width: 90%;
+        margin: 20px auto;
+    }
+
+    .profile-sections,
+    .profile-sections1 {
+        grid-template-columns: 1fr;
+        gap: 18px;
+        margin-bottom: 20px;
+    }
+
+    .profile-inputs label,
+    .profile-inputs1 label {
+        font-size: 15px;
+    }
+
+    .profile-inputs input,
+    .profile-inputs1 input {
+        width: 100%;
+        height: 45px;
+        font-size: 14px;
+    }
+
+    /* Edit and Save buttons */
+
+    .profile-editbtn,
+    .profile-editbtn1 {
+        width: 90%;
+        margin: 25px auto;
+    }
+
+    .profile-editbtn button,
+    .profile-editbtn1 button {
+        width: 100%;
+        height: 45px;
+    }
+
+    /* Address card */
+
+    .profile-addressmodal {
+        width: 90%;
+        max-width: 90%;
+        margin: 15px auto;
+    }
+
+    .profile-address-header {
+        flex-wrap: wrap;
+    }
+
+    #profile-addressh3 {
+        font-size: 16px;
+    }
+
+    #profile-address-office,
+    #profile-address-edit {
+        font-size: 13px;
+        padding: 6px 9px;
+    }
+
+    /* Add Address button */
+
+    #profile-addaddressbtn {
+        position: static;
+        display: block;
+        width: 90%;
+        max-width: none;
+        margin: 20px auto;
+    }
+
+    /* Address popup */
+
+    .address-modal-overlay {
+        padding: 12px;
+        align-items: center;
+    }
+
+    .address-modal {
+        width: 100%;
+        max-width: 100%;
+        max-height: 85vh;
+        padding: 16px;
+    }
+
+    /* Address form - 1 column */
+
+    .two-columns,
+    .three-columns {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .address-form-group input {
+        height: 42px;
+        font-size: 13px;
+    }
+
+    .address-form-group textarea {
+        height: 80px;
+    }
+
+    .address-type-options {
+        flex-wrap: wrap;
+    }
+}
+
+/* =========================================
+   SMALL MOBILE
+   Below 380px
+========================================= */
+
+@media screen and (max-width: 380px) {
+
+    .profile-buttons {
+        gap: 5px;
+    }
+
+    #profile-buttons1,
+    #profile-buttons2,
+    #profile-buttons3 {
+        font-size: 12px;
+    }
+
+    .profile-addressmodal {
+        padding: 10px;
+    }
+
+    #profile-addressh3 {
+        font-size: 14px;
+    }
+
+    .address-modal {
+        padding: 12px;
+    }
+}
+
+#profile-primarybtn{
+    border: none;
+    background-color:#00354B;
+    color: white;
+    padding: 6px 10px;
+    border-radius: 7px;
+}

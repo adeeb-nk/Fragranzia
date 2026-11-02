@@ -5,9 +5,8 @@
 
 
 /* =============payment-container-top========== */
-.payment-container-top{
+/* .payment-container-top{
     width: 93%;
-    /* max-width: 1400px; */
     margin: 25px auto;
 
     display: grid;
@@ -15,16 +14,58 @@
     gap: 50px;
 
     align-items: start;
+} */
+.payment-container-top {
+    width: 96%;
+    max-width: 100%;
+    margin: 25px auto 40px;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 100px;
+
+    align-items: start;
+}
+.payment-cart-products{
+    width: 100%;
+    margin: 20px 40px 40px 35px;
+
+    gap: 50px;
+
+    align-items: start;
+}
+
+/* ======================================== */
+.cart-buttonsnew{
+    border: 2px solid;
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    border-radius: 7px;
 }
 
 /* =============payment-products============= */
-.payment-products{
+
+/* .payment-products{
     display: flex;
     gap: 25px;
     box-shadow: 0 2px 5px 2px #dddddd;
     width: 800px;
     align-items: center;
     border-radius: 9px;
+} */
+ .payment-products {
+    display: flex;
+    gap: 25px;
+    box-shadow: 0 2px 5px 2px #dddddd;
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    align-items: center;
+    border-radius: 9px;
+    padding: 30px;
 }
 .payment-productimage{
     width: 240px;
@@ -106,14 +147,22 @@
 
 
 /* ===================price details============= */
-.payment-pricebox {
+/* .payment-pricebox {
     width: 100%;
-    /* border: 1px solid #e5e5e5; */
     box-shadow: 0 2px 5px 2px #dddddd;
     border-radius: 6px;
     background: #fff;
     box-sizing: border-box;
     padding: 30px;
+} */
+.payment-pricebox {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    box-shadow: 0 2px 5px 2px #dddddd;
+    border-radius: 6px;
+    background: #fff;
+    padding: 40px 50px;
 }
 
 .payment-priceheading {
@@ -279,7 +328,6 @@
 }
 
 .payment-personal-address-card-full{
-    overflow-y: scroll;
     height: 200px;
 }
 
@@ -375,4 +423,20 @@
     gap: 50px;
     width: 93%;
     margin: auto;
+}
+
+#unique{
+    margin-bottom: 10px;
+}
+
+.order-message {
+    margin-top: 12px;
+    font-size: 14px;
+    color: #333;
+    overflow-wrap: anywhere;
+}
+
+.payment-method-paybtn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
 }

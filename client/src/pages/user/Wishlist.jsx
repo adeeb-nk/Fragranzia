@@ -4,34 +4,62 @@ import { Link } from "react-router-dom";
 import heroperfume from "../../assets/heroperfume.png"
 import './Wishlist.css'
 
-const cartimg = [
-    {
-        id: 1,
-        image: heroperfume,
-        name: "Autograph eau de parfum 100ml for men",
-        price: "Rs 899",
-        oldprice: "Rs 2000",
-        offer: "61% off",
-    },
-    {
-        id: 2,
-        image: heroperfume,
-        name: "Autograph eau de parfum 100ml for men",
-        price: "Rs 899",
-        oldprice: "Rs 2000",
-        offer: "61% off",
-    },
-    {
-        id: 3,
-        image: heroperfume,
-        name: "Royal eau de parfum 100ml for men",
-        price: "Rs 899",
-        oldprice: "Rs 2000",
-        offer: "61% off",
-    },
-];
+import UserService from "../../services/user-api-services/UserService";
+import { useEffect } from "react";
 
 export const Wishlist = () => {
+
+    const { getWishlist, deletewishlist } = UserService();
+
+    const [whishlists, setwishlists] = useState([])
+
+
+
+    const fetchwishlist = async () => {
+        try {
+            const res = await getWishlist();
+            console.log("Wishlist response:", res);
+
+            setwishlists(
+                Array.isArray(res.wishlist) ? res.wishlist : []
+            );
+        } catch (error) {
+            console.error(
+                "Wishlist error:",
+                error.response?.data || error.message
+            );
+        }
+    };
+
+    //========delete====
+
+
+    const wishlistdelete = async (id) => {
+        try {
+            const response = await deletewishlist(id);
+
+            console.log("Delete response:", response);
+
+            await fetchwishlist();
+        } catch (error) {
+            console.error(
+                "Delete wishlist error:",
+                error.response?.data || error.message
+            );
+
+            alert(
+                error.response?.data?.message ||
+                "Failed to remove product from wishlist"
+            );
+        }
+    };
+
+
+
+
+    useEffect(() => {
+        fetchwishlist();
+    }, []);
 
     return (
         <div>
@@ -41,10 +69,10 @@ export const Wishlist = () => {
                     <div className="home-nav">
                         <nav>
                             <ul>
-                                <li><a href="">Home</a></li>
-                                <li><a href="">Products</a></li>
-                                <li><a href="">Gifting</a></li>
-                                <li><a href="">About</a></li>
+                                <li><Link to='/'>Home</Link></li>
+                                <li><Link to='/Product1'>Products</Link></li>
+                                <li><Link to='/Wishlist'>Wishlist</Link></li>
+                                <li><Link to="/About">About</Link></li>
                             </ul>
                         </nav>
                     </div>
@@ -53,9 +81,9 @@ export const Wishlist = () => {
                         <input type="text" placeholder=" Search Here" />
                     </div>
                     <div className="home-navicons">
-                        <FiShoppingCart />
-                        <FiBell />
-                        <FiUser />
+                        <Link to="/Cart"><FiShoppingCart /></Link>
+                                                <FiBell />
+                                                <Link to="/Profile"><FiUser /></Link>
                     </div>
                 </div>
             </div>
@@ -71,35 +99,59 @@ export const Wishlist = () => {
             <div className="Wishlist-page-layout">
 
                 {/* Left Side: All Cart Items Stacked Vertically */}
+
                 <div className="Wishlist-products">
-                    {cartimg.map((user) => (
-                        <div className="Wishlist-item" key={user.id}>
-                            <div className="Wishlist-image">
-                                <img src={user.image} alt={user.name} />
-                            </div>
-
-                            <div className="Wishlist-item-content">
-                                <h2 className="Wishlist-item-title">{user.name}</h2>
-
-
-                                <div className="Wishlist-price">
-                                    <strong className="Wishlist-price-main">{user.price}</strong>
-                                    <del className="Wishlist-price-old">{user.oldprice}</del>
-                                    <span className="Wishlist-price-offer">{user.offer}</span>
+                    {whishlists.length === 0 ? (
+                        <p>Your wishlist is empty.</p>
+                    ) : (
+                        whishlists.map((product) => (
+                            <div className="Wishlist-item" key={product._id}>
+                                <div className="Wishlist-image">
+                                    <img
+                                        src={product.images}
+                                        alt={product.name}
+                                    />
                                 </div>
 
-                                <div className="Wishlist-allbuttonss">
-                                    <div className="Wishlist-button-1">
-                                        <button>Delete</button>
+                                <div className="Wishlist-item-content">
+                                    <h2 className="Wishlist-item-title">
+                                        {product.name}
+                                    </h2>
+
+                                    <div className="Wishlist-price">
+                                        <strong className="Wishlist-price-main">
+                                            Rs {product.sale_price}
+                                        </strong>
+
+                                        <del className="Wishlist-price-old">
+                                            Rs {product.product_price}
+                                        </del>
+
+                                        <span className="Wishlist-price-offer">
+                                            {product.product_price > 0
+                                                ? Math.round(
+                                                    ((product.product_price - product.sale_price) /
+                                                        product.product_price) * 100
+                                                ) + "% off"
+                                                : ""}
+                                        </span>
                                     </div>
-                                    <div className="Wishlist-button-2">
-                                        <button>Add to Cart</button>
+
+                                    <div className="Wishlist-allbuttonss">
+                                        <div className="Wishlist-button-1">
+                                            <button onClick={() => wishlistdelete(product._id)}>Delete</button>
+                                        </div>
+
+                                        <div className="Wishlist-button-2">
+                                            <button>Add to Cart</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    ))}
+                        ))
+                    )}
                 </div>
+
 
             </div>
 
@@ -110,11 +162,11 @@ export const Wishlist = () => {
                 <div className="home-footercolumn">
                     <h3>Pages</h3>
                     <ul>
-                        <li><Link to="">Home</Link></li>
-                        <li><Link to="">Products</Link></li>
-                        <li><Link to="">Gifting</Link></li>
-                        <li><Link>About</Link></li>
-                        <li><Link>Profile</Link></li>
+                        <li><Link to='/'>Home</Link></li>
+                                                <li><Link to='/Product1'>Products</Link></li>
+                                                <li><Link to='/Wishlist'>Wishlist</Link></li>
+                                                <li><Link to="/About">About</Link></li>
+                                                <li><Link to="/Profile">Profile</Link></li>
                     </ul>
                 </div>
                 <div className="home-footercolumn">
