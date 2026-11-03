@@ -1,362 +1,12 @@
 
-// const mongoose = require("mongoose");
-
-
-// const { User } = require("../models/User");
-// const { Order } = require("../models/Order");
-// const { Address } = require("../models/Address");
-
-// const getAuthenticatedUserId = (req) => {
-//     return (
-//         req.userId ||
-//         req.user?.id ||
-//         req.user?._id ||
-//         req.user?.userId
-//     );
-// };
-
-// // Place order
-// const placeOrder = async (req, res) => {
-//     try {
-//         const userId = getAuthenticatedUserId(req);
-//         const { paymentMethod } = req.body;
-
-//         if (!userId) {
-//             return res.status(401).json({
-//                 message: "User authentication required"
-//             });
-//         }
-
-//         // Only COD is supported in this implementation
-//         if (paymentMethod !== "cod") {
-//             return res.status(400).json({
-//                 message: "Please select Cash on Delivery"
-//             });
-//         }
-
-//         // Find user and populate products in the embedded cart
-//         const user = await User.findById(userId)
-//             .populate("cart.product");
-
-//         if (!user) {
-//             return res.status(404).json({
-//                 message: "User not found"
-//             });
-//         }
-
-//         if (!user.cart || user.cart.length === 0) {
-//             return res.status(400).json({
-//                 message: "Your cart is empty"
-//             });
-//         }
-
-//         // Find the user's primary address
-//         const address = await Address.findOne({
-//             user: user._id,
-//             isDefault: true
-//         });
-
-//         if (!address) {
-//             return res.status(400).json({
-//                 message: "Please set a primary address first"
-//             });
-//         }
-
-//         let totalPrice = 0;
-
-//         // Create order items from every product in the cart
-//         const orderItems = user.cart.map((item) => {
-//             if (!item.product) {
-//                 throw new Error("A cart product could not be found");
-//             }
-
-//             const price = Number(item.product.sale_price);
-//             const quantity = Number(item.quantity);
-
-//             if (
-//                 !Number.isFinite(price) ||
-//                 price < 0 ||
-//                 !Number.isInteger(quantity) ||
-//                 quantity < 1
-//             ) {
-//                 throw new Error("Invalid product price or quantity");
-//             }
-
-//             totalPrice += price * quantity;
-
-//             return {
-//                 product: item.product._id,
-//                 quantity
-//             };
-//         });
-
-//         // Match your frontend delivery charge rule
-//         const deliveryCharge = totalPrice >= 999 ? 0 : 50;
-//         const finalAmount = totalPrice + deliveryCharge;
-
-//         // Save the order in MongoDB
-//         const order = await Order.create({
-//             user: user._id,
-//             orderItems,
-//             shippingAddress: address._id,
-//             paymentMethod: "cod",
-//             paymentStatus: "Pending",
-//             deliveryStatus: "Pending",
-//             totalPrice: finalAmount,
-//             balanceTotal: finalAmount
-//         });
-
-//         // Clear the embedded cart after order creation
-//         user.cart = [];
-//         user.cart_total = 0;
-//         await user.save();
-
-//         // Return saved order with populated product and address details
-//         const savedOrder = await Order.findById(order._id)
-//             .populate("orderItems.product")
-//             .populate("shippingAddress");
-
-//         return res.status(201).json({
-//             message: "Order placed successfully with Cash on Delivery",
-//             order: savedOrder
-//         });
-
-//     } catch (error) {
-//         console.error("Place order error:", error);
-
-//         return res.status(500).json({
-//             message: "Failed to place order"
-//         });
-//     }
-// };
-
-// // Get orders belonging to the authenticated user
-// const getOrders = async (req, res) => {
-//     try {
-//         const userId = getAuthenticatedUserId(req);
-
-//         if (!userId) {
-//             return res.status(401).json({
-//                 message: "User authentication required"
-//             });
-//         }
-
-//         const orders = await Order.find({
-//             user: userId
-//         })
-//             .populate("orderItems.product")
-//             .populate("shippingAddress")
-//             .sort({ createdAt: -1 });
-
-//         return res.status(200).json({ orders });
-
-//     } catch (error) {
-//         console.error("Get orders error:", error);
-
-//         return res.status(500).json({
-//             message: "Failed to fetch orders"
-//         });
-//     }
-// };
-
-// const getAllOrders = async (req, res) => {
-//     try {
-//         const orders = await Order.find()
-//             .populate("user")
-//             .populate("orderItems.product")
-//             .populate("shippingAddress")
-//             .populate("user", "name email phone")
-//             .sort({ createdAt: -1 });
-
-//         return res.status(200).json({ orders });
-
-//     } catch (error) {
-//         console.error("Get all orders error:", error);
-
-//         return res.status(500).json({
-//             message: "Failed to fetch all orders"
-//         });
-//     }
-// };
-
-// // change pending
-
-// const updateOrderStatus = async (req, res) => {
-//     try {
-//         const { deliveryStatus } = req.body;
-
-//         const allowedStatuses = [
-//             "Pending",
-//             "Processing",
-//             "Shipped",
-//             "Out for Delivery",
-//             "Delivered",
-//             "Returned",
-//             "Failed Delivery",
-//             "Cancelled"
-//         ];
-
-//         if (!allowedStatuses.includes(deliveryStatus)) {
-//             return res.status(400).json({
-//                 message: "Invalid delivery status"
-//             });
-//         }
-
-//         const order = await Order.findByIdAndUpdate(
-//             req.params.id,
-//             { deliveryStatus },
-//             { new: true, runValidators: true }
-//         );
-
-//         if (!order) {
-//             return res.status(404).json({
-//                 message: "Order not found"
-//             });
-//         }
-
-//         return res.status(200).json({
-//             message: "Order status updated successfully",
-//             order
-//         });
-//     } catch (error) {
-//         console.error("Update order status error:", error);
-
-//         return res.status(500).json({
-//             message: "Failed to update order status"
-//         });
-//     }
-// };
-
-
-//  // Cancel an order
-// const cancelOrder = async (req, res) => {
-//     try {
-//         const userId = getAuthenticatedUserId(req);
-//         const { id } = req.params;
-
-//         if (!userId) {
-//             return res.status(401).json({
-//                 message: "User authentication required"
-//             });
-//         }
-
-//         if (!mongoose.isValidObjectId(id)) {
-//             return res.status(400).json({
-//                 message: "Invalid order ID"
-//             });
-//         }
-
-//         // Only allow the logged-in user to cancel their own order
-//         const order = await Order.findOne({
-//             _id: id,
-//             user: userId
-//         });
-
-//         if (!order) {
-//             return res.status(404).json({
-//                 message: "Order not found"
-//             });
-//         }
-
-//         if (["Cancelled", "Returned", "Delivered"].includes(order.deliveryStatus)) {
-//             return res.status(400).json({
-//                 message: "This order cannot be cancelled"
-//             });
-//         }
-
-//         order.deliveryStatus = "Cancelled";
-//         await order.save();
-
-//         return res.status(200).json({
-//             message: "Order cancelled successfully",
-//             order
-//         });
-
-//     } catch (error) {
-//         console.error("Cancel order error:", error);
-
-//         return res.status(500).json({
-//             message: "Failed to cancel order"
-//         });
-//     }
-// };
-
-
-// // Request a return for a delivered order
-// const returnOrder = async (req, res) => {
-//     try {
-//         const { returnReason } = req.body;
-
-//         const allowedReasons = [
-//             "Damaged Product",
-//             "Wrong Item Received",
-//             "Defective Product",
-//             "Item Not as Described",
-//             "Size/Color Mismatch",
-//             "Other"
-//         ];
-
-//         if (!allowedReasons.includes(returnReason)) {
-//             return res.status(400).json({
-//                 message: "Please select a valid return reason."
-//             });
-//         }
-
-//         const userId = getAuthenticatedUserId(req);
-
-//         const order = await Order.findOne({
-//             _id: req.params.id,
-//             user: userId
-//         });
-
-//         if (!order) {
-//             return res.status(404).json({
-//                 message: "Order not found."
-//             });
-//         }
-
-//         if (order.deliveryStatus !== "Delivered") {
-//             return res.status(400).json({
-//                 message: "Only delivered orders can be returned."
-//             });
-//         }
-
-//         order.deliveryStatus = "Returned";
-//         order.isReturned = true;
-//         order.returnReason = returnReason;
-//         order.returnStatus = "Requested";
-//         order.returnedAt = new Date();
-
-//         await order.save();
-
-//         return res.status(200).json({
-//             message: "Return request submitted successfully.",
-//             order
-//         });
-//     } catch (error) {
-//         console.error("Return order error:", error);
-
-//         return res.status(500).json({
-//             message: "Failed to submit return request."
-//         });
-//     }
-// };
-
-
-// module.exports = {
-//     placeOrder,
-//     getOrders,
-//     getAllOrders,
-//     updateOrderStatus,
-//     cancelOrder,
-//     returnOrder
-// };
 
 const mongoose = require("mongoose");
 const { User } = require("../models/User");
 const { Order } = require("../models/Order");
 const { Address } = require("../models/Address");
 const { Product } = require("../models/Product");
+
+const razorpay = require("../utils/razorpay");
 
 const getAuthenticatedUserId = (req) =>
   req.userId ||
@@ -387,13 +37,13 @@ const placeOrder = async (req, res) => {
   let cartCleared = false;
 
   try {
-    const { paymentMethod } = req.body;
+    const { paymentMethod , currency="INR" } = req.body;
 
-    if (paymentMethod !== "cod") {
-      return res.status(400).json({
-        message: "Only Cash on Delivery is supported"
-      });
-    }
+    if (!["cod", "UPI"].includes(paymentMethod)) {
+    return res.status(400).json({
+        message: "Invalid payment method"
+    });
+}
 
     const user = await User.findById(userId).populate("cart.product");
 
@@ -480,18 +130,77 @@ const placeOrder = async (req, res) => {
       });
     }
 
-    const order = new Order({
-      user: userId,
-      orderItems,
-      shippingAddress: address._id,
-      paymentMethod: "cod",
-      totalPrice,
-      balanceTotal: totalPrice,
-      deliveryStatus: "Pending"
-    });
+//     const order = new Order({
+//       user: userId,
+//       orderItems,
+//       shippingAddress: address._id,
+//       paymentMethod: "cod",
+//       totalPrice,
+//       balanceTotal: totalPrice,
+//       deliveryStatus: "Pending"
+//     });
+
+//     await order.save();
+//     createdOrderId = order._id;
+
+// let razorpayOrder = null;
+
+//     // Create one Razorpay order if payment is not COD
+//     if (paymentMethod !== "COD") {
+//       const options = {
+//         amount: totalPrice * 100, // in paise
+//         currency,
+//         receipt: `receipt_${placeOrder._id}`,
+//       };
+
+
+//       razorpayOrder = await razorpay.orders.create(options);
+
+
+//       if (!razorpayOrder) {
+//         return res
+//           .status(500)
+//           .json({ message: "Razorpay order creation failed" });
+//       }
+
+//       // Save razorpay ID to all orders
+
+//     }
+
+const order = new Order({
+    user: userId,
+    orderItems,
+    shippingAddress: address._id,
+    paymentMethod: paymentMethod,
+    paymentStatus: paymentMethod === "cod" ? "Pending" : "Pending",
+    totalPrice,
+    balanceTotal: totalPrice,
+    deliveryStatus: "Pending"
+});
+
+await order.save();
+createdOrderId = order._id;
+
+let razorpayOrder = null;
+
+if (paymentMethod === "UPI") {
+
+    const options = {
+        amount: Math.round(totalPrice * 100),
+        currency: currency,
+        receipt: `receipt_${order._id}`
+    };
+
+    razorpayOrder = await razorpay.orders.create(options);
+
+    if (!razorpayOrder) {
+        throw new Error("Razorpay order creation failed");
+    }
+
+    order.razorpay_order_id = razorpayOrder.id;
 
     await order.save();
-    createdOrderId = order._id;
+}
 
     // Clear the cart only after the order has been saved.
     user.cart = [];
@@ -504,8 +213,11 @@ const placeOrder = async (req, res) => {
       .populate("shippingAddress");
 
     return res.status(201).json({
+      success:true,
       message: "Order placed successfully",
-      order: populatedOrder
+      order: populatedOrder,
+      razorpayOrder:razorpayOrder || null,
+      paymentMethod
     });
   } catch (error) {
     console.error("Place order error:", error);

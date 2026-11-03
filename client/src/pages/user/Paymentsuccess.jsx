@@ -204,7 +204,7 @@ export const Paymentsuccess = () => {
                             <h2>Thank You for Ordering!</h2>
                             <p>Your order has been successfully placed. We're preparing it for shipment</p>
                             <div className="paymentsuccess-boxbtn">
-                                <button>Back to Home</button>
+                                <Link to="/"><button>Back to Home</button></Link>
                                 <button>Track Order</button>
                             </div>
                         </div>

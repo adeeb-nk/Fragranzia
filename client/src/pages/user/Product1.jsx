@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import './Product1.css'
 import { Link } from "react-router-dom";
-import { FiShoppingCart, FiBell, FiUser, FiSearch, FiMail, FiPhone, FiInstagram, FiFacebook, FiYoutube, FiLinkedin, FiChevronRight, FiSliders } from 'react-icons/fi'
+import { FiShoppingCart, FiBell, FiUser, FiSearch, FiMail, FiPhone, FiInstagram, FiFacebook, FiYoutube, FiLinkedin, FiChevronRight, FiSliders, FiHeart, FiShare2 } from 'react-icons/fi'
 import heroperfume from "../../assets/heroperfume.png"
 import axios from 'axios'
 
@@ -36,7 +36,7 @@ const sortedProducts = [...products].sort((a, b) => {
     }
 });
 
-    const { getProduct, addCart } = UserService();
+    const { getProduct, addCart, addwhishlist} = UserService();
 
     const fetchproducts = async () => {
         try {
@@ -59,6 +59,25 @@ const sortedProducts = [...products].sort((a, b) => {
         let response = await addCart(id);
 
     }
+
+    const addtowhishlist = async (id) => {
+        try {
+            const response = await addwhishlist(id);
+
+            alert(response.message || "Product added to wishlist!");
+            console.log("Wishlist response:", response);
+        } catch (error) {
+            console.error(
+                "Wishlist error:",
+                error.response?.data || error.message
+            );
+
+            alert(
+                error.response?.data?.message ||
+                "Failed to add product to wishlist. Please log in."
+            );
+        }
+    };
 
     useEffect(() => {
         fetchproducts();
@@ -167,12 +186,15 @@ const sortedProducts = [...products].sort((a, b) => {
 
             <div className="product1-grid">
                 {sortedProducts.map((product) => (
-
+                    
 
 
                     <div className="product1-fullcard">
                         <Link to={`/Product2/${product._id}`}>
                             <div className="product1-card">
+                                <div className="product1-iconsss">
+                                    <button onClick={() => addtowhishlist(product._id)}><FiHeart /></button>
+                            </div>
                                 <img
                                     src={
                                         product.images?.startsWith("http")
@@ -185,6 +207,7 @@ const sortedProducts = [...products].sort((a, b) => {
                         </Link>
                         <div className="product1-imagedetails">
                             <p>{product.name}</p>
+                            
                             <div className="product1-price">
                                 <strong>RS {product.sale_price}</strong>
                                 <del>RS {product.product_price}</del>
