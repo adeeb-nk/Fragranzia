@@ -9,11 +9,14 @@ import { useEffect } from "react";
 
 export const Wishlist = () => {
 
-    const { getWishlist, deletewishlist } = UserService();
+    const { getWishlist, deletewishlist, addCart} = UserService();
 
     const [whishlists, setwishlists] = useState([])
 
+    const addtoCart = async (id) => {
+        let response = await addCart(id);
 
+    }
 
     const fetchwishlist = async () => {
         try {
@@ -143,7 +146,7 @@ export const Wishlist = () => {
                                         </div>
 
                                         <div className="Wishlist-button-2">
-                                            <button>Add to Cart</button>
+                                            <button onClick={() => { addtoCart(product._id) }}>Add to Cart</button>
                                         </div>
                                     </div>
                                 </div>

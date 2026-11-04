@@ -24,6 +24,8 @@ export const Profile = () => {
 
     const { getProfile, changeprofile, addaddress, getaddress, changeaddress, setPrimaryAddress, getOrders, cancelOrder, returnOrder } = UserService();
 
+    const [activeTab, setActiveTab] = useState("profile");
+
     const [profileData, setProfileData] = useState({
         name: "",
         email: "",
@@ -398,9 +400,56 @@ export const Profile = () => {
 
             {/* ================button================ */}
             <div className="profile-buttons">
-                <button id="profile-buttons1" onClick={() => { setshowProfileModal(true); setAddressmodal(false); setshoworders(false); setshowEditModal(false); }}>Profile</button>
+                {/* <button id="profile-buttons1" onClick={() => { setshowProfileModal(true); setAddressmodal(false); setshoworders(false); setshowEditModal(false); }}>Profile</button>
                 <button id="profile-buttons2" onClick={() => { setAddressmodal(true); setshowProfileModal(false); setshowEditModal(false); setshoworders(false); }}>Address</button>
-                <button id="profile-buttons3" onClick={() => { setshoworders(true); setshowProfileModal(false); setshowEditModal(false); setAddressmodal(false); setShowAddressModal(false); fetchorder(); }}>My Orders</button>
+                <button id="profile-buttons3" onClick={() => { setshoworders(true); setshowProfileModal(false); setshowEditModal(false); setAddressmodal(false); setShowAddressModal(false); fetchorder(); }}>My Orders</button> */}
+                <div className="profile-buttons">
+
+    <button
+        id="profile-buttons1"
+        className={activeTab === "profile" ? "active" : ""}
+        onClick={() => {
+            setActiveTab("profile");
+            setshowProfileModal(true);
+            setAddressmodal(false);
+            setshoworders(false);
+            setshowEditModal(false);
+        }}
+    >
+        Profile
+    </button>
+
+    <button
+        id="profile-buttons2"
+        className={activeTab === "address" ? "active" : ""}
+        onClick={() => {
+            setActiveTab("address");
+            setAddressmodal(true);
+            setshowProfileModal(false);
+            setshowEditModal(false);
+            setshoworders(false);
+        }}
+    >
+        Address
+    </button>
+
+    <button
+        id="profile-buttons3"
+        className={activeTab === "orders" ? "active" : ""}
+        onClick={() => {
+            setActiveTab("orders");
+            setshoworders(true);
+            setshowProfileModal(false);
+            setshowEditModal(false);
+            setAddressmodal(false);
+            setShowAddressModal(false);
+            fetchorder();
+        }}
+    >
+        My Orders
+    </button>
+
+</div>
             </div>
 
             {/* =========================form================ */}
@@ -540,12 +589,12 @@ export const Profile = () => {
                                         Address {index + 1}
                                     </h3>
 
-                                    <button
+                                    {/* <button
                                         id="profile-address-office"
                                         type="button"
                                     >
                                         {address.addressType || "Home"}
-                                    </button>
+                                    </button> */}
 
                                     <button
                                         id="profile-address-edit"

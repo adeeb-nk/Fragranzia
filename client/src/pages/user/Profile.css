@@ -12,7 +12,7 @@
 }
 
 /* ==============buttons===================== */
-.profile-buttons{
+/* .profile-buttons{
     margin: 30px 0 50px 55px;
 }
 #profile-buttons1{
@@ -43,6 +43,26 @@
     font-size: 17px;
     border: 1px solid #00354B;
     border-radius: 7px;
+} */
+
+.profile-buttons button {
+    height: 40px;
+    width: 130px;
+    background-color: white;
+    color: #00354B;
+    font-size: 17px;
+    border: 1px solid #00354B;
+    border-radius: 7px;
+    margin-right: 20px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+/* Active button */
+.profile-buttons button.active {
+    background-color: #00354B;
+    color: white;
+    border: 1px solid #00354B;
 }
 
 /* =============form================== */
@@ -226,6 +246,9 @@
     top: 200px;
 }
 
+.profile-address-list{
+    display: flex;
+}
 
 /* ================adress modal form================ */
 
