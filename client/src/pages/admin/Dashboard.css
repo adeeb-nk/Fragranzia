@@ -1,0 +1,737 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+.frag-dashboard {
+    display: flex;
+    min-height: 100vh;
+    background: #f5f7f8;
+    font-family: 'Inter', sans-serif;
+    color: #25313d;
+}
+
+/* ================= SIDEBAR ================= */
+
+.frag-sidebar {
+    width: 225px;
+    min-width: 225px;
+    background: #ffffff;
+    border-right: 1px solid #e9edef;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 27px 17px 15px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 100;
+}
+
+.frag-logo {
+    padding: 3px 9px 35px;
+}
+
+.frag-logo h2 {
+    color: #269d62;
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    margin: 0;
+}
+
+.frag-logo span {
+    display: block;
+    color: #a0a8b0;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-top: 5px;
+}
+
+.frag-navigation {
+    flex: 1;
+}
+
+.frag-nav-label {
+    font-size: 10px;
+    color: #a2aab2;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin: 0 0 13px 10px;
+}
+
+.frag-navigation ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.frag-navigation ul li {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    padding: 13px 12px;
+    margin-bottom: 7px;
+    border-radius: 8px;
+    color: #414a53;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+.frag-navigation ul li svg {
+    font-size: 19px;
+    flex-shrink: 0;
+}
+
+.frag-navigation ul li a {
+    text-decoration: none;
+    color: inherit;
+    font-size: 13px;
+    font-weight: 500;
+    width: 100%;
+}
+
+.frag-navigation ul li:hover {
+    background: #edf8f1;
+    color: #269d62;
+}
+
+.frag-navigation ul li.active {
+    background: #eaf6ef;
+    color: #269d62;
+    font-weight: 700;
+}
+
+.frag-navigation ul li.active a {
+    font-weight: 700;
+}
+
+/* ================= SIDEBAR BOTTOM ================= */
+
+.frag-sidebar-bottom {
+    margin-top: auto;
+}
+
+.frag-admin-profile {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    padding: 12px 5px 18px;
+    border-top: 1px solid #edf0f2;
+}
+
+.frag-admin-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #e8f6ee;
+    color: #269d62;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+}
+
+.frag-admin-profile h4 {
+    margin: 0;
+    font-size: 12px;
+}
+
+.frag-admin-profile p {
+    margin: 4px 0 0;
+    font-size: 10px;
+    color: #929ca5;
+}
+
+.frag-logout {
+    width: 100%;
+    height: 46px;
+    border: none;
+    background: #269f59;
+    color: white;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.frag-logout:hover {
+    background: #1c8549;
+}
+
+/* ================= MAIN ================= */
+
+.frag-main {
+    margin-left: 225px;
+    width: calc(100% - 225px);
+    padding: 37px 38px;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* ================= HEADER ================= */
+
+.frag-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 32px;
+}
+
+.frag-header-small {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    color: #9aa4ac;
+    margin: 0 0 9px;
+}
+
+.frag-header h1 {
+    font-size: 27px;
+    font-weight: 800;
+    margin: 0;
+    color: #202d38;
+}
+
+.frag-date {
+    font-size: 12px;
+    color: #89949e;
+    margin-top: 8px;
+}
+
+.frag-system-status {
+    background: #ffffff;
+    border: 1px solid #e9edef;
+    border-radius: 30px;
+    padding: 11px 17px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    color: #46535e;
+    font-size: 11px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.03);
+}
+
+.frag-system-status svg {
+    color: #36ae83;
+    font-size: 16px;
+}
+
+/* ================= STAT CARDS ================= */
+
+.frag-stats {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 19px;
+    margin-bottom: 22px;
+}
+
+.frag-stat-card {
+    min-height: 116px;
+    padding: 23px 20px;
+    background: white;
+    border: 1px solid #e9edef;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.025);
+    transition: 0.25s ease;
+}
+
+.frag-stat-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 7px 20px rgba(0,0,0,0.06);
+}
+
+.frag-stat-info {
+    min-width: 0;
+}
+
+.frag-stat-info p {
+    font-size: 10px;
+    color: #9aa4ac;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    margin: 0 0 10px;
+}
+
+.frag-stat-info h2 {
+    font-size: 24px;
+    font-weight: 800;
+    color: #25313d;
+    margin: 0 0 9px;
+    white-space: nowrap;
+}
+
+.frag-stat-info span {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 10px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.stat-green {
+    color: #35a77a;
+}
+
+.stat-blue {
+    color: #5185df;
+}
+
+.stat-purple {
+    color: #a276d9;
+}
+
+.stat-orange {
+    color: #d99b39;
+}
+
+.frag-stat-icon {
+    width: 55px;
+    height: 55px;
+    min-width: 55px;
+    border-radius: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 23px;
+}
+
+.sales-icon {
+    color: #35ae80;
+    background: #edfaf4;
+}
+
+.orders-icon {
+    color: #5685e9;
+    background: #eff5ff;
+}
+
+.products-icon {
+    color: #a16cde;
+    background: #f7f1ff;
+}
+
+.customers-icon {
+    color: #e0a33c;
+    background: #fffaeb;
+}
+
+/* ================= CHARTS ================= */
+
+.frag-chart-section {
+    display: grid;
+    grid-template-columns: 1.8fr 1fr;
+    gap: 20px;
+    margin-bottom: 22px;
+}
+
+.frag-chart-card {
+    background: white;
+    border: 1px solid #e9edef;
+    border-radius: 14px;
+    padding: 23px 21px;
+    min-width: 0;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.025);
+}
+
+.frag-card-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 24px;
+}
+
+.frag-card-heading h3 {
+    font-size: 15px;
+    font-weight: 700;
+    color: #293641;
+    margin: 0;
+}
+
+.frag-card-heading p {
+    font-size: 10px;
+    color: #9aa4ac;
+    margin: 6px 0 0;
+}
+
+.frag-realtime {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: #675bdf;
+    background: #f3f1ff;
+    padding: 7px 10px;
+    border-radius: 5px;
+    font-size: 9px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+/* ================= LINE CHART ================= */
+
+.frag-line-chart {
+    width: 100%;
+    height: 210px;
+}
+
+.frag-line-chart svg {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+}
+
+.frag-chart-labels {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+    margin-top: 12px;
+}
+
+.frag-chart-labels div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.frag-chart-labels span {
+    color: #8c969f;
+    font-size: 9px;
+    white-space: nowrap;
+}
+
+.frag-chart-labels strong {
+    font-size: 10px;
+    color: #6257df;
+}
+
+/* ================= DONUT CHART ================= */
+
+.category-card {
+    display: flex;
+    flex-direction: column;
+}
+
+.frag-donut {
+    width: 205px;
+    height: 205px;
+    max-width: 100%;
+    border-radius: 50%;
+    margin: 5px auto 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.frag-donut::before {
+    content: "";
+    position: absolute;
+    width: 65%;
+    height: 65%;
+    background: white;
+    border-radius: 50%;
+}
+
+.frag-donut-center {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+}
+
+.frag-donut-center span {
+    font-size: 10px;
+    color: #929ca5;
+}
+
+.frag-donut-center h3 {
+    font-size: 19px;
+    margin: 6px 0 0;
+    font-weight: 800;
+    color: #27333e;
+}
+
+.frag-category-legend {
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+    margin-top: 5px;
+}
+
+.frag-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 10px;
+    color: #68747d;
+}
+
+.frag-legend-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 2px;
+    flex-shrink: 0;
+}
+
+.frag-legend-item strong {
+    margin-left: auto;
+    color: #394550;
+    font-size: 10px;
+}
+
+/* ================= RECENT ORDERS ================= */
+
+.frag-recent-card {
+    background: white;
+    border: 1px solid #e9edef;
+    border-radius: 14px;
+    padding: 23px 21px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.025);
+}
+
+.frag-recent-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    gap: 10px;
+}
+
+.frag-recent-heading h3 {
+    margin: 0;
+    font-size: 15px;
+    color: #293641;
+}
+
+.frag-recent-heading p {
+    font-size: 10px;
+    color: #929ca5;
+    margin: 6px 0 0;
+}
+
+.frag-recent-heading a {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #269d62;
+    font-size: 11px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.frag-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.frag-recent-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    min-width: 620px;
+}
+
+.frag-recent-table th {
+    padding: 14px 12px;
+    background: #f8faf9;
+    color: #919ca4;
+    font-size: 9px;
+    letter-spacing: 0.6px;
+    font-weight: 700;
+}
+
+.frag-recent-table td {
+    padding: 16px 12px;
+    border-bottom: 1px solid #f0f2f3;
+    font-size: 11px;
+    color: #53606b;
+}
+
+.frag-order-id {
+    color: #269d62 !important;
+    font-weight: 700;
+}
+
+.frag-amount {
+    font-weight: 700;
+    color: #26343e !important;
+}
+
+.frag-status {
+    display: inline-block;
+    padding: 6px 10px;
+    border-radius: 20px;
+    font-size: 9px;
+    font-weight: 600;
+    white-space: nowrap;
+    background: #f1f3f5;
+    color: #64717b;
+}
+
+.frag-status.delivered {
+    background: #eaf8f0;
+    color: #279d62;
+}
+
+.frag-status.pending {
+    background: #fff6e6;
+    color: #d49a32;
+}
+
+.frag-status.processing,
+.frag-status.shipped,
+.frag-status.out-for-delivery {
+    background: #edf4ff;
+    color: #5685d9;
+}
+
+.frag-status.cancelled,
+.frag-status.failed-delivery {
+    background: #fff0f0;
+    color: #df6868;
+}
+
+.frag-status.returned {
+    background: #f5efff;
+    color: #9866cb;
+}
+
+.frag-empty {
+    text-align: center;
+    padding: 35px !important;
+    color: #929ca5 !important;
+}
+
+.frag-loading {
+    background: white;
+    border-radius: 12px;
+    padding: 60px;
+    text-align: center;
+    color: #269d62;
+    font-weight: 600;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 1150px) {
+
+    .frag-main {
+        padding: 30px 24px;
+    }
+
+    .frag-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .frag-chart-section {
+        grid-template-columns: 1fr;
+    }
+
+    .category-card {
+        min-height: 350px;
+    }
+
+}
+
+@media (max-width: 700px) {
+
+    .frag-sidebar {
+        width: 70px;
+        min-width: 70px;
+        padding: 20px 8px;
+    }
+
+    .frag-logo {
+        padding: 5px 0 30px;
+        text-align: center;
+    }
+
+    .frag-logo h2 {
+        font-size: 11px;
+        letter-spacing: 0;
+    }
+
+    .frag-logo span,
+    .frag-nav-label,
+    .frag-navigation ul li a,
+    .frag-admin-profile,
+    .frag-logout {
+        display: none;
+    }
+
+    .frag-navigation ul li {
+        justify-content: center;
+        padding: 14px 0;
+    }
+
+    .frag-navigation ul li svg {
+        font-size: 21px;
+    }
+
+    .frag-main {
+        margin-left: 70px;
+        width: calc(100% - 70px);
+        padding: 24px 14px;
+    }
+
+    .frag-header {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .frag-header h1 {
+        font-size: 23px;
+    }
+
+    .frag-stats {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .frag-stat-card {
+        min-height: 105px;
+    }
+
+    .frag-chart-card,
+    .frag-recent-card {
+        padding: 17px 12px;
+    }
+
+    .frag-card-heading h3 {
+        font-size: 13px;
+    }
+
+    .frag-line-chart {
+        height: 170px;
+    }
+
+    .frag-chart-labels span {
+        font-size: 8px;
+    }
+
+    .frag-donut {
+        width: 175px;
+        height: 175px;
+    }
+
+    .frag-recent-heading {
+        align-items: flex-start;
+    }
+
+}

@@ -23,6 +23,7 @@ import { Order } from './pages/admin/Order.jsx'
 import LoginProtectedRoute from './Components/protected-route/UserProtectedRoute.jsx'
 import AdminProtectedRoute from './Components/protected-route/AdminProtectedRoute.jsx'
 import { ToastContainer } from 'react-toastify'
+import Dashboard from "./pages/admin/Dashboard";
 
 function App() {
 
@@ -56,6 +57,7 @@ function App() {
           <Route path='/Productadd' element={<Productadd />} />
           <Route path='/User' element={<User />} />
           <Route path='/Order' element={<Order />} />
+          <Route path="/dashboard" element={<Dashboard />} />
         </Route>
       </Routes>
 
