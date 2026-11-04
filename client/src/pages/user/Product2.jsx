@@ -4,7 +4,7 @@ import { Link, useParams } from "react-router-dom";
 import { FiShoppingCart, FiBell, FiUser, FiSearch, FiTruck, FiShield, FiHeadphones, FiMail, FiPhone, FiInstagram, FiFacebook, FiYoutube, FiLinkedin, FiChevronLeft, FiChevronRight, FiHeart, FiShare2, FiStar } from 'react-icons/fi'
 import { FaTag } from "react-icons/fa"
 import axios from 'axios'
-
+import {toast} from "react-toastify"
 
 
 import UserService from "../../services/user-api-services/UserService";
@@ -28,7 +28,8 @@ export const Product2 = () => {
         try {
             const response = await addwhishlist(id);
 
-            alert(response.message || "Product added to wishlist!");
+            //alert(response.message || "Product added to wishlist!");
+            toast.success(response.message ||'Successfully added to Whishlist!')
             console.log("Wishlist response:", response);
         } catch (error) {
             console.error(

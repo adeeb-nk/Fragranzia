@@ -440,7 +440,7 @@ const handlePayment = async (data) => {
                 </div>
 
                 {/* Price details */}
-                <div className="cart-checkout-full">
+                <div className="payment-cart-checkout-full">
                     <div className="cart-checkout">
                         <h2>Price Details</h2>
 
@@ -486,35 +486,6 @@ const handlePayment = async (data) => {
                         Personal Details
                     </h2>
 
-                    <div className="payment-personal-tabs">
-                        <button
-                            type="button"
-                            className="payment-personal-addbtn"
-                        >
-                            Personal Details
-                        </button>
-
-                        <button
-                            type="button"
-                            className="payment-personal-tab payment-personal-active"
-                        >
-                            Home
-                        </button>
-
-                        <button
-                            type="button"
-                            className="payment-personal-tab"
-                        >
-                            Office
-                        </button>
-
-                        <button
-                            type="button"
-                            className="payment-personal-tab"
-                        >
-                            Other
-                        </button>
-                    </div>
 
                     <h2 className="payment-personal-address-heading">
                         Address
@@ -582,6 +553,27 @@ const handlePayment = async (data) => {
             value="UPI"
             checked={paymentMethod === "UPI"}
             onChange={() => setPaymentMethod("UPI")}
+        />
+    </label>
+
+    <label className="payment-method-row">
+        <span>PhonePe / Amazon Pay</span>
+        <input
+            type="radio"
+        />
+    </label>
+
+    <label className="payment-method-row">
+        <span>Debit / Credit card</span>
+        <input
+            type="radio"
+        />
+    </label>
+
+    <label className="payment-method-row">
+        <span>Net Banking</span>
+        <input
+            type="radio"
         />
     </label>
 

@@ -22,12 +22,12 @@
 
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 100px;
+    gap: 15px;
 
     align-items: start;
 }
 .payment-cart-products{
-    width: 100%;
+    width: 790px;
     margin: 20px 40px 40px 35px;
 
     gap: 50px;
@@ -439,4 +439,8 @@
 .payment-method-paybtn:disabled {
     opacity: 0.6;
     cursor: not-allowed;
+}
+
+.payment-cart-checkout-full{
+    margin-right: 30px;
 }

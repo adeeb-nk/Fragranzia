@@ -22,6 +22,7 @@ import { Profile } from './pages/user/Profile.jsx'
 import { Order } from './pages/admin/Order.jsx'
 import LoginProtectedRoute from './Components/protected-route/UserProtectedRoute.jsx'
 import AdminProtectedRoute from './Components/protected-route/AdminProtectedRoute.jsx'
+import { ToastContainer } from 'react-toastify'
 
 function App() {
 
@@ -58,6 +59,10 @@ function App() {
         </Route>
       </Routes>
 
+      <ToastContainer
+        position="top-center"
+        reverseOrder={false}
+      />
 
     </>
   )

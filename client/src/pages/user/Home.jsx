@@ -13,7 +13,7 @@ import perfumees1 from "../../assets/perfumees1.webp"
 import perfumees2 from "../../assets/perfumees2.jpg"
 import catetogory1 from "../../assets/catetogory1.jpg"
 import { Badge } from "lucide-react";
-
+import {toast} from "react-toastify"
 
 
 
@@ -45,7 +45,7 @@ export const Home = () => {
 
     const addtoCart = async (id) => {
         let response = await addCart(id);
-
+        toast.success('Successfully added to Cart!')
     }
 
     useEffect(() => {

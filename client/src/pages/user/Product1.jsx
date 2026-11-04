@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { FiShoppingCart, FiBell, FiUser, FiSearch, FiMail, FiPhone, FiInstagram, FiFacebook, FiYoutube, FiLinkedin, FiChevronRight, FiSliders, FiHeart, FiShare2 } from 'react-icons/fi'
 import heroperfume from "../../assets/heroperfume.png"
 import axios from 'axios'
-
+import {toast} from "react-toastify"
 
 const API_URL = "http://localhost:5000/product"
 
@@ -57,14 +57,15 @@ const sortedProducts = [...products].sort((a, b) => {
 
     const addtoCart = async (id) => {
         let response = await addCart(id);
-
+        toast.success('Successfully added to Cart!')
     }
 
     const addtowhishlist = async (id) => {
         try {
             const response = await addwhishlist(id);
 
-            alert(response.message || "Product added to wishlist!");
+            // alert(response.message || "Product added to wishlist!");
+            toast.success(response.message ||'Successfully added to Whishlist!')
             console.log("Wishlist response:", response);
         } catch (error) {
             console.error(
@@ -72,10 +73,13 @@ const sortedProducts = [...products].sort((a, b) => {
                 error.response?.data || error.message
             );
 
-            alert(
-                error.response?.data?.message ||
-                "Failed to add product to wishlist. Please log in."
-            );
+            // alert(
+            //     error.response?.data?.message ||
+            //     "Failed to add product to wishlist. Please log in."
+            // );
+            toast.error(error.response?.data?.message ||
+                "Failed to add product to wishlist. Please log in.")
+
         }
     };
 
