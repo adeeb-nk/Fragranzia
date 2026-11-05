@@ -76,7 +76,8 @@ export const Category = () => {
     return (
 
         <div className="category-full">
-            <div className="category-fullnav">
+
+            {/* <div className="category-fullnav">
                 <h2>Dashtar</h2>
                 <div className="category-nav">
                     <nav>
@@ -84,14 +85,78 @@ export const Category = () => {
                             <li><MdDashboard /><Link>Dashboard</Link></li>
                             <li><MdInventory2 /><Link to="/Productadmin1">Products</Link></li>
                             <li><MdCategory /><Link to="/Category">Categories</Link></li>
-                            <li><MdLocalOffer /><Link>Offers</Link></li>
                             <li><MdPeople /><Link to="/User">Customers</Link></li>
                             <li><MdShoppingCart /><Link to="/Order">Orders</Link></li>
                         </ul>
                     </nav>
                 </div>
                 <button id="category-logout"><MdLogout />Log Out</button>
-            </div>
+            </div> */}
+            <aside className="category-fullnav">
+            
+                    <div className="frag-logo">
+                      <h2>Dashtar</h2>
+                      <span>ADMIN PANEL</span>
+                    </div>
+            
+                    <nav className="frag-navigation">
+            
+                      <p className="frag-nav-label">MAIN MENU</p>
+            
+                      <ul>
+            
+                        <li className="active">
+                          <MdDashboard />
+                          <Link to="/dashboard">Dashboard</Link>
+                        </li>
+            
+                        <li>
+                          <MdInventory2 />
+                          <Link to="/Productadmin1">Products</Link>
+                        </li>
+            
+                        <li>
+                          <MdCategory />
+                          <Link to="/Category">Categories</Link>
+                        </li>
+            
+            
+                        <li>
+                          <MdPeople />
+                          <Link to="/User">Customers</Link>
+                        </li>
+            
+                        <li>
+                          <MdShoppingCart />
+                          <Link to="/Order">Orders</Link>
+                        </li>
+            
+                      </ul>
+            
+                    </nav>
+            
+                    <div className="frag-sidebar-bottom">
+            
+                      <div className="frag-admin-profile">
+                        <div className="frag-admin-avatar">F</div>
+                        <div>
+                          <h4>Admin</h4>
+                          <p>Store Manager</p>
+                        </div>
+                      </div>
+            
+                      <button
+                        className="frag-logout"
+                      >
+                        <MdLogout />
+                        Log Out
+                      </button>
+            
+                    </div>
+            
+                  </aside>
+
+        
 
             <div className="category-details">
                 <div className="category-eiabutn">

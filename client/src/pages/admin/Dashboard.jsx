@@ -283,7 +283,7 @@ const Dashboard = ({ onLogout }) => {
       <aside className="frag-sidebar">
 
         <div className="frag-logo">
-          <h2>FRAGRANZIA</h2>
+          <h2>Dashtar</h2>
           <span>ADMIN PANEL</span>
         </div>
 
@@ -308,10 +308,6 @@ const Dashboard = ({ onLogout }) => {
               <Link to="/Category">Categories</Link>
             </li>
 
-            <li>
-              <MdLocalOffer />
-              <Link to="/Offer">Offers</Link>
-            </li>
 
             <li>
               <MdPeople />
@@ -339,7 +335,6 @@ const Dashboard = ({ onLogout }) => {
 
           <button
             className="frag-logout"
-            onClick={onLogout}
           >
             <MdLogout />
             Log Out
