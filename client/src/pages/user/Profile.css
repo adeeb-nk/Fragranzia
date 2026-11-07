@@ -91,6 +91,8 @@
     display: flex;
     justify-content: flex-end;
     margin-top: 30px;
+    position: absolute;
+    right: 130px;
 }
 .profile-editbtn button{
     height: 40px;
@@ -100,6 +102,23 @@
     background-color: white;
     border-radius: 7px;
     font-size: 18px;
+}
+
+.profile-buttons1{
+    width: 96%;
+    display: flex;
+    justify-content: flex-end;
+    position: absolute;
+    top: 130px;
+    right: 130px;
+}
+.profile-buttons1 button{
+    height: 40px;
+    width: 130px;
+    background-color: red;
+    border: none;
+    border-radius: 8px;
+    color: white;
 }
 
 /* =============form save modal================== */

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import './Profile.css'
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FiShoppingCart, FiBell, FiUser, FiSearch, FiMail, FiPhone, FiInstagram, FiFacebook, FiYoutube, FiLinkedin, FiChevronRight, FiSliders } from 'react-icons/fi'
 import heroperfume from "../../assets/heroperfume.png"
 import axios from 'axios'
@@ -356,6 +356,15 @@ export const Profile = () => {
         }
     };
 
+    const navigate = useNavigate();
+
+    const handleLogout = () => {
+        localStorage.removeItem("token");
+        localStorage.removeItem("role");
+
+        navigate("/Login");
+    };
+
 
     useEffect(() => {
         fetchProfile();
@@ -384,10 +393,11 @@ export const Profile = () => {
                     </div>
                     <div className="home-navicons">
                         <Link to="/Cart"><FiShoppingCart /></Link>
-                                                <FiBell />
-                                                <Link to="/Profile"><FiUser /></Link>
+                        <FiBell />
+                        <Link to="/Profile"><FiUser /></Link>
                     </div>
                 </div>
+                
             </div>
 
 
@@ -405,56 +415,62 @@ export const Profile = () => {
                 <button id="profile-buttons3" onClick={() => { setshoworders(true); setshowProfileModal(false); setshowEditModal(false); setAddressmodal(false); setShowAddressModal(false); fetchorder(); }}>My Orders</button> */}
                 <div className="profile-buttons">
 
-    <button
-        id="profile-buttons1"
-        className={activeTab === "profile" ? "active" : ""}
-        onClick={() => {
-            setActiveTab("profile");
-            setshowProfileModal(true);
-            setAddressmodal(false);
-            setshoworders(false);
-            setshowEditModal(false);
-        }}
-    >
-        Profile
-    </button>
+                    <button
+                        id="profile-buttons1"
+                        className={activeTab === "profile" ? "active" : ""}
+                        onClick={() => {
+                            setActiveTab("profile");
+                            setshowProfileModal(true);
+                            setAddressmodal(false);
+                            setshoworders(false);
+                            setshowEditModal(false);
+                        }}
+                    >
+                        Profile
+                    </button>
 
-    <button
-        id="profile-buttons2"
-        className={activeTab === "address" ? "active" : ""}
-        onClick={() => {
-            setActiveTab("address");
-            setAddressmodal(true);
-            setshowProfileModal(false);
-            setshowEditModal(false);
-            setshoworders(false);
-        }}
-    >
-        Address
-    </button>
+                    <button
+                        id="profile-buttons2"
+                        className={activeTab === "address" ? "active" : ""}
+                        onClick={() => {
+                            setActiveTab("address");
+                            setAddressmodal(true);
+                            setshowProfileModal(false);
+                            setshowEditModal(false);
+                            setshoworders(false);
+                        }}
+                    >
+                        Address
+                    </button>
 
-    <button
-        id="profile-buttons3"
-        className={activeTab === "orders" ? "active" : ""}
-        onClick={() => {
-            setActiveTab("orders");
-            setshoworders(true);
-            setshowProfileModal(false);
-            setshowEditModal(false);
-            setAddressmodal(false);
-            setShowAddressModal(false);
-            fetchorder();
-        }}
-    >
-        My Orders
-    </button>
+                    <button
+                        id="profile-buttons3"
+                        className={activeTab === "orders" ? "active" : ""}
+                        onClick={() => {
+                            setActiveTab("orders");
+                            setshoworders(true);
+                            setshowProfileModal(false);
+                            setshowEditModal(false);
+                            setAddressmodal(false);
+                            setShowAddressModal(false);
+                            fetchorder();
+                        }}
+                    >
+                        My Orders
+                    </button>
+                    
 
-</div>
+                </div>
+
             </div>
+
 
             {/* =========================form================ */}
             {showProfileModal && (
                 <div>
+                    <div className="profile-buttons1">
+                        <button onClick={handleLogout}>Log Out</button>
+                    </div>
                     <form action="" className="profile-fullform">
                         <div className="profile-sections">
                             <div className="profile-inputs">
