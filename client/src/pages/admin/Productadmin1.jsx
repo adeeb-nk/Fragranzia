@@ -212,10 +212,7 @@ export const Productadmin1 = () => {
 
             <div className="productadmin1-details">
                 <div className="productadmin1-eiabutn">
-                    <div className="productadmin1-expoimpo">
-                        <button>Export</button>
-                        <button>Import</button>
-                    </div>
+                    
                     <Link to="/Productadd"><button id="productadmin1-addbtn">Add Product</button></Link>
                 </div>
 

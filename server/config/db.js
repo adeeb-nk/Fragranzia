@@ -1,13 +1,29 @@
+// const mongoose = require("mongoose");
+
+// const connectDb=async ()=>{
+//     try{
+//         const connection = await mongoose.connect(process.env.MONGO_URI);
+//         console.log("Database Connected: ");
+        
+//     }catch(error){
+//         console.log(error);
+        
+//     }
+// };
+
+// module.exports = connectDb;
 const mongoose = require("mongoose");
 
-const connectDb=async ()=>{
-    try{
-        const connection = await mongoose.connect(process.env.MONGO_URI);
-        console.log("Database Connected: ");
-        
-    }catch(error){
-        console.log(error);
-        
+const connectDb = async () => {
+    try {
+        await mongoose.connect(process.env.MONGO_URI);
+
+        console.log("Database Connected Successfully");
+
+    } catch (error) {
+        console.error("MongoDB Connection Failed:", error.message);
+
+        process.exit(1);
     }
 };
 

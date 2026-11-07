@@ -13,7 +13,7 @@ const orderRoutes=require("./routes/orderRoutes");
 const app=express();
 const PORT=process.env.PORT || 5000;
 
-connectDb();
+// connectDb();
 
 app.use(cors());
 app.use(express.json());
@@ -33,7 +33,23 @@ app.use("/address",addressRoutes)
 
 app.use("/order", orderRoutes);
 
-app.listen(PORT, ()=>{
-    console.log(`Backend running on http://localhost:${PORT}`);
+// app.listen(PORT, ()=>{
+//     console.log(`Backend running on http://localhost:${PORT}`);
     
-})
+// })
+
+const startServer = async () => {
+    try {
+        await connectDb();
+
+        app.listen(PORT, () => {
+            console.log(`Backend running on http://localhost:${PORT}`);
+        });
+
+    } catch (error) {
+        console.error("Server startup failed:", error);
+        process.exit(1);
+    }
+};
+
+startServer();

@@ -31,35 +31,81 @@ export const Login = () => {
         }));
     }
 
-    const loginHandleSubmit= async (e)=> {
-        e.preventDefault()
+    // const loginHandleSubmit= async (e)=> {
+    //     e.preventDefault()
 
-        let next = true
+    //     let next = true
 
-        let err = {
-            email: false,
-            password: false
-        }
+    //     let err = {
+    //         email: false,
+    //         password: false
+    //     }
 
-        if (formData.email == "") {
-            err.email = true
-            next = false
-        }
-        if (formData.password == "") {
-            err.password = true
-            next = false
-        }
+    //     if (formData.email == "") {
+    //         err.email = true
+    //         next = false
+    //     }
+    //     if (formData.password == "") {
+    //         err.password = true
+    //         next = false
+    //     }
 
-        setFormErr(err)
+    //     setFormErr(err)
 
-        if (next == true) {
-            const res = await axios.post("http://localhost:5000/api/auth/login", formData);
+    //     if (next == true) {
+    //         const res = await axios.post("http://localhost:5000/api/auth/login", formData);
+    //         localStorage.setItem("token", res.data.token);
+    //         localStorage.setItem("role", res.data.role);
+    //         navigate("/");
+
+    //     }
+    // }
+
+    const loginHandleSubmit = async (e) => {
+    e.preventDefault();
+
+    let next = true;
+
+    let err = {
+        email: false,
+        password: false
+    };
+
+    if (formData.email === "") {
+        err.email = true;
+        next = false;
+    }
+
+    if (formData.password === "") {
+        err.password = true;
+        next = false;
+    }
+
+    setFormErr(err);
+
+    if (next) {
+        try {
+            const res = await axios.post(
+                "http://localhost:5000/api/auth/login",
+                formData
+            );
+
             localStorage.setItem("token", res.data.token);
             localStorage.setItem("role", res.data.role);
-            navigate("/");
 
+            // Redirect based on role
+            if (res.data.role?.toLowerCase() === "admin") {
+                navigate("/dashboard");
+            } else {
+                navigate("/");
+            }
+
+        } catch (error) {
+            console.error("Login error:", error.response?.data || error.message);
         }
     }
+};
+
 
     return (
         <div className="login-container">

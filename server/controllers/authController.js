@@ -17,19 +17,57 @@ let register = async (req, res) => {
   res.status(201).json({ message: "Registered Successfully" });
 }
 
+// let login = async (req, res) => {
+//   const { email, password } = req.body;
+
+//   const user = await User.findOne({ email });
+//   if (!user) return res.status(400).json({ message: "Invalid Email" });
+
+//   const isMatch = await bcrypt.compare(password, user.password);
+//   if (!isMatch) return res.status(400).json({ message: "Invalid Password" });
+
+//   const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET, { expiresIn: "1y" });
+
+//   res.json({ token,role:user.role });
+// }
+
 let login = async (req, res) => {
-  const { email, password } = req.body;
+    const { email, password } = req.body;
 
-  const user = await User.findOne({ email });
-  if (!user) return res.status(400).json({ message: "Invalid Email" });
+    const user = await User.findOne({ email });
 
-  const isMatch = await bcrypt.compare(password, user.password);
-  if (!isMatch) return res.status(400).json({ message: "Invalid Password" });
+    if (!user) {
+        return res.status(400).json({
+            message: "Invalid Email"
+        });
+    }
 
-  const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET, { expiresIn: "1y" });
+    // Check whether the account is blocked
+    if (!user.isActive) {
+        return res.status(403).json({
+            message: "Your account has been blocked. Please contact admin."
+        });
+    }
 
-  res.json({ token,role:user.role });
-}
+    const isMatch = await bcrypt.compare(password, user.password);
+
+    if (!isMatch) {
+        return res.status(400).json({
+            message: "Invalid Password"
+        });
+    }
+
+    const token = jwt.sign(
+        { _id: user._id },
+        process.env.JWT_SECRET,
+        { expiresIn: "1y" }
+    );
+
+    res.json({
+        token,
+        role: user.role
+    });
+};
 
 let home = (req, res) => {
   

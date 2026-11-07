@@ -170,10 +170,6 @@ export const Category = () => {
 
             <div className="category-details">
                 <div className="category-eiabutn">
-                    <div className="category-expoimpo">
-                        <button>Export</button>
-                        <button>Import</button>
-                    </div>
                     <button id="categoty-addbtn" onClick={() => setShowAddCategory(true)}>Add Category</button>
                 </div>
 
@@ -204,11 +200,11 @@ export const Category = () => {
 
                 <br /><br />
 
-                <div className="category-prevnextbtn">
+                {/* <div className="category-prevnextbtn">
                     <button>Previous</button>
                     <p>Page 1 of 2</p>
                     <button>Next</button>
-                </div>
+                </div> */}
 
             </div>
 
