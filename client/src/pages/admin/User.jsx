@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./User.css";
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 
 import {
     MdDashboard,
@@ -59,6 +59,15 @@ export const User = () => {
             );
         }
     };
+
+    const navigate = useNavigate();
+        
+        const handleLogout = () => {
+            localStorage.removeItem("token");
+            localStorage.removeItem("role");
+        
+            navigate("/Login");
+        };
 
 
     useEffect(() => {
@@ -123,10 +132,11 @@ export const User = () => {
                                   </div>
                         
                                   <button
-                                    className="frag-logout"
+                                      className="frag-logout"
+                                      onClick={handleLogout}
                                   >
-                                    <MdLogout />
-                                    Log Out
+                                      <MdLogout />
+                                      Log Out
                                   </button>
                         
                                 </div>

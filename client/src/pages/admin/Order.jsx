@@ -1,5 +1,5 @@
 import "./Order.css"
-import { Link } from "react-router-dom"
+import { Link,useNavigate } from "react-router-dom";
 import {
     FiGrid,
     FiPackage,
@@ -93,6 +93,15 @@ const fetchorders = async () => {
         }
     };
 
+    const navigate = useNavigate();
+        
+        const handleLogout = () => {
+            localStorage.removeItem("token");
+            localStorage.removeItem("role");
+        
+            navigate("/Login");
+        };
+
 
     useEffect(() => {
         fetchorders();
@@ -155,10 +164,11 @@ const fetchorders = async () => {
                                   </div>
                         
                                   <button
-                                    className="frag-logout"
+                                      className="frag-logout"
+                                      onClick={handleLogout}
                                   >
-                                    <MdLogout />
-                                    Log Out
+                                      <MdLogout />
+                                      Log Out
                                   </button>
                         
                                 </div>

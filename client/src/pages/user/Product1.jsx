@@ -13,6 +13,7 @@ import UserService from "../../services/user-api-services/UserService";
 export const Product1 = () => {
 
     const [products, setProducts] = useState([]);
+    const [searchTerm, setSearchTerm] = useState("");
 
     const [showSortOptions, setShowSortOptions] = useState(false);
 const [sortBy, setSortBy] = useState("relevance");
@@ -83,6 +84,10 @@ const sortedProducts = [...products].sort((a, b) => {
         }
     };
 
+    const filteredProducts = sortedProducts.filter((product) =>
+    product.name?.toLowerCase().includes(searchTerm.toLowerCase())
+);
+
     useEffect(() => {
         fetchproducts();
     }, [])
@@ -104,9 +109,14 @@ const sortedProducts = [...products].sort((a, b) => {
                         </nav>
                     </div>
                     <div className="home-navsearch">
-                        <FiSearch />
-                        <input type="text" placeholder=" Search Here" />
-                    </div>
+    <FiSearch />
+    <input
+        type="text"
+        placeholder="Search Products..."
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+    />
+</div>
                     <div className="home-navicons">
                         <Link to="/Cart"><FiShoppingCart /></Link>
                         <FiBell />
@@ -188,7 +198,7 @@ const sortedProducts = [...products].sort((a, b) => {
 
             {/* all products images grid */}
 
-            <div className="product1-grid">
+            {/* <div className="product1-grid">
                 {sortedProducts.map((product) => (
                     
 
@@ -220,7 +230,62 @@ const sortedProducts = [...products].sort((a, b) => {
                         </div>
                     </div>
                 ))}
+            </div> */}
+
+            <div className="product1-grid">
+
+    {filteredProducts.length > 0 ? (
+        filteredProducts.map((product) => (
+
+            <div className="product1-fullcard" key={product._id}>
+
+                <Link to={`/Product2/${product._id}`}>
+                    <div className="product1-card">
+
+                        <div className="product1-iconsss">
+                            <button onClick={(e) => {
+                                e.preventDefault();
+                                addtowhishlist(product._id);
+                            }}>
+                                <FiHeart />
+                            </button>
+                        </div>
+
+                        <img
+                            src={
+                                product.images?.startsWith("http")
+                                    ? product.images
+                                    : `http://localhost:5000/uploads/${product.images}`
+                            }
+                            alt={product.name}
+                        />
+
+                    </div>
+                </Link>
+
+                <div className="product1-imagedetails">
+                    <p>{product.name}</p>
+
+                    <div className="product1-price">
+                        <strong>RS {product.sale_price}</strong>
+                        <del>RS {product.product_price}</del>
+                    </div>
+
+                    <button onClick={() => addtoCart(product._id)}>
+                        Add to Cart
+                    </button>
+                </div>
+
             </div>
+
+        ))
+    ) : (
+        <p className="no-products-found">
+            No products found!
+        </p>
+    )}
+
+</div>
 
             <br /><br />
 

@@ -1,6 +1,6 @@
 
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 import {
   MdDashboard,
   MdInventory2,
@@ -26,6 +26,15 @@ import AdminService from "../../services/admin-api-services/AdminService";
 import "./Dashboard.css";
 
 const Dashboard = ({ onLogout }) => {
+
+  const navigate = useNavigate();
+
+const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("role");
+
+    navigate("/Login");
+};
 
   const {
     getOrder,
@@ -334,11 +343,12 @@ const Dashboard = ({ onLogout }) => {
           </div>
 
           <button
-            className="frag-logout"
-          >
-            <MdLogout />
-            Log Out
-          </button>
+    className="frag-logout"
+    onClick={handleLogout}
+>
+    <MdLogout />
+    Log Out
+</button>
 
         </div>
 

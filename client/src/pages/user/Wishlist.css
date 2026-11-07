@@ -80,3 +80,234 @@
     border-radius: 6px;
     margin-right: 10px;
 }
+
+/* =========================================
+   WISHLIST RESPONSIVE DESIGN
+========================================= */
+
+/* Common layout */
+
+.Wishlist-page-layout {
+    width: 100%;
+}
+
+.Wishlist-products {
+    width: 93%;
+    margin: 30px auto 50px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.Wishlist-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    min-width: 0;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.Wishlist-image {
+    flex: 0 0 180px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Wishlist-image img {
+    width: 100%;
+    max-width: 180px;
+    height: 200px;
+    object-fit: contain;
+}
+
+.Wishlist-item-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.Wishlist-item-title {
+    margin-top: 10px;
+    margin-bottom: 15px;
+    overflow-wrap: break-word;
+}
+
+.Wishlist-price {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 15px;
+}
+
+.Wishlist-price-main {
+    font-size: 24px;
+    margin-right: 0;
+}
+
+.Wishlist-price-old {
+    margin-right: 0;
+}
+
+.Wishlist-allbuttonss {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.Wishlist-button-1,
+.Wishlist-button-2 {
+    flex: 1;
+    min-width: 110px;
+}
+
+.Wishlist-button-1 button,
+.Wishlist-button-2 button {
+    width: 100%;
+    margin-right: 0;
+    box-sizing: border-box;
+}
+
+
+/* =========================================
+   TABLET - 900px
+========================================= */
+
+@media screen and (max-width: 900px) {
+
+    .Wishlist-products {
+        grid-template-columns: 1fr;
+        width: 90%;
+    }
+
+    .Wishlist-item {
+        gap: 25px;
+    }
+
+    .Wishlist-image {
+        flex-basis: 180px;
+    }
+
+}
+
+
+/* =========================================
+   MOBILE - 600px
+========================================= */
+
+@media screen and (max-width: 600px) {
+
+    .Wishlist-section-2 {
+        width: 90%;
+        margin: 20px auto;
+    }
+
+    .Wishlist-section-2 h1 {
+        font-size: 27px;
+    }
+
+    .Wishlist-section-2 p {
+        font-size: 14px;
+    }
+
+    .Wishlist-products {
+        width: 90%;
+        grid-template-columns: 1fr;
+        gap: 20px;
+        margin: 20px auto 40px;
+    }
+
+    .Wishlist-item {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 15px;
+        padding: 15px;
+        width: 100%;
+    }
+
+    .Wishlist-image {
+        flex: none;
+        width: 100%;
+    }
+
+    .Wishlist-image img {
+        width: 100%;
+        max-width: 220px;
+        height: 200px;
+    }
+
+    .Wishlist-item-content {
+        width: 100%;
+    }
+
+    .Wishlist-item-title {
+        font-size: 19px;
+        margin-top: 5px;
+        margin-bottom: 12px;
+    }
+
+    .Wishlist-price {
+        gap: 8px;
+        margin-top: 10px;
+    }
+
+    .Wishlist-price-main {
+        font-size: 23px;
+    }
+
+    .Wishlist-price-old {
+        font-size: 14px;
+    }
+
+    .Wishlist-price-offer {
+        font-size: 14px;
+    }
+
+    .Wishlist-allbuttonss {
+        width: 100%;
+        gap: 10px;
+        margin-top: 18px;
+    }
+
+    .Wishlist-button-1,
+    .Wishlist-button-2 {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .Wishlist-button-1 button,
+    .Wishlist-button-2 button {
+        width: 100%;
+        height: 40px;
+        font-size: 15px;
+    }
+
+}
+
+
+/* =========================================
+   SMALL MOBILE - 380px
+========================================= */
+
+@media screen and (max-width: 380px) {
+
+    .Wishlist-products {
+        width: 94%;
+    }
+
+    .Wishlist-item {
+        padding: 12px;
+    }
+
+    .Wishlist-allbuttonss {
+        flex-direction: column;
+    }
+
+    .Wishlist-button-1,
+    .Wishlist-button-2 {
+        width: 100%;
+    }
+
+}

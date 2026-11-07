@@ -1,6 +1,6 @@
 import React, { useState,useEffect } from "react";
 import './Product add.css'
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 import axios from 'axios'
 import {
     MdDashboard,
@@ -82,6 +82,15 @@ export const Productadd = () => {
     }
 };
 
+const navigate = useNavigate();
+    
+    const handleLogout = () => {
+        localStorage.removeItem("token");
+        localStorage.removeItem("role");
+    
+        navigate("/Login");
+    };
+
 useEffect(() => {
     handlecategories();
 }, []);
@@ -159,10 +168,11 @@ useEffect(() => {
                                   </div>
                         
                                   <button
-                                    className="frag-logout"
+                                      className="frag-logout"
+                                      onClick={handleLogout}
                                   >
-                                    <MdLogout />
-                                    Log Out
+                                      <MdLogout />
+                                      Log Out
                                   </button>
                         
                                 </div>

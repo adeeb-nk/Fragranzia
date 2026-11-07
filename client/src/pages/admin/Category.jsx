@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import './Category.css'
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 import axios from 'axios';
 import {
     MdDashboard,
@@ -67,6 +67,15 @@ export const Category = () => {
         setName(""),
         setDescription("")
     }
+
+    const navigate = useNavigate();
+    
+    const handleLogout = () => {
+        localStorage.removeItem("token");
+        localStorage.removeItem("role");
+    
+        navigate("/Login");
+    };
 
     useEffect(()=>{
         fetchcategories();
@@ -146,10 +155,11 @@ export const Category = () => {
                       </div>
             
                       <button
-                        className="frag-logout"
+                          className="frag-logout"
+                          onClick={handleLogout}
                       >
-                        <MdLogout />
-                        Log Out
+                          <MdLogout />
+                          Log Out
                       </button>
             
                     </div>

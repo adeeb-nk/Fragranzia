@@ -74,6 +74,8 @@
     font-size: 20px;
 }
 
+
+
 /* ===============below navbar============= */
 
 .home-belownav{
@@ -1503,4 +1505,158 @@
 .home-navicons svg{
     height: 40px;
     width: 40px;
+}
+
+/* =================================
+   RESPONSIVE HAMBURGER NAVBAR
+================================= */
+
+/* Desktop */
+
+.home-navtop {
+    display: flex;
+    align-items: center;
+}
+
+.mobile-menu-toggle {
+    display: none;
+    background: transparent;
+    border: none;
+    font-size: 27px;
+    color: #103f4d;
+    cursor: pointer;
+}
+
+
+/* Tablet and Mobile */
+
+@media screen and (max-width: 1200px) {
+
+    .home-fullnav {
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        padding: 15px 5%;
+        gap: 0;
+        box-sizing: border-box;
+    }
+
+    /* Logo left and menu right */
+
+    .home-navtop {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    #nav-heading {
+        margin: 0;
+        text-align: left;
+        font-size: 25px;
+    }
+
+    .mobile-menu-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Hide menu initially */
+
+    .home-fullnav1 {
+        display: none !important;
+        width: 100%;
+        height: auto;
+        flex-direction: column;
+        align-items: center;
+        gap: 22px;
+        padding: 20px 0 10px;
+        box-sizing: border-box;
+    }
+
+    /* Show menu after clicking hamburger */
+
+    .home-fullnav1.show-mobile-menu {
+        display: flex !important;
+    }
+
+    /* Navigation links */
+
+    .home-nav {
+        width: 100%;
+    }
+
+    .home-nav nav {
+        width: 100%;
+    }
+
+    .home-nav ul {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 18px;
+        padding: 0;
+        margin: 0;
+    }
+
+    .home-nav ul li {
+        list-style: none;
+    }
+
+    .home-nav a {
+        font-size: 16px;
+    }
+
+    /* Search */
+
+    .home-navsearch {
+        width: 90%;
+        max-width: 400px;
+        height: 40px;
+        box-sizing: border-box;
+    }
+
+    /* Icons */
+
+    .home-navicons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 25px;
+    }
+
+}
+
+@media screen and (max-width: 1200px) {
+
+    .home-fullnav1.show-mobile-menu {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+    }
+
+    .home-fullnav1.show-mobile-menu .home-nav,
+    .home-fullnav1.show-mobile-menu .home-nav nav {
+        width: 100%;
+    }
+
+    .home-fullnav1.show-mobile-menu .home-nav ul {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 20px !important;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+    }
+
+    .home-fullnav1.show-mobile-menu .home-nav ul li {
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
+
 }

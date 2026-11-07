@@ -14,6 +14,7 @@ import perfumees2 from "../../assets/perfumees2.jpg"
 import catetogory1 from "../../assets/catetogory1.jpg"
 import { Badge } from "lucide-react";
 import {toast} from "react-toastify"
+import { FiMenu, FiX } from "react-icons/fi";
 
 
 
@@ -35,6 +36,8 @@ export const Home = () => {
 
     const [products, setProducts] = useState([]);
 
+    const [menuOpen, setMenuOpen] = useState(false);
+
     const fetchproducts = async () => {
         //let res = await axios.get(API_URL);
         let res = await getProduct();
@@ -48,6 +51,52 @@ export const Home = () => {
         toast.success('Successfully added to Cart!')
     }
 
+    <div className="home-fullnav">
+
+    {/* Logo and Hamburger */}
+    <div className="home-navtop">
+
+        <h2 id="nav-heading">Fragranzia</h2>
+
+        <button
+            className="mobile-menu-toggle"
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label="Toggle navigation menu"
+        >
+            {menuOpen ? <FiX /> : <FiMenu />}
+        </button>
+
+    </div>
+
+    {/* Navbar contents */}
+    <div className={`home-fullnav1 ${menuOpen ? "show-mobile-menu" : ""}`}>
+
+        <div className="home-nav">
+            <nav>
+                <ul>
+                    <li><Link to="/" onClick={() => setMenuOpen(false)}>Home</Link></li>
+                    <li><Link to="/Product1" onClick={() => setMenuOpen(false)}>Products</Link></li>
+                    <li><Link to="/Wishlist" onClick={() => setMenuOpen(false)}>Wishlist</Link></li>
+                    <li><Link to="/About" onClick={() => setMenuOpen(false)}>About</Link></li>
+                </ul>
+            </nav>
+        </div>
+
+        <div className="home-navsearch">
+            <FiSearch />
+            <input type="text" placeholder="Search Here" />
+        </div>
+
+        <div className="home-navicons">
+            <Link to="/Cart"><FiShoppingCart /></Link>
+            <FiBell />
+            <Link to="/Profile"><FiUser /></Link>
+        </div>
+
+    </div>
+
+</div>
+
     useEffect(() => {
         fetchproducts();
     }, []);
@@ -56,29 +105,50 @@ export const Home = () => {
     return (
         <div>
             <div className="home-fullnav">
-                <h2 id="nav-heading">Fragranzia</h2>
-                <div className="home-fullnav1">
-                    <div className="home-nav">
-                        <nav>
-                            <ul>
-                                <li><Link to='/'>Home</Link></li>
-                                <li><Link to='/Product1'>Products</Link></li>
-                                <li><Link to='/Wishlist'>Wishlist</Link></li>
-                                <li><Link to="/About">About</Link></li>
-                            </ul>
-                        </nav>
-                    </div>
-                    <div className="home-navsearch">
-                        <FiSearch />
-                        <input type="text" placeholder=" Search Here" />
-                    </div>
-                    <div className="home-navicons">
-                        <Link to="/Cart"><FiShoppingCart /></Link>
-                        <FiBell />
-                        <Link to="/Profile"><FiUser /></Link>
-                    </div>
-                </div>
-            </div>
+
+    {/* Logo and Hamburger */}
+    <div className="home-navtop">
+
+        <h2 id="nav-heading">Fragranzia</h2>
+
+        <button
+            className="mobile-menu-toggle"
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label="Toggle navigation menu"
+        >
+            {menuOpen ? <FiX /> : <FiMenu />}
+        </button>
+
+    </div>
+
+    {/* Navbar contents */}
+    <div className={`home-fullnav1 ${menuOpen ? "show-mobile-menu" : ""}`}>
+
+        <div className="home-nav">
+            <nav>
+                <ul>
+                    <li><Link to="/" onClick={() => setMenuOpen(false)}>Home</Link></li>
+                    <li><Link to="/Product1" onClick={() => setMenuOpen(false)}>Products</Link></li>
+                    <li><Link to="/Wishlist" onClick={() => setMenuOpen(false)}>Wishlist</Link></li>
+                    <li><Link to="/About" onClick={() => setMenuOpen(false)}>About</Link></li>
+                </ul>
+            </nav>
+        </div>
+
+        <div className="home-navsearch">
+            <FiSearch />
+            <input type="text" placeholder="Search Here" />
+        </div>
+
+        <div className="home-navicons">
+            <Link to="/Cart"><FiShoppingCart /></Link>
+            <FiBell />
+            <Link to="/Profile"><FiUser /></Link>
+        </div>
+
+    </div>
+
+</div>
 
             <div className="home-belownav">
                 <p>ENJOY FESTIVE DISCOUNTS! FREE SHIPPING ABOVE 999 !</p>
