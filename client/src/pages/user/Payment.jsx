@@ -346,36 +346,6 @@ const handlePayment = async (data) => {
     return (
         <div>
             {/* Navigation */}
-            <div className="Product2-fullnav">
-                <h2 id="nav-heading">Fragranzia</h2>
-
-                <div className="home-fullnav1">
-                    <div className="home-nav">
-                        <nav>
-                            <ul>
-                                <li><Link to='/'>Home</Link></li>
-                                <li><Link to='/Product1'>Products</Link></li>
-                                <li><Link to='/Wishlist'>Wishlist</Link></li>
-                                <li><Link to="/About">About</Link></li>
-                            </ul>
-                        </nav>
-                    </div>
-
-                    <div className="home-navsearch">
-                        <FiSearch />
-                        <input
-                            type="text"
-                            placeholder="Search Here"
-                        />
-                    </div>
-
-                    <div className="home-navicons">
-                        <Link to="/Cart"><FiShoppingCart /></Link>
-                        <FiBell />
-                        <Link to="/Profile"><FiUser /></Link>
-                    </div>
-                </div>
-            </div>
 
             <br />
 

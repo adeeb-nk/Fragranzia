@@ -24,6 +24,8 @@ import LoginProtectedRoute from './Components/protected-route/UserProtectedRoute
 import AdminProtectedRoute from './Components/protected-route/AdminProtectedRoute.jsx'
 import { ToastContainer } from 'react-toastify'
 import Dashboard from "./pages/admin/Dashboard";
+import UserLayout from './Components/layout/UserLayout';
+
 
 function App() {
 
@@ -36,29 +38,50 @@ function App() {
         <Route path='/Login' element={<Login />} />
 
 
-        <Route path='/' element={<Home />} />
-        <Route path='/Product1' element={<Product1 />} />
-        <Route path='/Product2/:id' element={<Product2 />} />
-        <Route path='/About' element={<About />} />
+        <Route element={<UserLayout />}>
+          <Route path='/' element={<Home />} />
+          <Route path='/Product1' element={<Product1 />} />
+          <Route path='/Product2/:id' element={<Product2 />} />
+          <Route path='/About' element={<About />} />
 
-        <Route element={<LoginProtectedRoute />} >
-          <Route path='/Payment' element={<Payment />} />
-          <Route path='/Paymentsuccess' element={<Paymentsuccess />} />
-          <Route path='/Cart' element={<Cart />} />
-          <Route path='/Wishlist' element={<Wishlist />} />
-          <Route path='/Profile' element={<Profile />} />
+          <Route element={<LoginProtectedRoute />} >
+            <Route path='/Payment' element={<Payment />} />
+            <Route path='/Paymentsuccess' element={<Paymentsuccess />} />
+            <Route path='/Cart' element={<Cart />} />
+            <Route path='/Wishlist' element={<Wishlist />} />
+            <Route path='/Profile' element={<Profile />} />
+          </Route>
         </Route>
 
 
+
+        {/* <Route element={<AdminProtectedRoute />}>
+          <Route element={<AdminLayout />}>
+            <Route path='/Category' element={<Category />} />
+            <Route path='/Productadmin1' element={<Productadmin1 />} />
+            <Route path='/Productadd' element={<Productadd />} />
+            <Route path='/User' element={<User />} />
+            <Route path='/Order' element={<Order />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+          </Route>
+        </Route> */}
 
         <Route element={<AdminProtectedRoute />}>
-          <Route path='/Category' element={<Category />} />
-          <Route path='/Productadmin1' element={<Productadmin1 />} />
-          <Route path='/Productadd' element={<Productadd />} />
-          <Route path='/User' element={<User />} />
-          <Route path='/Order' element={<Order />} />
+
+          <Route path="/Category" element={<Category />} />
+
+          <Route path="/Productadmin1" element={<Productadmin1 />} />
+
+          <Route path="/Productadd" element={<Productadd />} />
+
+          <Route path="/User" element={<User />} />
+
+          <Route path="/Order" element={<Order />} />
+
           <Route path="/dashboard" element={<Dashboard />} />
+
         </Route>
+
       </Routes>
 
       <ToastContainer

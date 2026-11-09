@@ -6,7 +6,9 @@
 }
 
 .frag-dashboard {
-    display: flex;
+    display: block;
+    width: 100%;
+    min-width: 0;
     min-height: 100vh;
     background: #f5f7f8;
     font-family: 'Inter', sans-serif;
@@ -15,167 +17,19 @@
 
 /* ================= SIDEBAR ================= */
 
-.frag-sidebar {
-    width: 225px;
-    min-width: 225px;
-    background: #ffffff;
-    border-right: 1px solid #e9edef;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    padding: 27px 17px 15px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    z-index: 100;
-}
 
-.frag-logo {
-    padding: 3px 9px 35px;
-}
-
-.frag-logo h2 {
-    color: #269d62;
-    font-size: 22px;
-    font-weight: 800;
-    letter-spacing: 1px;
-    margin: 0;
-}
-
-.frag-logo span {
-    display: block;
-    color: #a0a8b0;
-    font-size: 9px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    margin-top: 5px;
-}
-
-.frag-navigation {
-    flex: 1;
-}
-
-.frag-nav-label {
-    font-size: 10px;
-    color: #a2aab2;
-    font-weight: 700;
-    letter-spacing: 1px;
-    margin: 0 0 13px 10px;
-}
-
-.frag-navigation ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.frag-navigation ul li {
-    display: flex;
-    align-items: center;
-    gap: 13px;
-    padding: 13px 12px;
-    margin-bottom: 7px;
-    border-radius: 8px;
-    color: #414a53;
-    cursor: pointer;
-    transition: 0.25s ease;
-}
-
-.frag-navigation ul li svg {
-    font-size: 19px;
-    flex-shrink: 0;
-}
-
-.frag-navigation ul li a {
-    text-decoration: none;
-    color: inherit;
-    font-size: 13px;
-    font-weight: 500;
-    width: 100%;
-}
-
-.frag-navigation ul li:hover {
-    background: #edf8f1;
-    color: #269d62;
-}
-
-.frag-navigation ul li.active {
-    background: #eaf6ef;
-    color: #269d62;
-    font-weight: 700;
-}
-
-.frag-navigation ul li.active a {
-    font-weight: 700;
-}
-
-/* ================= SIDEBAR BOTTOM ================= */
-
-.frag-sidebar-bottom {
-    margin-top: auto;
-}
-
-.frag-admin-profile {
-    display: flex;
-    align-items: center;
-    gap: 11px;
-    padding: 12px 5px 18px;
-    border-top: 1px solid #edf0f2;
-}
-
-.frag-admin-avatar {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    background: #e8f6ee;
-    color: #269d62;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 800;
-}
-
-.frag-admin-profile h4 {
-    margin: 0;
-    font-size: 12px;
-}
-
-.frag-admin-profile p {
-    margin: 4px 0 0;
-    font-size: 10px;
-    color: #929ca5;
-}
-
-.frag-logout {
-    width: 100%;
-    height: 46px;
-    border: none;
-    background: #269f59;
-    color: white;
-    border-radius: 6px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 9px;
-    font-size: 13px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: 0.2s;
-}
-
-.frag-logout:hover {
-    background: #1c8549;
-}
 
 /* ================= MAIN ================= */
 
 .frag-main {
-    margin-left: 225px;
-    width: calc(100% - 225px);
-    padding: 37px 38px;
+    margin-left: 0;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    padding: 25px 30px;
     min-height: 100vh;
     overflow-x: hidden;
+    box-sizing: border-box;
 }
 
 /* ================= HEADER ================= */
@@ -631,7 +485,9 @@
 @media (max-width: 1150px) {
 
     .frag-main {
-        padding: 30px 24px;
+        margin-left: 0;
+        width: 100%;
+        padding: 25px 20px;
     }
 
     .frag-stats {
@@ -645,48 +501,14 @@
     .category-card {
         min-height: 350px;
     }
-
 }
 
 @media (max-width: 700px) {
 
-    .frag-sidebar {
-        width: 70px;
-        min-width: 70px;
-        padding: 20px 8px;
-    }
-
-    .frag-logo {
-        padding: 5px 0 30px;
-        text-align: center;
-    }
-
-    .frag-logo h2 {
-        font-size: 11px;
-        letter-spacing: 0;
-    }
-
-    .frag-logo span,
-    .frag-nav-label,
-    .frag-navigation ul li a,
-    .frag-admin-profile,
-    .frag-logout {
-        display: none;
-    }
-
-    .frag-navigation ul li {
-        justify-content: center;
-        padding: 14px 0;
-    }
-
-    .frag-navigation ul li svg {
-        font-size: 21px;
-    }
-
     .frag-main {
-        margin-left: 70px;
-        width: calc(100% - 70px);
-        padding: 24px 14px;
+        margin-left: 0;
+        width: 100%;
+        padding: 20px 14px;
     }
 
     .frag-header {
@@ -708,30 +530,22 @@
         min-height: 105px;
     }
 
+    .frag-chart-section {
+        grid-template-columns: 1fr;
+    }
+
     .frag-chart-card,
     .frag-recent-card {
         padding: 17px 12px;
-    }
-
-    .frag-card-heading h3 {
-        font-size: 13px;
     }
 
     .frag-line-chart {
         height: 170px;
     }
 
-    .frag-chart-labels span {
-        font-size: 8px;
-    }
-
     .frag-donut {
         width: 175px;
         height: 175px;
     }
-
-    .frag-recent-heading {
-        align-items: flex-start;
-    }
-
 }
+

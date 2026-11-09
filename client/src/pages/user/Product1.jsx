@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import './Product1.css'
-import { Link } from "react-router-dom";
+import { Link , useSearchParams} from "react-router-dom";
 import { FiShoppingCart, FiBell, FiUser, FiSearch, FiMail, FiPhone, FiInstagram, FiFacebook, FiYoutube, FiLinkedin, FiChevronRight, FiSliders, FiHeart, FiShare2 } from 'react-icons/fi'
 import heroperfume from "../../assets/heroperfume.png"
 import axios from 'axios'
@@ -84,6 +84,8 @@ const sortedProducts = [...products].sort((a, b) => {
         }
     };
 
+    const [searchParams] = useSearchParams();
+
     const filteredProducts = sortedProducts.filter((product) =>
     product.name?.toLowerCase().includes(searchTerm.toLowerCase())
 );
@@ -92,38 +94,13 @@ const sortedProducts = [...products].sort((a, b) => {
         fetchproducts();
     }, [])
 
+    useEffect(() => {
+    const search = searchParams.get("search") || "";
+    setSearchTerm(search);
+}, [searchParams]);
+
     return (
         <div>
-
-            <div className="home-fullnav">
-                <h2 id="nav-heading">Fragranzia</h2>
-                <div className="home-fullnav1">
-                    <div className="home-nav">
-                        <nav>
-                            <ul>
-                                <li><Link to='/'>Home</Link></li>
-                                <li><Link to='/Product1'>Products</Link></li>
-                                <li><Link to='/Wishlist'>Wishlist</Link></li>
-                                <li><Link to="/About">About</Link></li>
-                            </ul>
-                        </nav>
-                    </div>
-                    <div className="home-navsearch">
-    <FiSearch />
-    <input
-        type="text"
-        placeholder="Search Products..."
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-    />
-</div>
-                    <div className="home-navicons">
-                        <Link to="/Cart"><FiShoppingCart /></Link>
-                        <FiBell />
-                        <Link to="/Profile"><FiUser /></Link>
-                    </div>
-                </div>
-            </div>
 
             <div className="home-belownav">
                 <p>ENJOY FESTIVE DISCOUNTS! FREE SHIPPING ABOVE 999 !</p>

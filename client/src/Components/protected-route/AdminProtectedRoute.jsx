@@ -1,4 +1,8 @@
 import { Navigate,Outlet } from "react-router-dom";
+import React from "react";
+
+import AdminLayout from "../layout/AdminLayout";
+
 
 const AdminProtectedRoute=()=>{
     const token=localStorage.getItem("token");
@@ -9,6 +13,12 @@ const AdminProtectedRoute=()=>{
         return <Navigate to="/Login" replace/>;
     }
     //Render the matched admin component directly
-    return<Outlet/>;
+    // return<Outlet/>;
+
+    return (
+        <AdminLayout>
+            <Outlet />
+        </AdminLayout>
+    );
 };
 export default AdminProtectedRoute;

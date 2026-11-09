@@ -14,30 +14,6 @@ export const Paymentsuccess = () => {
                 <div className="paymentsuccess-content">
 
 
-                    <div className="Product2-fullnav">
-                        <h2 id="nav-heading">Fragranzia</h2>
-                        <div className="home-fullnav1">
-                            <div className="home-nav">
-                                <nav>
-                                    <ul>
-                                        <li><a href="">Home</a></li>
-                                        <li><a href="">Products</a></li>
-                                        <li><a href="">Gifting</a></li>
-                                        <li><a href="">About</a></li>
-                                    </ul>
-                                </nav>
-                            </div>
-                            <div className="home-navsearch">
-                                <FiSearch />
-                                <input type="text" placeholder=" Search Here" />
-                            </div>
-                            <div className="home-navicons">
-                                <FiShoppingCart />
-                                <FiBell />
-                                <FiUser />
-                            </div>
-                        </div>
-                    </div>
 
                     <br />
 

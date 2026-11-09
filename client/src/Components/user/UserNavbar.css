@@ -1,0 +1,421 @@
+
+/* =====================================
+   MAIN NAVBAR
+===================================== */
+
+.user-fullnav {
+    width: 100%;
+    min-height: 96px;
+    background: #ffffff;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 4.5%;
+    box-sizing: border-box;
+
+    border-bottom: 1px solid #eeeeee;
+
+    position: relative;
+    z-index: 100;
+    font-family: Arial, sans-serif;
+}
+
+/* =====================================
+   LOGO
+===================================== */
+
+.user-logo {
+    text-decoration: none;
+    color: #003b50;
+
+    font-size: 25px;
+    font-weight: 700;
+    letter-spacing: -0.4px;
+
+    white-space: nowrap;
+}
+
+/* =====================================
+   NAVBAR CONTENT
+===================================== */
+
+.user-navtop {
+    display: flex;
+    align-items: center;
+}
+
+.user-fullnav-content {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    flex: 1;
+    margin-left: 25px;
+    gap: 25px;
+}
+
+/* =====================================
+   NAVIGATION LINKS
+===================================== */
+
+.user-navigation ul {
+    display: flex;
+    align-items: center;
+    gap: 23px;
+
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.user-navigation li a {
+    text-decoration: none;
+    color: #333333;
+
+    font-size: 17px;
+    font-weight: 400;
+
+    transition: 0.2s ease;
+    white-space: nowrap;
+}
+
+.user-navigation li a:hover,
+.user-navigation li a.active {
+    color: #003b50;
+    font-weight: 600;
+}
+
+/* =====================================
+   SEARCH BAR
+===================================== */
+
+.user-search-wrapper {
+    position: relative;
+    width: 190px;
+    flex-shrink: 0;
+}
+
+.user-nav-search {
+    width: 100%;
+    height: 34px;
+
+    display: flex;
+    align-items: center;
+    gap: 7px;
+
+    padding: 0 11px;
+    box-sizing: border-box;
+
+    background: #ffffff;
+    border: 1px solid #e7e7e7;
+    border-radius: 25px;
+
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.10);
+}
+
+.user-nav-search svg {
+    color: #222222;
+    font-size: 17px;
+    flex-shrink: 0;
+}
+
+.user-nav-search input {
+    width: 100%;
+    min-width: 0;
+
+    border: none;
+    outline: none;
+
+    background: transparent;
+
+    font-size: 10px;
+    color: #333333;
+}
+
+.user-nav-search input::placeholder {
+    color: #777777;
+}
+
+/* Search clear button */
+
+.user-search-clear {
+    border: none;
+    background: transparent;
+
+    color: #777777;
+    font-size: 17px;
+
+    cursor: pointer;
+    padding: 0;
+}
+
+/* =====================================
+   SEARCH RESULTS DROPDOWN
+===================================== */
+
+.user-search-results {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 0;
+
+    width: 300px;
+    max-height: 350px;
+    overflow-y: auto;
+
+    background: #ffffff;
+    border: 1px solid #eeeeee;
+    border-radius: 10px;
+
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+
+    z-index: 1000;
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+.user-search-product {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    padding: 9px;
+    border-radius: 7px;
+
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.user-search-product:hover {
+    background: #f4f8f7;
+}
+
+.user-search-product img {
+    width: 48px;
+    height: 52px;
+
+    object-fit: contain;
+    border-radius: 5px;
+    background: #f7f7f7;
+}
+
+.user-search-product-details {
+    flex: 1;
+    min-width: 0;
+}
+
+.user-search-product-details h4 {
+    font-size: 12px;
+    font-weight: 600;
+    color: #252525;
+
+    margin: 0 0 5px;
+}
+
+.user-search-product-details p {
+    font-size: 12px;
+    color: #159b61;
+    font-weight: 600;
+
+    margin: 0;
+}
+
+.user-search-viewall {
+    width: 100%;
+    padding: 11px;
+
+    border: none;
+    border-top: 1px solid #eeeeee;
+
+    background: #ffffff;
+    color: #159b61;
+
+    font-size: 17px;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+.user-search-viewall:hover {
+    background: #f4f8f7;
+}
+
+.user-search-noresult {
+    padding: 18px 10px;
+    text-align: center;
+
+    color: #777777;
+    font-size: 12px;
+}
+
+/* =====================================
+   RIGHT SIDE ICONS
+===================================== */
+
+.user-nav-icons {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+}
+
+.user-nav-icons a,
+.user-nav-icons button {
+    width: 34px;
+    height: 34px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid #eeeeee;
+    border-radius: 50%;
+
+    background: #ffffff;
+
+    color: #222222;
+    font-size: 17px;
+
+    text-decoration: none;
+    cursor: pointer;
+
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.09);
+
+    transition: 0.2s ease;
+}
+
+.user-nav-icons a:hover,
+.user-nav-icons button:hover {
+    color: #159b61;
+    border-color: #159b61;
+    transform: translateY(-2px);
+}
+
+/* =====================================
+   HAMBURGER
+===================================== */
+
+.user-mobile-menu-toggle {
+    display: none;
+
+    background: transparent;
+    border: none;
+
+    font-size: 25px;
+    cursor: pointer;
+    color: #222222;
+}
+
+/* =====================================
+   TABLET RESPONSIVE
+===================================== */
+
+@media (max-width: 1050px) {
+
+    .user-fullnav {
+        padding: 0 3%;
+    }
+
+    .user-fullnav-content {
+        margin-left: 20px;
+        gap: 15px;
+    }
+
+    .user-navigation ul {
+        gap: 15px;
+    }
+
+    .user-search-wrapper {
+        width: 145px;
+    }
+
+    .user-nav-icons {
+        gap: 7px;
+    }
+}
+
+/* =====================================
+   MOBILE RESPONSIVE
+===================================== */
+
+@media (max-width: 768px) {
+
+    .user-fullnav {
+        min-height: 68px;
+        padding: 0 20px;
+        flex-wrap: wrap;
+    }
+
+    .user-navtop {
+        width: 100%;
+        min-height: 68px;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .user-logo {
+        font-size: 21px;
+    }
+
+    .user-mobile-menu-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .user-fullnav-content {
+        display: none;
+
+        width: 100%;
+        flex: none;
+
+        margin: 0;
+        padding: 15px 0 20px;
+
+        flex-direction: column;
+        align-items: stretch;
+        gap: 20px;
+    }
+
+    .user-fullnav-content.show-user-mobile-menu {
+        display: flex;
+    }
+
+    .user-navigation ul {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 18px;
+    }
+
+    .user-navigation li {
+        width: 100%;
+    }
+
+    .user-navigation li a {
+        display: block;
+        font-size: 14px;
+    }
+
+    .user-search-wrapper {
+        width: 100%;
+    }
+
+    .user-nav-search {
+        height: 40px;
+    }
+
+    .user-search-results {
+        width: 100%;
+        position: relative;
+        top: 8px;
+        max-height: 280px;
+    }
+
+    .user-nav-icons {
+        justify-content: flex-start;
+        gap: 15px;
+    }
+
+}
