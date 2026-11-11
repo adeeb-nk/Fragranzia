@@ -1526,3 +1526,103 @@
     padding: 6px 10px;
     border-radius: 7px;
 }
+
+
+
+/* =====================================
+   PROFILE LOGOUT BUTTON
+===================================== */
+
+.profile-buttons1 {
+    width: 93%;
+    display: flex;
+    justify-content: flex-end;
+
+    position: absolute;
+    top: 130px;
+    right: 4%;
+
+    box-sizing: border-box;
+}
+
+.profile-buttons1 button {
+    width: 130px;
+    height: 42px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* =====================================
+   PROFILE EDIT BUTTON
+===================================== */
+
+.profile-editbtn {
+    width: 93%;
+    display: flex;
+    justify-content: flex-end;
+
+    position: static;
+    margin: 30px auto;
+    box-sizing: border-box;
+}
+
+.profile-editbtn button {
+    width: 150px;
+    height: 45px;
+    cursor: pointer;
+}
+
+/* =====================================
+   TABLET RESPONSIVE
+===================================== */
+
+@media (max-width: 768px) {
+
+    .profile-buttons1 {
+        position: static;
+        width: 93%;
+        margin: 15px auto 25px;
+
+        justify-content: flex-end;
+    }
+
+    .profile-editbtn {
+        position: static;
+        width: 93%;
+        margin: 25px auto;
+
+        justify-content: flex-end;
+    }
+
+}
+
+/* =====================================
+   MOBILE RESPONSIVE
+===================================== */
+
+@media (max-width: 480px) {
+
+    .profile-buttons1 {
+        width: 92%;
+        margin: 15px auto 20px;
+    }
+
+    .profile-buttons1 button {
+        width: 115px;
+        height: 40px;
+        font-size: 14px;
+    }
+
+    .profile-editbtn {
+        width: 92%;
+        margin: 25px auto;
+    }
+
+    .profile-editbtn button {
+        width: 100%;
+        max-width: 180px;
+        height: 43px;
+        font-size: 16px;
+    }
+
+}
