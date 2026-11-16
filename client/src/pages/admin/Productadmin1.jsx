@@ -14,8 +14,6 @@ import {
 
 import AdminService from "../../services/admin-api-services/AdminService";
 
-const API_URL = "http://localhost:5000/product"
-
 export const Productadmin1 = () => {
 
     const [selectedProduct, setSelectedProduct] = useState(null);
@@ -31,7 +29,7 @@ export const Productadmin1 = () => {
 
     const fetchproducts = async () => {
         let res = await getProduct();
-        console.log("products from backend", res.data);
+        console.log("products from backend", res);
 
         setProducts(res)
     }

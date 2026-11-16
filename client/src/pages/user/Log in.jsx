@@ -4,7 +4,7 @@ import { User, Lock } from 'lucide-react'
 import { FcGoogle } from 'react-icons/fc';
 import { FaFacebookF } from 'react-icons/fa';
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import { axiosPublic } from "../../axios";
 import './Log in.css'
 
 export const Login = () => {
@@ -53,7 +53,7 @@ export const Login = () => {
     //     setFormErr(err)
 
     //     if (next == true) {
-    //         const res = await axios.post("http://localhost:5000/api/auth/login", formData);
+    //         const res = await axiosPublic.post("/api/auth/login", formData);
     //         localStorage.setItem("token", res.data.token);
     //         localStorage.setItem("role", res.data.role);
     //         navigate("/");
@@ -85,8 +85,8 @@ export const Login = () => {
 
     if (next) {
         try {
-            const res = await axios.post(
-                "http://localhost:5000/api/auth/login",
+            const res = await axiosPublic.post(
+                "/api/auth/login",
                 formData
             );
 

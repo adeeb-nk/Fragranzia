@@ -128,6 +128,7 @@ import {
 } from "react-icons/fi";
 
 import UserService from "../../services/user-api-services/UserService";
+import { BASE_URL } from "../../axios";
 import "./UserNavbar.css";
 
 const UserNavbar = () => {
@@ -320,7 +321,7 @@ const UserNavbar = () => {
                                                 src={
                                                     product.images?.startsWith("http")
                                                         ? product.images
-                                                        : `http://localhost:5000/uploads/${product.images}`
+                                                        : `${BASE_URL}/uploads/${product.images}`
                                                 }
                                                 alt={product.name}
                                             />

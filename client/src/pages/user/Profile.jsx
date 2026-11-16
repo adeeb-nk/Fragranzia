@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { FiShoppingCart, FiBell, FiUser, FiSearch, FiMail, FiPhone, FiInstagram, FiFacebook, FiYoutube, FiLinkedin, FiChevronRight, FiSliders } from 'react-icons/fi'
 import heroperfume from "../../assets/heroperfume.png"
 import axios from 'axios'
+import { BASE_URL } from "../../axios";
 import perfume from "../../assets/homeperfume3.png";
 
 import UserService from "../../services/user-api-services/UserService";
@@ -1361,7 +1362,11 @@ export const Profile = () => {
                                     >
                                         {imageName && (
                                             <img
-                                                src={`http://localhost:5000/uploads/${imageName}`}
+                                                src={
+                                                    imageName.startsWith("http")
+                                                        ? imageName
+                                                        : `${BASE_URL}/uploads/${imageName}`
+                                                }
                                                 alt={product?.name || "Product"}
                                             />
                                         )}

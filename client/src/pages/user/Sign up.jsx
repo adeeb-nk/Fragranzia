@@ -1,12 +1,14 @@
 import React,{useState} from "react";
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import {User,Mail,Lock,Eye,EyeOff} from 'lucide-react'
 import {FcGoogle} from 'react-icons/fc';
 import {FaFacebookF} from 'react-icons/fa';
-import axios from "axios";
+import { axiosPublic } from "../../axios";
 import './Sign up.css'
 
 export const SignUp= ()=>{
+
+    const navigate = useNavigate();
 
     let [formData,setFormData]=useState({
         name:"",
@@ -75,7 +77,12 @@ export const SignUp= ()=>{
         setFormErr(err)
 
         if(next){
-            await axios.post("http://localhost:5000/api/auth/register", formData);  //backend kk ayachu
+            try {
+                await axiosPublic.post("/api/auth/register", formData);
+                navigate("/Login");
+            } catch (error) {
+                console.error("Registration error:", error.response?.data || error.message);
+            }
         }
     }
 

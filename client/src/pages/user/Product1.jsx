@@ -5,8 +5,7 @@ import { FiShoppingCart, FiBell, FiUser, FiSearch, FiMail, FiPhone, FiInstagram,
 import heroperfume from "../../assets/heroperfume.png"
 import axios from 'axios'
 import { toast } from "react-toastify"
-
-const API_URL = "http://localhost:5000/product"
+import { BASE_URL } from "../../axios";
 
 import UserService from "../../services/user-api-services/UserService";
 
@@ -190,7 +189,7 @@ export const Product1 = () => {
                                     src={
                                         product.images?.startsWith("http")
                                             ? product.images
-                                            : `http://localhost:5000/uploads/${product.images}`
+                                            : `${BASE_URL}/uploads/${product.images}`
                                     }
                                     alt={product.name}
                                 />
@@ -232,7 +231,7 @@ export const Product1 = () => {
                                         src={
                                             product.images?.startsWith("http")
                                                 ? product.images
-                                                : `http://localhost:5000/uploads/${product.images}`
+                                                : `${BASE_URL}/uploads/${product.images}`
                                         }
                                         alt={product.name}
                                     />

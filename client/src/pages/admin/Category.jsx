@@ -5,9 +5,6 @@ import { Link,useNavigate } from "react-router-dom";
 
 import AdminService from "../../services/admin-api-services/AdminService";        //admin service ne ivide import cheythu
 
-
-const API_URL="http://localhost:5000/category"
-
 export const Category = () => {
 
     const [showAddCategory, setShowAddCategory] = useState(false);

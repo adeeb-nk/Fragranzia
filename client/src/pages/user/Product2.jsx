@@ -3,7 +3,7 @@ import './Product2.css'
 import { Link, useParams } from "react-router-dom";
 import { FiShoppingCart, FiBell, FiUser, FiSearch, FiTruck, FiShield, FiHeadphones, FiMail, FiPhone, FiInstagram, FiFacebook, FiYoutube, FiLinkedin, FiChevronLeft, FiChevronRight, FiHeart, FiShare2, FiStar } from 'react-icons/fi'
 import { FaTag } from "react-icons/fa"
-import axios from 'axios'
+import { axiosPublic, BASE_URL } from "../../axios";
 import {toast} from "react-toastify"
 
 
@@ -48,8 +48,8 @@ export const Product2 = () => {
 
     const fetchimage = async () => {
         try {
-            const res = await axios.get(
-                `http://localhost:5000/product/images/${id}`
+            const res = await axiosPublic.get(
+                `/product/images/${id}`
             );
 
             setProducts(res.data);

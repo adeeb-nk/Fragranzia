@@ -26,8 +26,6 @@ const categories = [
     { image: homeperfume2, name: "Combo" },
 ]
 
-const API_URL = "http://localhost:5000/product"
-
 import UserService from "../../services/user-api-services/UserService";
 
 export const Home = () => {
@@ -39,9 +37,8 @@ export const Home = () => {
     const [menuOpen, setMenuOpen] = useState(false);
 
     const fetchproducts = async () => {
-        //let res = await axios.get(API_URL);
         let res = await getProduct();
-        console.log("products from backend", res.data);
+        console.log("products from backend", res);
 
         setProducts(res)
     }

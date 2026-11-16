@@ -12,8 +12,6 @@ import {
     MdLogout
 } from "react-icons/md";
 
-const API_URL = "http://localhost:5000/product"
-
 import AdminService from "../../services/admin-api-services/AdminService"; 
 
 export const Productadd = () => {

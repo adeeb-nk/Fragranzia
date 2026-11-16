@@ -10,21 +10,18 @@ const useAxiosPrivate = () => {
 
 
     useEffect(() => {
-        axiosPrivate.interceptors.request.use(                                               //request part
+        const reqInterceptor = axiosPrivate.interceptors.request.use(                                               //request part
             config => {
                 if (config.data instanceof FormData) {
                     config.headers["Content-Type"] = "multipart/form-data";
-                  } else {
+                } else {
                     config.headers["Content-Type"] = "application/json";
-                  }
-
-                if (!config.headers['Authorization']) {
-                    // config.headers['Authorization'] = `Token ${auth?.accessToken}`;
-                    // config.headers['Authorization'] = auth?.accessToken;
-                    config.headers['Authorization'] = localStorage.getItem("token");
                 }
 
-
+                const token = localStorage.getItem("token");
+                if (token && !config.headers['Authorization']) {
+                    config.headers['Authorization'] = token;
+                }
 
                 return config;
             },
@@ -33,17 +30,19 @@ const useAxiosPrivate = () => {
             }
         );
 
-        axiosPrivate.interceptors.response.use(                                           //response part(respomse from backend reach here, ividen axiosservice kk povum avidenn front end kk)
+        const resInterceptor = axiosPrivate.interceptors.response.use(                                           //response part
             response => {
                 return response
             },
-           async error => {
- 
-
+            async error => {
                 return Promise.reject(error)
             }
         );
-    // }, [auth])
+
+        return () => {
+            axiosPrivate.interceptors.request.eject(reqInterceptor);
+            axiosPrivate.interceptors.response.eject(resInterceptor);
+        };
     }, [])
 
     return axiosPrivate
