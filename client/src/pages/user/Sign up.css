@@ -65,7 +65,7 @@
 .input-box{
     display: flex;
     align-items: center;
-    width: 300px;
+    width: 325px;
     height: 40px;
     background-color: lightgray;
     border-radius: 5px;
@@ -120,4 +120,316 @@
 .signuperr {
     color: red;
     font-size: x-small;
+}
+
+
+/* =========================================
+   PROFESSIONAL TABLET RESPONSIVE
+========================================= */
+
+@media (max-width: 768px) {
+
+    /* Main container */
+
+    .Signup-container {
+        width: 100%;
+        max-width: 460px;
+
+        margin: 30px auto;
+        padding: 0 22px;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+
+        gap: 28px;
+
+        box-sizing: border-box;
+    }
+
+    /* Image section */
+
+    .logo {
+        width: 100%;
+        height: 250px;
+        min-height: 250px;
+
+        padding: 20px;
+        box-sizing: border-box;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        text-align: center;
+
+        background-size: cover;
+        background-position: center;
+
+        border-radius: 110px 0 110px 0;
+    }
+
+    .logo h1 {
+        font-size: 29px;
+        margin-bottom: 8px;
+    }
+
+    .logo p {
+        font-size: 14px;
+        line-height: 1.5;
+        margin: 0;
+    }
+
+    /* Form section */
+
+    .Signup-container > form {
+        width: 100%;
+        max-width: 100%;
+
+        display: flex;
+        flex-direction: column;
+
+        box-sizing: border-box;
+        padding: 0 5px;
+    }
+
+    /* Google and Facebook */
+
+    .top-btn {
+        width: 100%;
+
+        display: flex;
+        align-items: center;
+        gap: 12px;
+
+        margin-bottom: 8px;
+    }
+
+    .top-btn button {
+        flex: 1;
+        min-width: 0;
+        height: 44px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 9px;
+
+        font-size: 14px;
+        border-radius: 7px;
+
+        cursor: pointer;
+    }
+
+    /* Divider */
+
+    .line {
+        width: 100%;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+
+        margin: 5px 0 15px;
+    }
+
+    .line span {
+        flex: 1;
+        height: 1px;
+    }
+
+    .line label {
+        white-space: nowrap;
+        font-size: 13px;
+    }
+
+    /* Input fields */
+
+    .input-box {
+        width: 100%;
+        height: 48px;
+
+        display: flex;
+        align-items: center;
+        gap: 12px;
+
+        padding: 0 14px;
+
+        box-sizing: border-box;
+        border-radius: 7px;
+
+        margin-bottom: 5px;
+    }
+
+    .input-box svg {
+        width: 19px;
+        height: 19px;
+        flex-shrink: 0;
+    }
+
+    .input-box input {
+        flex: 1;
+        width: 100%;
+        min-width: 0;
+        height: 100%;
+
+        border: none;
+        outline: none;
+
+        font-size: 14px;
+        background: transparent;
+    }
+
+    /* Error messages */
+
+    .signuperr {
+        font-size: 12px;
+        margin: 3px 0;
+    }
+
+    /* Terms and conditions */
+
+    .input-checkbox {
+        width: 100%;
+
+        display: flex;
+        align-items: center;
+        gap: 8px;
+
+        margin: 10px 0 5px;
+    }
+
+    .input-checkbox input {
+        width: 16px;
+        height: 16px;
+        flex-shrink: 0;
+        cursor: pointer;
+    }
+
+    .input-checkbox label {
+        font-size: 13px;
+        line-height: 1.5;
+    }
+
+    /* Sign up button */
+
+    #signup-btn {
+        width: 100%;
+        height: 47px;
+
+        border: none;
+        border-radius: 8px;
+
+        font-size: 15px;
+        font-weight: 600;
+
+        cursor: pointer;
+    }
+
+    /* Login link */
+
+    .login {
+        width: 100%;
+        text-align: center;
+
+        margin-top: 8px;
+    }
+
+    .login label {
+        font-size: 13px;
+    }
+
+}
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 480px) {
+
+    .Signup-container {
+        max-width: 400px;
+
+        padding: 0 18px;
+        margin: 22px auto;
+
+        gap: 24px;
+    }
+
+    .logo {
+        height: 215px;
+        min-height: 215px;
+
+        padding: 15px;
+
+        border-radius: 85px 0 85px 0;
+    }
+
+    .logo h1 {
+        font-size: 25px;
+    }
+
+    .logo p {
+        font-size: 12px;
+    }
+
+    .Signup-container > form {
+        padding: 0;
+    }
+
+    .top-btn {
+        gap: 9px;
+    }
+
+    .top-btn button {
+        height: 42px;
+        font-size: 12px;
+        gap: 6px;
+    }
+
+    .input-box {
+        height: 45px;
+    }
+
+    .input-checkbox label {
+        font-size: 12px;
+    }
+
+    #signup-btn {
+        height: 45px;
+    }
+
+}
+
+/* =========================================
+   EXTRA SMALL MOBILE
+========================================= */
+
+@media (max-width: 350px) {
+
+    .Signup-container {
+        padding: 0 13px;
+        gap: 20px;
+    }
+
+    .logo {
+        height: 190px;
+        min-height: 190px;
+    }
+
+    .logo h1 {
+        font-size: 22px;
+    }
+
+    .top-btn button {
+        font-size: 11px;
+    }
+
+    .line label {
+        font-size: 11px;
+    }
+
 }

@@ -122,7 +122,7 @@ export const SignUp= ()=>{
                 {formErr.agree && <span className="signuperr">please agree terms and conditions</span>}<br />
                 <button id="signup-btn" type="submit">Sign up</button><br /><br />
                 <div className="login">
-                    <label>Already have an Account? <Link to="">Sign In</Link></label>
+                    <label>Already have an Account? <Link to="/Login">Sign In</Link></label>
                 </div>
             </form>
         </div>

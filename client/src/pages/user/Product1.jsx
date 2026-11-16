@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import './Product1.css'
-import { Link , useSearchParams} from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { FiShoppingCart, FiBell, FiUser, FiSearch, FiMail, FiPhone, FiInstagram, FiFacebook, FiYoutube, FiLinkedin, FiChevronRight, FiSliders, FiHeart, FiShare2 } from 'react-icons/fi'
 import heroperfume from "../../assets/heroperfume.png"
 import axios from 'axios'
-import {toast} from "react-toastify"
+import { toast } from "react-toastify"
 
 const API_URL = "http://localhost:5000/product"
 
@@ -16,28 +16,28 @@ export const Product1 = () => {
     const [searchTerm, setSearchTerm] = useState("");
 
     const [showSortOptions, setShowSortOptions] = useState(false);
-const [sortBy, setSortBy] = useState("relevance");
+    const [sortBy, setSortBy] = useState("relevance");
 
-const sortedProducts = [...products].sort((a, b) => {
-    switch (sortBy) {
-        case "newest":
-            return new Date(b.createdAt) - new Date(a.createdAt);
+    const sortedProducts = [...products].sort((a, b) => {
+        switch (sortBy) {
+            case "newest":
+                return new Date(b.createdAt) - new Date(a.createdAt);
 
-        case "popularity":
-            return (b.rating || 0) - (a.rating || 0);
+            case "popularity":
+                return (b.rating || 0) - (a.rating || 0);
 
-        case "lowToHigh":
-            return Number(a.sale_price) - Number(b.sale_price);
+            case "lowToHigh":
+                return Number(a.sale_price) - Number(b.sale_price);
 
-        case "highToLow":
-            return Number(b.sale_price) - Number(a.sale_price);
+            case "highToLow":
+                return Number(b.sale_price) - Number(a.sale_price);
 
-        default:
-            return 0;
-    }
-});
+            default:
+                return 0;
+        }
+    });
 
-    const { getProduct, addCart, addwhishlist} = UserService();
+    const { getProduct, addCart, addwhishlist } = UserService();
 
     const fetchproducts = async () => {
         try {
@@ -66,7 +66,7 @@ const sortedProducts = [...products].sort((a, b) => {
             const response = await addwhishlist(id);
 
             // alert(response.message || "Product added to wishlist!");
-            toast.success(response.message ||'Successfully added to Whishlist!')
+            toast.success(response.message || 'Successfully added to Whishlist!')
             console.log("Wishlist response:", response);
         } catch (error) {
             console.error(
@@ -87,17 +87,17 @@ const sortedProducts = [...products].sort((a, b) => {
     const [searchParams] = useSearchParams();
 
     const filteredProducts = sortedProducts.filter((product) =>
-    product.name?.toLowerCase().includes(searchTerm.toLowerCase())
-);
+        product.name?.toLowerCase().includes(searchTerm.toLowerCase())
+    );
 
     useEffect(() => {
         fetchproducts();
     }, [])
 
     useEffect(() => {
-    const search = searchParams.get("search") || "";
-    setSearchTerm(search);
-}, [searchParams]);
+        const search = searchParams.get("search") || "";
+        setSearchTerm(search);
+    }, [searchParams]);
 
     return (
         <div>
@@ -117,58 +117,58 @@ const sortedProducts = [...products].sort((a, b) => {
                 </div>
                 <div className="product1-filterblock">
 
-    <div className="product1-sortby">
-        <p>Sort by:</p>
-    </div>
+                    <div className="product1-sortby">
+                        <p>Sort by:</p>
+                    </div>
 
-    {showSortOptions && (
-        <div className="product1-filters">
+                    {showSortOptions && (
+                        <div className="product1-filters">
 
-            <button
-                className={sortBy === "relevance" ? "active-sort" : ""}
-                onClick={() => setSortBy("relevance")}
-            >
-                Relevance
-            </button>
+                            <button
+                                className={sortBy === "relevance" ? "active-sort" : ""}
+                                onClick={() => setSortBy("relevance")}
+                            >
+                                Relevance
+                            </button>
 
-            <button
-                className={sortBy === "newest" ? "active-sort" : ""}
-                onClick={() => setSortBy("newest")}
-            >
-                Newest First
-            </button>
+                            <button
+                                className={sortBy === "newest" ? "active-sort" : ""}
+                                onClick={() => setSortBy("newest")}
+                            >
+                                Newest First
+                            </button>
 
-            <button
-                className={sortBy === "popularity" ? "active-sort" : ""}
-                onClick={() => setSortBy("popularity")}
-            >
-                Popularity
-            </button>
+                            <button
+                                className={sortBy === "popularity" ? "active-sort" : ""}
+                                onClick={() => setSortBy("popularity")}
+                            >
+                                Popularity
+                            </button>
 
-            <button
-                className={sortBy === "lowToHigh" ? "active-sort" : ""}
-                onClick={() => setSortBy("lowToHigh")}
-            >
-                Price -- Low to High
-            </button>
+                            <button
+                                className={sortBy === "lowToHigh" ? "active-sort" : ""}
+                                onClick={() => setSortBy("lowToHigh")}
+                            >
+                                Price -- Low to High
+                            </button>
 
-            <button
-                className={sortBy === "highToLow" ? "active-sort" : ""}
-                onClick={() => setSortBy("highToLow")}
-            >
-                Price -- High to Low
-            </button>
+                            <button
+                                className={sortBy === "highToLow" ? "active-sort" : ""}
+                                onClick={() => setSortBy("highToLow")}
+                            >
+                                Price -- High to Low
+                            </button>
 
-        </div>
-    )}
+                        </div>
+                    )}
 
-    <div className="product1-filter-button">
-        <button onClick={() => setShowSortOptions(!showSortOptions)}>
-            Filter <FiSliders />
-        </button>
-    </div>
+                    <div className="product1-filter-button">
+                        <button onClick={() => setShowSortOptions(!showSortOptions)}>
+                            Filter <FiSliders />
+                        </button>
+                    </div>
 
-</div>
+                </div>
             </div>
 
             <br /><br />
@@ -211,58 +211,58 @@ const sortedProducts = [...products].sort((a, b) => {
 
             <div className="product1-grid">
 
-    {filteredProducts.length > 0 ? (
-        filteredProducts.map((product) => (
+                {filteredProducts.length > 0 ? (
+                    filteredProducts.map((product) => (
 
-            <div className="product1-fullcard" key={product._id}>
+                        <div className="product1-fullcard" key={product._id}>
 
-                <Link to={`/Product2/${product._id}`}>
-                    <div className="product1-card">
+                            <Link to={`/Product2/${product._id}`}>
+                                <div className="product1-card">
 
-                        <div className="product1-iconsss">
-                            <button onClick={(e) => {
-                                e.preventDefault();
-                                addtowhishlist(product._id);
-                            }}>
-                                <FiHeart />
-                            </button>
+                                    <div className="product1-iconsss">
+                                        <button onClick={(e) => {
+                                            e.preventDefault();
+                                            addtowhishlist(product._id);
+                                        }}>
+                                            <FiHeart />
+                                        </button>
+                                    </div>
+
+                                    <img
+                                        src={
+                                            product.images?.startsWith("http")
+                                                ? product.images
+                                                : `http://localhost:5000/uploads/${product.images}`
+                                        }
+                                        alt={product.name}
+                                    />
+
+                                </div>
+                            </Link>
+
+                            <div className="product1-imagedetails">
+                                <p>{product.name}</p>
+
+                                <div className="product1-price">
+                                    <strong>RS {product.sale_price}</strong>
+                                    <del>RS {product.product_price}</del>
+                                </div>
+
+                                <button onClick={() => addtoCart(product._id)}>
+                                    Add to Cart
+                                </button>
+                            </div>
+
                         </div>
 
-                        <img
-                            src={
-                                product.images?.startsWith("http")
-                                    ? product.images
-                                    : `http://localhost:5000/uploads/${product.images}`
-                            }
-                            alt={product.name}
-                        />
-
-                    </div>
-                </Link>
-
-                <div className="product1-imagedetails">
-                    <p>{product.name}</p>
-
-                    <div className="product1-price">
-                        <strong>RS {product.sale_price}</strong>
-                        <del>RS {product.product_price}</del>
-                    </div>
-
-                    <button onClick={() => addtoCart(product._id)}>
-                        Add to Cart
-                    </button>
-                </div>
+                    ))
+                ) : (
+                    <p className="no-products-found">
+                        No products found!
+                    </p>
+                )}
 
             </div>
-
-        ))
-    ) : (
-        <p className="no-products-found">
-            No products found!
-        </p>
-    )}
-
-</div>
 
             <br /><br />
 
@@ -278,10 +278,10 @@ const sortedProducts = [...products].sort((a, b) => {
                     <h3>Pages</h3>
                     <ul>
                         <li><Link to='/'>Home</Link></li>
-                                                <li><Link to='/Product1'>Products</Link></li>
-                                                <li><Link to='/Wishlist'>Wishlist</Link></li>
-                                                <li><Link to="/About">About</Link></li>
-                                                <li><Link to="/Profile">Profile</Link></li>
+                        <li><Link to='/Product1'>Products</Link></li>
+                        <li><Link to='/Wishlist'>Wishlist</Link></li>
+                        <li><Link to="/About">About</Link></li>
+                        <li><Link to="/Profile">Profile</Link></li>
                     </ul>
                 </div>
                 <div className="home-footercolumn">

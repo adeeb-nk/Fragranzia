@@ -123,10 +123,10 @@ export const Home = () => {
             <section className="home-featuredcollections">
                 <div className="home-featuredcollectionsheading">
                     <h1>Featured Collections</h1>
-                    <div className="home-featuredcollectionsbtn">
+                    {/* <div className="home-featuredcollectionsbtn">
                         <button><FiChevronLeft /></button>
                         <button><FiChevronRight /></button>
-                    </div>
+                    </div> */}
                 </div>
                 <div className="home-featuredcollectionsproducts">
                     {products.map((product) => (
@@ -195,10 +195,10 @@ export const Home = () => {
             <section className="home-offerzone">
                 <div className="home-offerzoneheading">
                     <h1>Offers Zone</h1>
-                    <div className="home-offerzonebtn">
+                    {/* <div className="home-offerzonebtn">
                         <button><FiChevronLeft /></button>
                         <button><FiChevronRight /></button>
-                    </div>
+                    </div> */}
                 </div>
                 <div className="home-offerzoneproducts">
                     {products.map((product) => (

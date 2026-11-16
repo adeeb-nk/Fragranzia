@@ -136,9 +136,9 @@ export const Login = () => {
                 <div className="forgot-password">
                     <Link>Forgot Password?</Link>
                 </div><br /><br />
-                <button id="login-btn">Log in</button>
+                <button id="login-btn">Log in</button><br /><br />
                 <div className="signup">
-                    <p>Don't have an account?<Link>Sign up</Link></p>
+                    <p>Don't have an account?<Link to="/SignUp">Sign up</Link></p>
                 </div>
             </form>
         </div>
