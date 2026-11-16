@@ -18,6 +18,20 @@ const PORT=process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
+// Auto-connect to database on serverless invocation
+app.use(async (req, res, next) => {
+    try {
+        await connectDb();
+    } catch (err) {
+        console.error("Database connection error:", err);
+    }
+    next();
+});
+
+app.get("/", (req, res) => {
+    res.json({ message: "Fragranzia Backend API is running successfully!" });
+});
+
 app.use("/uploads", express.static("uploads"));
 
 app.use("/category",categoryRoutes);
@@ -38,18 +52,22 @@ app.use("/order", orderRoutes);
     
 // })
 
-const startServer = async () => {
-    try {
-        await connectDb();
+if (!process.env.VERCEL) {
+    const startServer = async () => {
+        try {
+            await connectDb();
 
-        app.listen(PORT, () => {
-            console.log(`Backend running on http://localhost:${PORT}`);
-        });
+            app.listen(PORT, () => {
+                console.log(`Backend running on http://localhost:${PORT}`);
+            });
 
-    } catch (error) {
-        console.error("Server startup failed:", error);
-        process.exit(1);
-    }
-};
+        } catch (error) {
+            console.error("Server startup failed:", error);
+            process.exit(1);
+        }
+    };
 
-startServer();
+    startServer();
+}
+
+module.exports = app;
