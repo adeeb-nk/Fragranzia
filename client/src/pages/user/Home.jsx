@@ -43,10 +43,27 @@ export const Home = () => {
         setProducts(res)
     }
 
+    // const addtoCart = async (id) => {
+    //     let response = await addCart(id);
+    //     toast.success('Successfully added to Cart!')
+    // }
+
     const addtoCart = async (id) => {
-        let response = await addCart(id);
-        toast.success('Successfully added to Cart!')
-    }
+
+        const token = localStorage.getItem("token");
+
+        if (!token) {
+            toast.error("Please log in to add products to your cart!");
+            return;
+        }
+
+        try {
+            await addCart(id);
+            toast.success("Successfully added to Cart!");
+        } catch (error) {
+            toast.error("Failed to add product to cart!");
+        }
+    };
 
     useEffect(() => {
         fetchproducts();

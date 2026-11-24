@@ -55,31 +55,74 @@ export const Product1 = () => {
         }
     };
 
+    // const addtoCart = async (id) => {
+    //     let response = await addCart(id);
+    //     toast.success('Successfully added to Cart!')
+    // }
+
     const addtoCart = async (id) => {
-        let response = await addCart(id);
-        toast.success('Successfully added to Cart!')
-    }
+
+        const token = localStorage.getItem("token");
+
+        if (!token) {
+            toast.error("Please log in to add products to your cart!");
+            return;
+        }
+
+        try {
+            await addCart(id);
+            toast.success("Successfully added to Cart!");
+        } catch (error) {
+            toast.error("Failed to add product to cart!");
+        }
+    };
+
+    // const addtowhishlist = async (id) => {
+    //     try {
+    //         const response = await addwhishlist(id);
+
+    //         // alert(response.message || "Product added to wishlist!");
+    //         toast.success(response.message || 'Successfully added to Whishlist!')
+    //         console.log("Wishlist response:", response);
+    //     } catch (error) {
+    //         console.error(
+    //             "Wishlist error:",
+    //             error.response?.data || error.message
+    //         );
+    //         toast.error(error.response?.data?.message ||
+    //             "Failed to add product to wishlist. Please log in.")
+
+    //     }
+    // };
 
     const addtowhishlist = async (id) => {
+
+        const token = localStorage.getItem("token");
+
+        if (!token) {
+            toast.error("Please log in to add products to your wishlist!");
+            return;
+        }
+
         try {
             const response = await addwhishlist(id);
 
-            // alert(response.message || "Product added to wishlist!");
-            toast.success(response.message || 'Successfully added to Whishlist!')
+            toast.success(
+                response.message || "Successfully added to Wishlist!"
+            );
+
             console.log("Wishlist response:", response);
+
         } catch (error) {
             console.error(
                 "Wishlist error:",
                 error.response?.data || error.message
             );
 
-            // alert(
-            //     error.response?.data?.message ||
-            //     "Failed to add product to wishlist. Please log in."
-            // );
-            toast.error(error.response?.data?.message ||
-                "Failed to add product to wishlist. Please log in.")
-
+            toast.error(
+                error.response?.data?.message ||
+                "Failed to add product to wishlist!"
+            );
         }
     };
 

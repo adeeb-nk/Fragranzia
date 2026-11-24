@@ -4,7 +4,7 @@ import { Link, useParams } from "react-router-dom";
 import { FiShoppingCart, FiBell, FiUser, FiSearch, FiTruck, FiShield, FiHeadphones, FiMail, FiPhone, FiInstagram, FiFacebook, FiYoutube, FiLinkedin, FiChevronLeft, FiChevronRight, FiHeart, FiShare2, FiStar } from 'react-icons/fi'
 import { FaTag } from "react-icons/fa"
 import { axiosPublic, BASE_URL } from "../../axios";
-import {toast} from "react-toastify"
+import { toast } from "react-toastify"
 
 
 import UserService from "../../services/user-api-services/UserService";
@@ -24,22 +24,51 @@ export const Product2 = () => {
     }
 
 
+    // const addtowhishlist = async (id) => {
+    //     try {
+    //         const response = await addwhishlist(id);
+    //         toast.success(response.message ||'Successfully added to Whishlist!')
+    //         console.log("Wishlist response:", response);
+    //     } catch (error) {
+    //         console.error(
+    //             "Wishlist error:",
+    //             error.response?.data || error.message
+    //         );
+
+    //         alert(
+    //             error.response?.data?.message ||
+    //             "Failed to add product to wishlist. Please log in."
+    //         );
+    //     }
+    // };
+
     const addtowhishlist = async (id) => {
+
+        const token = localStorage.getItem("token");
+
+        if (!token) {
+            toast.error("Please log in to add products to your wishlist!");
+            return;
+        }
+
         try {
             const response = await addwhishlist(id);
 
-            //alert(response.message || "Product added to wishlist!");
-            toast.success(response.message ||'Successfully added to Whishlist!')
+            toast.success(
+                response.message || "Successfully added to Wishlist!"
+            );
+
             console.log("Wishlist response:", response);
+
         } catch (error) {
             console.error(
                 "Wishlist error:",
                 error.response?.data || error.message
             );
 
-            alert(
+            toast.error(
                 error.response?.data?.message ||
-                "Failed to add product to wishlist. Please log in."
+                "Failed to add product to wishlist!"
             );
         }
     };
@@ -60,10 +89,31 @@ export const Product2 = () => {
         }
     };
 
-    const addtoCart = async (id) => {
-        let response = await addCart(id);
+    // const addtoCart = async (id) => {
+    //     let response = await addCart(id);
 
-    }
+    // }
+    const addtoCart = async (id) => {
+
+        const token = localStorage.getItem("token");
+
+        if (!token) {
+            toast.error("Please log in to add products to your cart!");
+            return;
+        }
+
+        try {
+            await addCart(id);
+
+            toast.success("Successfully added to Cart!");
+
+        } catch (error) {
+            toast.error(
+                error.response?.data?.message ||
+                "Failed to add product to cart!"
+            );
+        }
+    };
 
     useEffect(() => {
         fetchimage()
@@ -104,9 +154,9 @@ export const Product2 = () => {
                             <button onClick={() => addtowhishlist(products._id)}><FiHeart /></button>
                             <button><FiShare2 /></button>
                         </div>
-                        <img src={products.images}  id="product2-single-img" />
+                        <img src={products.images} id="product2-single-img" />
                     </div>
-                    <button id="product2-purchasebutton">Purchase Now</button>
+                    <Link to="/Cart"><button id="product2-purchasebutton" onClick={() => { addtoCart(products._id) }}>Purchase Now</button></Link>
                     <button id="product2-addbutton" onClick={() => { addtoCart(products._id) }}>Add to Cart</button>
                 </div>
                 <div className="product2-details">
@@ -167,7 +217,7 @@ export const Product2 = () => {
                                     <strong>RS {product.sale_price}</strong>
                                     <del>RS {product.product_price}</del>
                                 </div>
-                                <button className="home-offerzonecartbtn">Add to Cart</button>
+                                <button className="home-offerzonecartbtn" onClick={() => addtoCart(product._id)}>Add to Cart</button>
                             </div>
                         </div>
                     ))}
@@ -186,10 +236,10 @@ export const Product2 = () => {
                     <h3>Pages</h3>
                     <ul>
                         <li><Link to='/'>Home</Link></li>
-                                                <li><Link to='/Product1'>Products</Link></li>
-                                                <li><Link to='/Wishlist'>Wishlist</Link></li>
-                                                <li><Link to="/About">About</Link></li>
-                                                <li><Link to="/Profile">Profile</Link></li>
+                        <li><Link to='/Product1'>Products</Link></li>
+                        <li><Link to='/Wishlist'>Wishlist</Link></li>
+                        <li><Link to="/About">About</Link></li>
+                        <li><Link to="/Profile">Profile</Link></li>
                     </ul>
                 </div>
                 <div className="home-footercolumn">
